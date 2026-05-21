@@ -14,7 +14,7 @@ import json
 import os
 from collections import defaultdict
 
-ROOT = '/Users/pp01/Desktop/toolchainbench'
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 rows = []
 

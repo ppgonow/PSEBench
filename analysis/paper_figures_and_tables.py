@@ -11,7 +11,7 @@ import pandas as pd
 from matplotlib.patches import FancyBboxPatch
 
 
-ROOT = Path("/Users/pp01/Desktop/PSEBench")
+ROOT = Path(__file__).resolve().parents[1]
 ANALYSIS = ROOT / "analysis"
 FIGURES = ROOT / "paper_writing" / "figures"
 TABLES = ROOT / "paper_writing" / "tables"

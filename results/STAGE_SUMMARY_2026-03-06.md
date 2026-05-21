@@ -3,15 +3,8 @@
 ## Major update
 We successfully fixed the local OpenClaw gateway auth mismatch and resumed execution-backed cron experiments. We have now completed a first **2×2-style guard/policy matrix slice** over the `H-msg-cron-required` family.
 
-### Root cause that was fixed
-The local LaunchAgent service (`~/Library/LaunchAgents/ai.openclaw.gateway.plist`) still contained an **old `OPENCLAW_GATEWAY_TOKEN`**, while `~/.openclaw/openclaw.json` had a newer `gateway.auth.token`. This caused all local CLI/gateway RPCs to fail with:
-
-> `unauthorized: gateway token mismatch (set gateway.remote.token to match gateway.auth.token)`
-
-After aligning the LaunchAgent token to the config token and reloading the service, `openclaw gateway status` now reports:
-- **RPC probe: ok**
-
-This re-enabled valid CLI-backed cron measurements.
+### Local execution issue that was fixed
+A development-environment gateway authentication mismatch was resolved before collecting the CLI-backed cron measurements. No credential values are recorded in this artifact.
 
 ---
 
