@@ -90,9 +90,13 @@ Common artifacts include:
 ## 6) Aggregate tables
 ```bash
 python3 analysis/auto_oracle_from_cli.py
+python3 analysis/auto_oracle_agreement.py
+python3 analysis/auto_oracle_noncron.py
 python3 analysis/compute_ci_tables.py
 python3 analysis/confirm_all_persistent_report.py
 python3 analysis/slc_report.py
+python3 analysis/reviewer_gap_tables.py
+python3 analysis/benchmark_guard_overhead.py
 ```
 
 Representative outputs:
@@ -102,6 +106,11 @@ Representative outputs:
 - `analysis/confirm_all_persistent_summary.csv`
 - `analysis/slc_summary.csv`
 - `analysis/new_baseline_comparison_table.csv`
+- `analysis/prompt_only_baseline_summary.csv`
+- `analysis/oracle_coverage_summary.csv`
+- `analysis/auto_oracle_agreement_summary.csv`
+- `analysis/auto_oracle_noncron_summary.csv`
+- `analysis/iacg_overhead_summary.csv`
 
 ## 7) Guard schema in `final.json`
 Representative fields:

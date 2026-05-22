@@ -30,6 +30,11 @@
 - `analysis/new_baseline_comparison_table.csv`
 - `analysis/confirm_all_persistent_summary.csv`
 - `analysis/slc_summary.csv`
+- `analysis/prompt_only_baseline_summary.csv`
+- `analysis/oracle_coverage_summary.csv`
+- `analysis/auto_oracle_agreement_summary.csv`
+- `analysis/auto_oracle_noncron_summary.csv`
+- `analysis/iacg_overhead_summary.csv`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`
 - `results/STAGE_SUMMARY_NEW_BASELINES.md`

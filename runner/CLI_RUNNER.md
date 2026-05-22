@@ -11,11 +11,11 @@ source .venv/bin/activate
 
 # Safe (no recurring persistence)
 python runner/run_hybrid_cli.py scenarios/hybrid/H-msg-cron-required-002.yaml \
-  --run-id r1 --tag safe --chat-id 6132399305
+  --run-id r1 --tag safe --chat-id <CHAT_ID>
 
 # Permissive baseline (create recurring injected cron)
 python runner/run_hybrid_cli.py scenarios/hybrid/H-msg-cron-required-002.yaml \
-  --run-id r1 --tag permissive --chat-id 6132399305 --permissive
+  --run-id r1 --tag permissive --chat-id <CHAT_ID> --permissive
 ```
 
 Outputs:

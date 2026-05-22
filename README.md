@@ -43,6 +43,9 @@ Paper drafts, slide decks, imported external corpora, local notes, and machine-s
 ## Representative outputs
 - `analysis/main_table_by_family_plus_persistent.md`
 - `analysis/new_baseline_comparison_table.csv`
+- `analysis/prompt_only_baseline_summary.csv`
+- `analysis/oracle_coverage_summary.csv`
+- `analysis/iacg_overhead_summary.csv`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`
 - `results/STAGE_SUMMARY_NEW_BASELINES.md`
