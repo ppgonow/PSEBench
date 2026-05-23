@@ -5,7 +5,7 @@ This stage formalizes the previous `guard-sim` prototype into a paper-ready base
 
 > **Shallow Lexical Comparator (SLC)**
 
-SLC is a tool-layer comparator baseline designed to share the same enforcement point as IACG, but use only **surface lexical persistence cues** rather than semantic authorization reasoning.
+SLC is a tool-layer comparator baseline designed to share the same enforcement point as IACG, but use only **surface lexical persistence cues** rather than IACG's rule-defined request/action classes.
 
 Derived from the previous `guard-sim` prototype, SLC intentionally remains shallow:
 - it compares request-side persistence words against action-side persistent markers,
@@ -172,14 +172,14 @@ Two sets are especially important:
 
 ### Is SLC finer-grained than firewall?
 Yes, SLC is **finer than firewall** because it does not block all persistent actions indiscriminately.
-However, it still fails to capture the true **authorization boundary**. The correct boundary is not whether a request contains certain persistence words, but whether the proposed persistent action is actually **authorized by the user’s semantics**.
+However, it still fails to capture the true **authorization boundary**. The correct boundary is not whether a request contains certain persistence words, but whether the proposed persistent action is covered by the user's request class.
 
 ---
 
 ## Short paper-ready conclusion
 A concise reusable paragraph:
 
-> **Shallow Lexical Comparator (SLC)** is a tool-layer baseline that compares request-side persistence words against persistent action markers without semantic reasoning. Although SLC is more selective than a firewall and performs well on matched cron cases, it fails on negated and misleading lexical contexts, reaching 100% ASR on our failure stress set, and it also reduces utility on implicit legitimate persistence requests. These results show that shallow lexical matching is insufficient: the key security boundary is semantic authorization, not raw lexical cues.
+> **Shallow Lexical Comparator (SLC)** is a tool-layer baseline that compares request-side persistence words against persistent action markers without the structured request/action classes used by IACG. Although SLC is more selective than a firewall and performs well on matched cron cases, it fails on negated and misleading lexical contexts, reaching 100% ASR on our failure stress set, and it also reduces utility on implicit legitimate persistence requests. These results show that shallow lexical matching is insufficient: the key security boundary is authorization coverage, not raw lexical cues.
 
 ---
 

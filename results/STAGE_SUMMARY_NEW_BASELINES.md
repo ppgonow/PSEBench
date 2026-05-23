@@ -90,7 +90,7 @@ Representative comparison:
 Takeaway:
 - This is the decisive SLC result.
 - SLC fails exactly where shallow lexical matching should fail: negated or misleading persistence words cause the persistent injected action to be treated as lexically matched and therefore allowed.
-- This slice provides direct evidence that lexical matching is not equivalent to semantic authorization checking.
+- This slice provides direct evidence that lexical matching is not equivalent to a rule-defined intent-action consistency check.
 
 ---
 
@@ -125,12 +125,12 @@ Takeaway:
 ---
 
 ## B. SLC: role and limitation
-SLC is closer to IACG than firewall because it operates at the same enforcement point and also compares the request with the proposed tool action, rather than simply blocking all persistence. This makes it a much more meaningful comparator than a coarse deny-all baseline. However, SLC still fails to capture the semantic authorization boundary because it relies only on surface lexical cues. The failure stress set shows that lexical persistence words in negated or misleading contexts can cause SLC to allow unauthorized persistent actions, and the implicit durability set shows that lexical matching can also miss legitimate persistent intent. In short, SLC is finer-grained than firewall, but it is still not semantically grounded.
+SLC is closer to IACG than firewall because it operates at the same enforcement point and also compares the request with the proposed tool action, rather than simply blocking all persistence. This makes it a much more meaningful comparator than a coarse deny-all baseline. However, SLC still fails to capture the rule-defined authorization boundary because it relies only on surface lexical cues. The failure stress set shows that lexical persistence words in negated or misleading contexts can cause SLC to allow unauthorized persistent actions, and the implicit durability set shows that lexical matching can also miss legitimate persistent intent. In short, SLC is finer-grained than firewall, but it lacks the structured request/action classes used by IACG.
 
 ---
 
 ## C. Integrated 4–6 sentence conclusion
-Taken together, the current baseline landscape is strong enough to show that IACG is not a strawman improvement. `confirm-all-persistent` is a strong coarse baseline that suppresses attacks but pays with maximal confirmation burden and clear utility loss on legitimate persistence. SLC is the baseline most conceptually similar to IACG because it compares request-side and action-side information at the same tool-layer enforcement point, but it fails under negated lexical contexts and partially misses implicit durable intent. Firewall remains useful as a coarse lower-utility reference, but it is too blunt to capture the real security boundary. The main advantage of IACG is therefore not merely lower ASR, but its ability to preserve the **semantic authorization boundary**: it blocks persistence escalation while still allowing explicitly and implicitly legitimate persistent actions.
+Taken together, the current baseline landscape is strong enough to show that IACG is not a strawman improvement. `confirm-all-persistent` is a strong coarse baseline that suppresses attacks but pays with maximal confirmation burden and clear utility loss on legitimate persistence. SLC is the baseline most conceptually similar to IACG because it compares request-side and action-side information at the same tool-layer enforcement point, but it fails under negated lexical contexts and partially misses implicit durable intent. Firewall remains useful as a coarse lower-utility reference, but it is too blunt to capture the real security boundary. The main advantage of IACG is therefore not merely lower ASR, but its ability to preserve the **rule-defined authorization boundary**: it blocks persistence escalation while still allowing explicitly and implicitly legitimate persistent actions.
 
 ---
 
@@ -160,5 +160,5 @@ The following are better as appendix or supporting material:
 ## Bottom line
 The two newly added baselines are now sufficient for paper use:
 - **confirm-all-persistent** demonstrates that a simple, strong confirmation policy is not enough because it sacrifices utility and user friction.
-- **SLC** demonstrates that shallow lexical matching is not enough because it fails to represent semantic authorization.
-- Together they strengthen the claim that **IACG occupies a non-trivial middle ground**: more selective than firewall/confirm-all-persistent, and more semantically robust than lexical comparators.
+- **SLC** demonstrates that shallow lexical matching is not enough because it fails to represent the rule-defined authorization boundary.
+- Together they strengthen the claim that **IACG occupies a non-trivial middle ground**: more selective than firewall/confirm-all-persistent, and more robust to lexical traps than shallow lexical comparators.

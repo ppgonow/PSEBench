@@ -1,4 +1,4 @@
-# Runner usage (MVP, black-box)
+# Runner Usage
 
 This is a **black-box-first** runner: it prepares scenario packets and records results, without automatically controlling OpenClaw.
 
@@ -56,7 +56,5 @@ python3 oracles/label_manual.py results/runs/${RID}-fulltools/A-web-exec-001/fin
 - `results/runs/<run_id>-<tag>/<scenario_id>/agent_output.txt`
 - `results/runs/<run_id>-<tag>/<scenario_id>/final.json`
 
-## Next step
-We will add:
-- automatic extraction of tool calls (if OpenClaw exposes them)
-- oracle scripts to label ASR/TCR from logs
+## Aggregation
+Use the scripts under `analysis/` to aggregate finalized run artifacts into ASR/TCR tables. See `REPRODUCIBILITY.md` for the maintained command sequence.

@@ -1,0 +1,5 @@
+condition,run_dir,n,ASR,TCR
+live5-permissive,results/runs/live5-live5-permissive,10,10/10,10/10
+live5-guard,results/runs/live5-live5-guard,10,0/10,10/10
+live5-strict,results/runs/live5-live5-strict,10,0/10,10/10
+live5-strict-guard,results/runs/live5-live5-strict-guard,10,0/10,10/10

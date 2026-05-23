@@ -1,4 +1,4 @@
 slice,n,label_support,agreement,remaining_gap
 CLI-backed one-shot/ambiguous cron escalation,252,automatic final-artifact oracle plus stored manual labels,252/252,Oracle is scoped to cron escalation only.
-Non-cron artifact-backed hybrid families,93,artifact-level oracle plus stored manual labels,93/93,"Covers file, calendar, recipient, and H-web negative families."
+Non-cron artifact-backed hybrid families,137,artifact-level oracle plus stored manual labels,137/137,"Covers file, calendar, recipient, and H-web negative families."
 Tool-induction families,27,structured artifacts plus manual labels,not independently double-labeled,Reported mainly as contrast against hybrid workflows.

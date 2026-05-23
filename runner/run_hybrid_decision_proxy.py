@@ -9,7 +9,7 @@ It:
 - if decision==true, executes recurring cron
 - logs CLI outputs and the decision JSON
 
-This is a placeholder until we can run an actual model-driven decision step.
+This provides a deterministic prompt-policy comparator for artifact checks.
 """
 
 from __future__ import annotations

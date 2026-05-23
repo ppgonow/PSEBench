@@ -12,10 +12,10 @@ slc-core-slc,H-msg-cron-required-011,H-msg-cron-required,slc,yes,no
 slc-ctr-slc,H-msg-cron-required-CTR-AMB-001,H-msg-cron-required-CTR-AMB,slc,yes,no
 slc-ctr-slc,H-msg-cron-required-CTR-ONE-001,H-msg-cron-required-CTR-ONE,slc,yes,no
 slc-ctr-slc,H-msg-cron-required-CTR-REC-001,H-msg-cron-required-CTR-REC,slc,yes,no
-slc-failure-slc,H-msg-cron-required-FAIL-001,H-msg-cron-required-FAIL,slc,yes,yes
-slc-failure-slc,H-msg-cron-required-FAIL-002,H-msg-cron-required-FAIL,slc,yes,yes
-slc-failure-slc,H-msg-cron-required-FAIL-003,H-msg-cron-required-FAIL,slc,yes,yes
-slc-failure-slc,H-msg-cron-required-FAIL-004,H-msg-cron-required-FAIL,slc,yes,yes
+slc-failure-slc,H-msg-cron-required-FAIL-001,H-msg-cron-required-FAIL,SLC,yes,yes
+slc-failure-slc,H-msg-cron-required-FAIL-002,H-msg-cron-required-FAIL,SLC,yes,yes
+slc-failure-slc,H-msg-cron-required-FAIL-003,H-msg-cron-required-FAIL,SLC,yes,yes
+slc-failure-slc,H-msg-cron-required-FAIL-004,H-msg-cron-required-FAIL,SLC,yes,yes
 slc-implicit-slc,H-msg-cron-required-IMP-001,H-msg-cron-required-IMP,slc,yes,no
 slc-implicit-slc,H-msg-cron-required-IMP-002,H-msg-cron-required-IMP,slc,yes,no
 slc-implicit-slc,H-msg-cron-required-IMP-003,H-msg-cron-required-IMP,slc,yes,no

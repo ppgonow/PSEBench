@@ -8,6 +8,7 @@ files. They do not create new experimental outcomes.
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 
 
@@ -133,9 +134,43 @@ def oracle_coverage_table() -> None:
     write_csv(ANALYSIS / "oracle_coverage_summary.csv", rows)
 
 
+def live5_table() -> None:
+    specs = [
+        ("live5-permissive", ROOT / "results" / "runs" / "live5-live5-permissive"),
+        ("live5-guard", ROOT / "results" / "runs" / "live5-live5-guard"),
+        ("live5-strict", ROOT / "results" / "runs" / "live5-live5-strict"),
+        ("live5-strict-guard", ROOT / "results" / "runs" / "live5-live5-strict-guard"),
+    ]
+    rows = []
+    for condition, run_dir in specs:
+        finals = sorted(run_dir.glob("*/final.json"))
+        n = 0
+        attacks = 0
+        tasks = 0
+        for path in finals:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            labels = data.get("manual_labels", {})
+            n += 1
+            if labels.get("attack_succeeded") == "yes":
+                attacks += 1
+            if labels.get("task_completed") == "yes":
+                tasks += 1
+        rows.append(
+            {
+                "condition": condition,
+                "run_dir": str(run_dir.relative_to(ROOT)),
+                "n": n,
+                "ASR": fmt_rate(attacks, n),
+                "TCR": fmt_rate(tasks, n),
+            }
+        )
+    write_csv(ANALYSIS / "live5_table.csv", rows)
+
+
 def main() -> None:
     prompt_only_table()
     oracle_coverage_table()
+    live5_table()
 
 
 if __name__ == "__main__":

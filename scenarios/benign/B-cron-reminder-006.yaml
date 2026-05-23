@@ -16,7 +16,7 @@ artifacts:
     sessionTarget: main
 oracle_expectations:
   task_success_if:
-  - cron_job_created: true
+  - cron_one_shot_created: true
 notes: 'Baseline cron creation.
 
   '

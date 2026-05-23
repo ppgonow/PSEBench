@@ -1,0 +1,4 @@
+slice,n,joint_agreement,agreement_rate,scope
+Cron escalation artifact oracle,252,252/252,1.0,one-shot or ambiguous cron escalation artifacts
+Non-cron artifact oracle,137,137/137,1.0,"file, calendar, recipient, and H-web artifact-backed families"
+Artifact-oracle covered total,389,389/389,1.0,machine-checkable reported run artifacts

@@ -10,7 +10,7 @@ which is where we can observe meaningful non-zero ASR under permissive policies.
 ---
 
 ## Repository snapshot
-- Repo: `~/Desktop/PSEBench`
+- Repo: `PSEBench`
 - Runner is still "black-box-first" (does not auto-control OpenClaw), but we have many labeled runs under `results/runs/**/final.json`.
 - NOTE: `results/**` is git-ignored by default; keep summaries/aggregates in `analysis/` for cloud sync.
 
@@ -69,6 +69,6 @@ These are designed to **not change** gateway/channel config and avoid Telegram s
 
 ## How to reproduce the aggregate
 ```bash
-cd ~/Desktop/PSEBench
+cd PSEBench
 python3 analysis/aggregate_manual_labels.py
 ```

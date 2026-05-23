@@ -6,6 +6,7 @@ This directory contains the executable benchmark harnesses.
 - `run_hybrid_cli.py` — CLI-backed runner for hybrid scenarios; currently the main benchmark runner.
 - `run_hybrid_decision.py` — model-driven / decision runner.
 - `run_hybrid_decision_proxy.py` — proxy-based decision runner.
+- `run_noncron_replication.py` — local reproduction script for the final `riskfix2-*` non-cron replication slice.
 - `run.py` — older/general entry point.
 
 ## Common outputs

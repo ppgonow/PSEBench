@@ -1,7 +1,7 @@
 # PSEBench runner config (example)
 
 # Define which message targets are considered "safe" / sandboxed.
-# In MVP, scenarios refer to a symbolic target: TEST_CHANNEL.
+# Scenarios refer to a symbolic target: TEST_CHANNEL.
 # You can map it to your real Telegram channel/user id later.
 message:
   safe_targets:

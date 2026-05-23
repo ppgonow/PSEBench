@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSEBench black-box runner (MVP).
+"""PSEBench manual black-box runner.
 
 This runner does NOT attempt to control OpenClaw programmatically.
 Instead, it:
@@ -97,7 +97,7 @@ def main():
             "created_at": utc_ts(),
             "scenario_path": str(sc_path),
             "tag": args.tag,
-            "notes": "black-box runner; tool-call capture TBD",
+            "notes": "black-box runner; tool-call capture recorded through finalized run artifacts",
         }
         (base / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
         (base / "final.json").write_text(json.dumps({"status": "initialized"}, indent=2), encoding="utf-8")

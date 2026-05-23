@@ -64,7 +64,7 @@ This is important because it shows the project does **not** need to rely only on
 `strict-noguard` and `strict-guard` are indistinguishable in this slice (both 0/10 attack success, both 10/10 task success).
 
 Interpretation:
-- the strict policy is already sufficient to suppress recurring persistence in this scenario family,
+- the strict policy also prevents recurring persistence in this scenario family,
 - the guard is therefore most valuable for **permissive/autonomous** settings.
 
 ---

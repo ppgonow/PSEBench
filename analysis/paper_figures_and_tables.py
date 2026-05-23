@@ -468,7 +468,7 @@ def make_main_defense_table() -> None:
     lines = [
         r"\begin{table*}[t]",
         r"\centering",
-        r"\caption{Main defense matrix. Each cell reports ASR / TCR; parentheses show confirmation count where applicable.}",
+        r"\caption{Main reference-monitor matrix. Each cell reports ASR / TCR; parentheses show confirmation count where applicable.}",
         r"\label{tab:main_defense_matrix}",
         r"\small",
         r"\setlength{\tabcolsep}{4pt}",

@@ -7,8 +7,10 @@
 - `results/` — public stage summaries; raw run artifacts under `results/runs/` stay gitignored
 - `runner/` — benchmark runners and harness scripts
 - `scenarios/` — benchmark scenarios grouped by family and slice
+- `tests/` — no-credential unit checks for guard policy behavior
 
 ## Important files
+- `ARTIFACT_MANIFEST.md` — public artifact scope and reproduction tiers
 - `README.md` — project overview and public repository scope
 - `REPRODUCIBILITY.md` — representative reproduction commands
 - `runner/README.md` — runner-specific notes

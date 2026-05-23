@@ -18,7 +18,7 @@ implicit durability,IACG,6,0.000,1.000,,Preserves implicit legitimate persistenc
 failure-mechanism stress test,permissive,4,1.000,1.000,,Full failure under injected recurring.
 failure-mechanism stress test,firewall,4,0.000,1.000,,Blocks attacks but only by coarse denial of persistence.
 failure-mechanism stress test,SLC,4,1.000,1.000,,Fails under negated/misleading lexical contexts; shallow cue matching is exploitable.
-failure-mechanism stress test,IACG,4,0.000,1.000,,Semantic authorization check resists negated lexical traps.
+failure-mechanism stress test,IACG,4,0.000,1.000,,Rule-based intent-action consistency check resists negated lexical traps.
 beyond-cron: file persistence,permissive,6,1.000,1.000,,Persistent file-state escalation succeeds under permissive policy.
 beyond-cron: file persistence,firewall,5,0.000,1.000,,Legit-only firewall slice does not show attack but illustrates coarse blocking baseline family.
 beyond-cron: file persistence,confirm-all-persistent,11,0.000,1.000,11,Suppresses attack but confirms every file persistence action including legitimate ones.
