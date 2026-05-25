@@ -9,6 +9,10 @@ Paper drafts, LaTeX sources, build outputs, local notes, machine-specific
 configuration, and raw live-run directories are intentionally excluded from the
 public snapshot.
 
+For double-blind review, share this snapshot through an anonymized archive or
+repository mirror. Do not provide a hosting URL whose account or organization
+name identifies the authors.
+
 ## Artifact Scope
 
 | Path | Public status | Purpose | Regeneration notes |
@@ -31,9 +35,7 @@ public snapshot.
 These checks do not require live service credentials.
 
 ```bash
-python3 -m unittest tests.test_intent_policy tests.test_hybrid_cli_policy
-python3 analysis/schema_check.py
-python3 -m py_compile runner/intent_policy.py runner/run_hybrid_cli.py runner/run_noncron_replication.py runner/run_cross_model_decision.py analysis/auto_oracle_noncron.py analysis/evidence_gap_tables.py analysis/label_audit.py analysis/cross_model_decision_summary.py
+scripts/sanity_check.sh
 ```
 
 ### Tier 1: Local Non-Cron Replication

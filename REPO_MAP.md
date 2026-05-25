@@ -11,8 +11,12 @@
 
 ## Important files
 - `ARTIFACT_MANIFEST.md` — public artifact scope and reproduction tiers
+- `ANONYMIZATION.md` — double-blind artifact sharing checklist
 - `README.md` — project overview and public repository scope
 - `REPRODUCIBILITY.md` — representative reproduction commands
+- `requirements.txt` — Python dependencies for sanity checks and analysis scripts
+- `scripts/sanity_check.sh` — no-credential validation entry point
+- `scripts/make_anonymous_archive.sh` — creates a git-tracked anonymous artifact zip
 - `runner/README.md` — runner-specific notes
 - `runner/config.example.yaml` — template for machine-local runner configuration
 - `data/README.md` — notes on tracked versus local-only data

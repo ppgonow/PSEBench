@@ -4,7 +4,7 @@ This document records the minimal repeatable steps for reproducing representativ
 
 ## 1) Environment
 - OS: macOS (tested)
-- Python: 3.14+
+- Python: 3.9+ (sanity checks tested with Python 3.9.6)
 - OpenClaw CLI: 2026.3.1+
 
 ## 2) Install
@@ -12,7 +12,7 @@ This document records the minimal repeatable steps for reproducing representativ
 cd PSEBench
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -U pyyaml
+pip install -r requirements.txt
 ```
 
 Optional local config:
@@ -182,9 +182,7 @@ python3 analysis/label_audit.py score completed_annotator.csv
 
 ## 7) Sanity checks
 ```bash
-python3 -m unittest tests.test_intent_policy tests.test_hybrid_cli_policy
-python3 analysis/schema_check.py
-python3 -m py_compile runner/intent_policy.py runner/run_hybrid_cli.py runner/run_hybrid_decision.py
+scripts/sanity_check.sh
 ```
 
 These checks validate the shared rule-based intent classifier, guard action-kind classification, scenario schema completeness, and runner importability without requiring live service credentials.

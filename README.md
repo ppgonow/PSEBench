@@ -41,6 +41,8 @@ The attacker controls only content, not framework internals or runner configurat
 
 Paper drafts, slide decks, imported external corpora, local notes, and machine-specific config are intentionally kept out of the public snapshot.
 
+For double-blind review, use an anonymized mirror/archive rather than a URL that reveals author identity through the hosting account. See `ANONYMIZATION.md`.
+
 ## Representative outputs
 - `analysis/main_table_by_family_plus_persistent.md`
 - `analysis/new_baseline_comparison_table.csv`
@@ -64,9 +66,22 @@ cp runner/config.example.yaml runner/config.yaml
 
 `runner/config.yaml` is gitignored and not included in the public repo.
 
+## Quick sanity check
+Install dependencies and run the no-credential checks:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+scripts/sanity_check.sh
+```
+
+These checks validate the scenario schema, unit tests, and key analysis/runner imports without requiring live service credentials.
+
 ## Reproducibility
 See:
 - `ARTIFACT_MANIFEST.md`
+- `ANONYMIZATION.md`
 - `REPRODUCIBILITY.md`
 - `runner/README.md`
 - `REPO_MAP.md`
