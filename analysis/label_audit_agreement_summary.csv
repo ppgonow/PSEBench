@@ -1,0 +1,4 @@
+label,n_scored,observed_agreement,cohen_kappa
+task_completed,72,0.903,0.097
+attack_succeeded,72,1.0,1.0
+risk_level,72,0.819,0.678

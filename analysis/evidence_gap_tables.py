@@ -18,6 +18,31 @@ ROOT = Path(__file__).resolve().parents[1]
 ANALYSIS = ROOT / "analysis"
 
 
+NONCRON_SPECS = [
+    (
+        "File persistence",
+        "riskfix2-noncron-file-permissive",
+        "riskfix2-noncron-file-iacg",
+        "riskfix2-noncron-file-legit-iacg",
+        "riskfix2-noncron-file-legit-firewall",
+    ),
+    (
+        "Calendar recurrence",
+        "riskfix2-noncron-calendar-permissive",
+        "riskfix2-noncron-calendar-iacg",
+        "riskfix2-noncron-calendar-legit-iacg",
+        "riskfix2-noncron-calendar-legit-firewall",
+    ),
+    (
+        "Recipient hijack",
+        "riskfix2-noncron-recipient-permissive",
+        "riskfix2-noncron-recipient-iacg",
+        "",
+        "",
+    ),
+]
+
+
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
@@ -57,30 +82,7 @@ def fmt_counts(values: dict[str, int], key: str) -> str:
 
 def noncron_replication() -> None:
     rows: list[dict[str, object]] = []
-    specs = [
-        (
-            "File persistence",
-            "riskfix2-noncron-file-permissive",
-            "riskfix2-noncron-file-iacg",
-            "riskfix2-noncron-file-legit-iacg",
-            "riskfix2-noncron-file-legit-firewall",
-        ),
-        (
-            "Calendar recurrence",
-            "riskfix2-noncron-calendar-permissive",
-            "riskfix2-noncron-calendar-iacg",
-            "riskfix2-noncron-calendar-legit-iacg",
-            "riskfix2-noncron-calendar-legit-firewall",
-        ),
-        (
-            "Recipient hijack",
-            "riskfix2-noncron-recipient-permissive",
-            "riskfix2-noncron-recipient-iacg",
-            "",
-            "",
-        ),
-    ]
-    for family, perm_run, iacg_run, legit_iacg_run, legit_firewall_run in specs:
+    for family, perm_run, iacg_run, legit_iacg_run, legit_firewall_run in NONCRON_SPECS:
         perm = aggregate_run(perm_run)
         iacg = aggregate_run(iacg_run)
         legit_iacg = aggregate_run(legit_iacg_run) if legit_iacg_run else {"n": 0, "task": 0}
@@ -101,6 +103,15 @@ def noncron_replication() -> None:
     write_csv(ANALYSIS / "noncron_replication_summary.csv", rows)
 
 
+def noncron_replication_n() -> int:
+    total = 0
+    for _, *run_names in NONCRON_SPECS:
+        for run_name in run_names:
+            if run_name:
+                total += aggregate_run(run_name)["n"]
+    return total
+
+
 def evidence_tier_summary() -> None:
     cron = read_csv(ANALYSIS / "auto_oracle_agreement_summary.csv")[0]
     noncron = next(
@@ -109,6 +120,17 @@ def evidence_tier_summary() -> None:
         if row["family"] == "ALL"
     )
     artifact_oracle_total = int(cron["n"]) + int(noncron["n"])
+    label_audit_n = sum(int(row["n"]) for row in read_csv(ANALYSIS / "label_audit_sample_summary.csv"))
+    label_audit_summary = {
+        row["label"]: row for row in read_csv(ANALYSIS / "label_audit_agreement_summary.csv")
+    }
+    label_audit_disagreements = {
+        row["label"]: row for row in read_csv(ANALYSIS / "label_audit_disagreement_summary.csv")
+    }
+    attack_audit = label_audit_summary.get("attack_succeeded", {})
+    risk_audit = label_audit_summary.get("risk_level", {})
+    task_audit = label_audit_summary.get("task_completed", {})
+    risk_disagreement = label_audit_disagreements.get("risk_level", {})
     rows = [
         {
             "tier": "primary benchmark contrast",
@@ -126,10 +148,10 @@ def evidence_tier_summary() -> None:
         },
         {
             "tier": "non-cron mechanism replication",
-            "evidence": "riskfix2 file, calendar, and recipient artifact-backed runs",
-            "n": 64,
+            "evidence": "riskfix2 file, calendar, recipient, and legitimate-utility artifact-backed runs",
+            "n": noncron_replication_n(),
             "role_in_paper": "supporting evidence against cron-only explanation",
-            "claim_boundary": "replicates the authorization-boundary pattern but remains smaller than the cron slice",
+            "claim_boundary": "replicates the authorization-boundary pattern across balanced non-cron attack and legitimate-utility slices",
         },
         {
             "tier": "artifact-oracle cross-check",
@@ -139,11 +161,18 @@ def evidence_tier_summary() -> None:
             "claim_boundary": "independent artifact oracle, not full human inter-annotator agreement",
         },
         {
-            "tier": "model-driven/live supporting slice",
-            "evidence": "small model-driven and live replica runs from existing artifacts",
-            "n": "small supporting slices",
+            "tier": "blinded label-audit",
+            "evidence": "completed fixed-seed sanitized independent reannotation sample",
+            "n": label_audit_n,
+            "role_in_paper": "human-label agreement audit",
+            "claim_boundary": f"attack labels agreement={attack_audit.get('observed_agreement', 'n/a')}, kappa={attack_audit.get('cohen_kappa', 'n/a')}; risk kappa={risk_audit.get('cohen_kappa', 'n/a')} with {risk_disagreement.get('confusion', 'n/a')} severity-calibration disagreements; task observed agreement={task_audit.get('observed_agreement', 'n/a')} but kappa is prevalence-limited",
+        },
+        {
+            "tier": "model-driven/live/cross-model supporting slice",
+            "evidence": "small model-driven/live replicas plus the 72-scenario cross-model decision benchmark",
+            "n": "supporting slices; 72 cross-model decision scenarios",
             "role_in_paper": "qualitative robustness check",
-            "claim_boundary": "not a comprehensive cross-model benchmark",
+            "claim_boundary": "cross-model evidence is decision-only and not a comprehensive live-agent benchmark",
         },
     ]
     write_csv(ANALYSIS / "evidence_tier_summary.csv", rows)

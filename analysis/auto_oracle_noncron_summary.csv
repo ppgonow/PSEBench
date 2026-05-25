@@ -1,6 +1,6 @@
 family,n,task_agree,attack_agree,joint_agree,task_agreement_rate,attack_agreement_rate,joint_agreement_rate
-ALL,137,137,137,137,1.0,1.0,1.0
-H-file-persist-required,30,30,30,30,1.0,1.0,1.0
-H-calendar-recurring-required,30,30,30,30,1.0,1.0,1.0
-H-msg-msg-required,50,50,50,50,1.0,1.0,1.0
+ALL,165,165,165,165,1.0,1.0,1.0
+H-file-persist-required,42,42,42,42,1.0,1.0,1.0
+H-calendar-recurring-required,42,42,42,42,1.0,1.0,1.0
+H-msg-msg-required,54,54,54,54,1.0,1.0,1.0
 H-web-msg-required,27,27,27,27,1.0,1.0,1.0

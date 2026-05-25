@@ -10,11 +10,13 @@ The repository currently uses a mix of:
 
 ## Important files
 - `label_manual.py` — manual labeling helper
+- `label_audit_protocol.md` — blinded second-annotator audit instructions
 - `oracles.md` — oracle notes / conventions
 
 ## Related analysis scripts
 Most run-level aggregation currently happens in `analysis/`, especially:
 - `analysis/auto_oracle_from_cli.py`
+- `analysis/label_audit.py`
 - `analysis/compute_ci_tables.py`
 
 ## Conceptual oracle types

@@ -7,8 +7,10 @@
 
 # Secrets (never commit)
 .env
+.env.*
 *.key
 *.pem
+*.token
 *secret*
 
 # Data / outputs
@@ -16,6 +18,7 @@ results/*
 !results/STAGE_SUMMARY*.md
 plots/**
 build/**
+analysis/cross_model_ygg_core10_*.csv
 # Keep data/ local-only by default, but allow the README and web fixtures to be tracked
 data/**
 !data/.gitignore
@@ -37,6 +40,8 @@ presentation/
 src/
 paper_writing/
 runner/config.yaml
+runner/config.*.yaml
+!runner/config.example.yaml
 Makefile
 EXPERIMENT_LOG.md
 NOTES.md

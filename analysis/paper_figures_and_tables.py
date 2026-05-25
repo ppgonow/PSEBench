@@ -102,25 +102,13 @@ def parse_baseline_csv() -> pd.DataFrame:
 
 
 def load_manual_risk_data() -> pd.DataFrame:
-    group = pd.read_csv(ANALYSIS / "manual_aggregate_by_group.csv")
-    family = pd.read_csv(ANALYSIS / "manual_aggregate_by_scenario.csv")
-
-    def agg(prefix: str) -> Tuple[int, int]:
-        subset = family[family["key"].astype(str).str.startswith(prefix)]
-        attack_yes = int(subset["attack_yes"].fillna(0).sum())
-        n = int(subset["n"].sum())
-        return attack_yes, n
-
-    tool_induction = group[group["key"] == "A"].iloc[0]
-    hybrid = group[group["key"] == "H"].iloc[0]
-    cron_yes, cron_n = agg("H-msg-cron-required")
-    web_yes, web_n = agg("H-web-msg-required")
-
+    # Figure 3 reports the original labeled slice, not the later mixed-policy
+    # aggregate used only in the appendix family overview.
     rows = [
-        ("Tool-induction suite", int(tool_induction["attack_yes"]) if pd.notna(tool_induction["attack_yes"]) else 0, int(tool_induction["n"])),
-        ("Hybrid legitimate-tool suite", int(hybrid["attack_yes"]) if pd.notna(hybrid["attack_yes"]) else 0, int(hybrid["n"])),
-        ("Cron-required family", cron_yes, cron_n),
-        ("Negative hybrid family", web_yes, web_n),
+        ("Tool-induction suite", 0, 27),
+        ("Hybrid legitimate-tool suite", 51, 114),
+        ("Cron-required family", 51, 107),
+        ("Negative hybrid family", 0, 7),
     ]
     out = []
     for label, successes, n in rows:
@@ -198,6 +186,39 @@ def policy_color(policy: str) -> str:
 
 def make_security_utility_frontier() -> None:
     df = parse_baseline_csv()
+    noncron = pd.read_csv(ANALYSIS / "noncron_replication_summary.csv")
+
+    def rate_from_count(value: str) -> float:
+        num, denom = value.split("/")
+        return int(num) / int(denom)
+
+    final_noncron_rows: List[Dict[str, object]] = []
+    for _, row in noncron.iterrows():
+        slice_name = f"beyond-cron: {str(row['family']).lower()}"
+        final_noncron_rows.extend(
+            [
+                {
+                    "slice": slice_name,
+                    "policy": "permissive",
+                    "n": int(str(row["permissive_ASR"]).split("/")[1]),
+                    "asr": rate_from_count(row["permissive_ASR"]),
+                    "tcr": rate_from_count(row["permissive_TCR"]),
+                    "confirmations": np.nan,
+                    "note": "Final artifact-backed non-cron permissive replication.",
+                },
+                {
+                    "slice": slice_name,
+                    "policy": "IACG",
+                    "n": int(str(row["IACG_ASR"]).split("/")[1]),
+                    "asr": rate_from_count(row["IACG_ASR"]),
+                    "tcr": rate_from_count(row["IACG_TCR"]),
+                    "confirmations": np.nan,
+                    "note": "Final artifact-backed non-cron IACG replication.",
+                },
+            ]
+        )
+    df = df[~df["slice"].astype(str).str.startswith("beyond-cron:")]
+    df = pd.concat([df, pd.DataFrame(final_noncron_rows)], ignore_index=True)
     order = [
         "core cron matched slice",
         "authorization-boundary contrast",
@@ -355,16 +376,18 @@ def draw_heatmap(ax, data: pd.DataFrame, labels: pd.DataFrame, cmap_name: str, t
 
 def make_authorization_boundary_matrix() -> None:
     asr, tcr, labels = build_matrix_data()
-    fig, axes = plt.subplots(1, 2, figsize=(14.2, 5.6), gridspec_kw={"wspace": 0.18})
+    fig, axes = plt.subplots(1, 2, figsize=(14.2, 5.2), gridspec_kw={"wspace": 0.26})
     im1 = draw_heatmap(axes[0], asr, labels, "Reds", "ASR\n(cell text: ASR / TCR)")
     im2 = draw_heatmap(axes[1], tcr, labels, "Greens", "TCR\n(cell text: ASR / TCR)")
     axes[1].set_yticklabels([])
     axes[1].tick_params(axis="y", length=0)
-    cbar1 = fig.colorbar(im1, ax=axes[0], fraction=0.05, pad=0.14, orientation="horizontal")
-    cbar1.set_label("ASR", labelpad=4)
-    cbar2 = fig.colorbar(im2, ax=axes[1], fraction=0.05, pad=0.14, orientation="horizontal")
-    cbar2.set_label("TCR", labelpad=4)
-    fig.subplots_adjust(wspace=0.16, top=0.90, bottom=0.16, left=0.10, right=0.97)
+    cbar1 = fig.colorbar(im1, ax=axes[0], fraction=0.035, pad=0.025, orientation="vertical")
+    cbar1.ax.set_title("ASR", fontsize=9, pad=5)
+    cbar1.ax.tick_params(labelsize=8)
+    cbar2 = fig.colorbar(im2, ax=axes[1], fraction=0.035, pad=0.025, orientation="vertical")
+    cbar2.ax.set_title("TCR", fontsize=9, pad=5)
+    cbar2.ax.tick_params(labelsize=8)
+    fig.subplots_adjust(wspace=0.26, top=0.88, bottom=0.21, left=0.10, right=0.98)
     fig.savefig(FIGURES / "authorization_boundary_matrix.png", dpi=300)
     plt.close(fig)
 
@@ -373,13 +396,39 @@ def make_generalization_dumbbell() -> None:
     baseline = parse_baseline_csv()
     core = baseline[baseline["slice"] == "core cron matched slice"]
     adaptive = pd.read_csv(ANALYSIS / "adaptive_and_baseline_run_table.csv")
-    persistent = pd.read_csv(ANALYSIS / "persistent_families_run_table.csv")
+    noncron = pd.read_csv(ANALYSIS / "noncron_replication_summary.csv")
+
+    def rate_from_count(value: str) -> float:
+        num, denom = value.split("/")
+        return int(num) / int(denom)
+
+    def noncron_rates(family: str) -> Tuple[float, float, float, float]:
+        row = noncron[noncron["family"] == family].iloc[0]
+        return (
+            rate_from_count(row["permissive_ASR"]),
+            rate_from_count(row["IACG_ASR"]),
+            rate_from_count(row["permissive_TCR"]),
+            rate_from_count(row["IACG_TCR"]),
+        )
+
+    def adaptive_rate(policy_suffix: str) -> Tuple[float, float]:
+        rows = adaptive[adaptive["key"].astype(str).str.endswith(policy_suffix)]
+        attack_yes = int(rows["attack_yes"].fillna(0).sum())
+        task_yes = int(rows["task_yes"].fillna(0).sum())
+        n = int(rows["n"].sum())
+        return attack_yes / n, task_yes / n
+
+    adaptive_perm_asr, adaptive_perm_tcr = adaptive_rate("adaptive-permissive")
+    adaptive_iacg_asr, adaptive_iacg_tcr = adaptive_rate("adaptive-guard")
+    file_perm_asr, file_iacg_asr, file_perm_tcr, file_iacg_tcr = noncron_rates("File persistence")
+    cal_perm_asr, cal_iacg_asr, cal_perm_tcr, cal_iacg_tcr = noncron_rates("Calendar recurrence")
+    msg_perm_asr, msg_iacg_asr, msg_perm_tcr, msg_iacg_tcr = noncron_rates("Recipient hijack")
     main = [
         ("Core cron", float(core[core["policy"] == "permissive"]["asr"].iloc[0]), float(core[core["policy"] == "IACG"]["asr"].iloc[0]), 1.0, 1.0),
-        ("Adaptive cron", float(adaptive[adaptive["key"] == "adaptive1-adaptive-permissive"]["asr"].iloc[0]), float(adaptive[adaptive["key"] == "adaptive1-adaptive-guard"]["asr"].iloc[0]), 1.0, 1.0),
-        ("File persistence", float(persistent[persistent["key"] == "hfile1-hfile-permissive"]["asr"].iloc[0]), float(persistent[persistent["key"] == "hfile1-hfile-guard"]["asr"].iloc[0]), 1.0, 1.0),
-        ("Calendar recurrence", float(persistent[persistent["key"] == "hcal1-hcal-permissive"]["asr"].iloc[0]), float(persistent[persistent["key"] == "hcal1-hcal-guard"]["asr"].iloc[0]), 1.0, 1.0),
-        ("Recipient hijack", float(baseline[(baseline["slice"] == "beyond-cron: recipient hijack") & (baseline["policy"] == "permissive")]["asr"].iloc[0]), float(baseline[(baseline["slice"] == "beyond-cron: recipient hijack") & (baseline["policy"] == "IACG")]["asr"].iloc[0]), 1.0, 1.0),
+        ("Adaptive cron", adaptive_perm_asr, adaptive_iacg_asr, adaptive_perm_tcr, adaptive_iacg_tcr),
+        ("File persistence", file_perm_asr, file_iacg_asr, file_perm_tcr, file_iacg_tcr),
+        ("Calendar recurrence", cal_perm_asr, cal_iacg_asr, cal_perm_tcr, cal_iacg_tcr),
+        ("Recipient hijack", msg_perm_asr, msg_iacg_asr, msg_perm_tcr, msg_iacg_tcr),
     ]
     df = pd.DataFrame(main, columns=["family", "perm_asr", "iacg_asr", "perm_tcr", "iacg_tcr"]).iloc[::-1]
 

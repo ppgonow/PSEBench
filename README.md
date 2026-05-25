@@ -48,6 +48,8 @@ Paper drafts, slide decks, imported external corpora, local notes, and machine-s
 - `analysis/oracle_coverage_summary.csv`
 - `analysis/artifact_oracle_coverage_summary.csv`
 - `analysis/noncron_replication_summary.csv`
+- `analysis/cross_model_combined_balanced72_overall.csv`
+- `analysis/label_audit_agreement_summary.csv`
 - `analysis/iacg_overhead_summary.csv`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`

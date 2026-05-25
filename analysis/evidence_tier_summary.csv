@@ -1,6 +1,7 @@
 tier,evidence,n,role_in_paper,claim_boundary
 primary benchmark contrast,original labeled tool-induction vs hybrid legitimate-tool slice,141,main evidence for evaluation blind spot,shows concentration of observed failures in hybrid legitimate-tool workflows
 matched reference-monitor slice,core cron permissive vs IACG 2x2 plus adaptive/live replicas,10 per matched condition,main enforcement mechanism check,"tests the isolated one-shot-to-recurring boundary, not all agent behavior"
-non-cron mechanism replication,"riskfix2 file, calendar, and recipient artifact-backed runs",64,supporting evidence against cron-only explanation,replicates the authorization-boundary pattern but remains smaller than the cron slice
-artifact-oracle cross-check,cron and non-cron machine-checkable finalized artifacts,389,label reliability check,"independent artifact oracle, not full human inter-annotator agreement"
-model-driven/live supporting slice,small model-driven and live replica runs from existing artifacts,small supporting slices,qualitative robustness check,not a comprehensive cross-model benchmark
+non-cron mechanism replication,"riskfix2 file, calendar, recipient, and legitimate-utility artifact-backed runs",104,supporting evidence against cron-only explanation,replicates the authorization-boundary pattern across balanced non-cron attack and legitimate-utility slices
+artifact-oracle cross-check,cron and non-cron machine-checkable finalized artifacts,417,label reliability check,"independent artifact oracle, not full human inter-annotator agreement"
+blinded label-audit,completed fixed-seed sanitized independent reannotation sample,72,human-label agreement audit,"attack labels agreement=1.0, kappa=1.0; risk kappa=0.678 with R0->R1:12; R1->R0:1 severity-calibration disagreements; task observed agreement=0.903 but kappa is prevalence-limited"
+model-driven/live/cross-model supporting slice,small model-driven/live replicas plus the 72-scenario cross-model decision benchmark,supporting slices; 72 cross-model decision scenarios,qualitative robustness check,cross-model evidence is decision-only and not a comprehensive live-agent benchmark

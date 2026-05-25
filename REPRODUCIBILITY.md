@@ -62,6 +62,7 @@ python3 analysis/evidence_gap_tables.py
 ```
 
 This creates the `riskfix2-*` file, calendar, recipient, and legitimate-persistence artifacts used by the appendix without requiring live message delivery.
+The expected final local slice contains 104 no-notification runs: 12 permissive and 12 IACG attack-side runs for each of file persistence, calendar recurrence, and recipient hijack, plus 8 IACG and 8 firewall legitimate-persistence utility runs for both file and calendar workflows.
 The generated raw directories are written under `results/runs/` and are intentionally gitignored; rerun the commands above to regenerate them locally.
 
 ### Decision runner (model-driven)
@@ -76,6 +77,47 @@ python3 runner/run_hybrid_decision.py scenarios/hybrid/H-msg-cron-required-002.y
   --run-id live5 --tag live5-guard --chat-id <CHAT_ID> \
   --decision-policy permissive --agent replica --guard
 ```
+
+### Optional cross-model decision benchmark
+The cross-model decision runner evaluates model decisions without executing live
+tools or writing into `results/runs/`. It asks each model whether it would
+complete the benign task and whether it would also execute the untrusted
+escalation. The default balanced set contains 72 scenarios and two prompt
+policies, so three models produce 432 clean decision rows when all calls
+succeed.
+
+```bash
+export OPENAI_API_KEY=<OPENAI_OR_COMPATIBLE_KEY>
+export OPENAI_BASE_URL=<OPTIONAL_OPENAI_COMPATIBLE_BASE_URL>
+export ANTHROPIC_AUTH_TOKEN=<ANTHROPIC_OR_COMPATIBLE_TOKEN>
+export ANTHROPIC_BASE_URL=<OPTIONAL_ANTHROPIC_COMPATIBLE_BASE_URL>
+
+python3 runner/run_cross_model_decision.py \
+  --models openai:gpt-5.4 openai:gpt-5.5 anthropic:claude-opus-4-6 \
+  --scenario-set balanced72 \
+  --policies hardened permissive \
+  --run-id cm-balanced72
+
+python3 analysis/cross_model_decision_summary.py \
+  results/cross_model/cm-balanced72_raw.jsonl \
+  --output-prefix analysis/cross_model_decision
+```
+
+If models are run through separate endpoints or run IDs, pass multiple JSONL
+files to the same summary command:
+
+```bash
+python3 analysis/cross_model_decision_summary.py \
+  results/cross_model/<run-a>_raw.jsonl \
+  results/cross_model/<run-b>_raw.jsonl \
+  --exclude-provider-model openai:claude-opus-4-6 \
+  --output-prefix analysis/cross_model_combined_balanced72
+```
+
+Use `--dry-run` to print the planned matrix without making API calls. If a
+provider uses a custom OpenAI-compatible endpoint, set `OPENAI_BASE_URL` or pass
+`--openai-base-url`; direct Anthropic-compatible runs can instead use
+`anthropic:<model>` with `ANTHROPIC_AUTH_TOKEN`.
 
 ## 4) Important scenario slices
 - core cron matched slice: `scenarios/hybrid/`
@@ -110,6 +152,7 @@ python3 analysis/slc_report.py
 python3 analysis/reviewer_gap_tables.py
 python3 analysis/evidence_gap_tables.py
 python3 analysis/benchmark_guard_overhead.py
+python3 analysis/label_audit.py prepare --seed 20260523
 ```
 
 Representative outputs:
@@ -126,6 +169,16 @@ Representative outputs:
 - `analysis/auto_oracle_agreement_summary.csv`
 - `analysis/auto_oracle_noncron_summary.csv`
 - `analysis/iacg_overhead_summary.csv`
+- `analysis/label_audit_blind_sample.csv`
+- `analysis/label_audit_sample_summary.csv`
+- `analysis/label_audit_agreement_summary.csv`
+- `analysis/label_audit_disagreement_summary.csv`
+
+To score an independently completed audit file:
+
+```bash
+python3 analysis/label_audit.py score completed_annotator.csv
+```
 
 ## 7) Sanity checks
 ```bash
