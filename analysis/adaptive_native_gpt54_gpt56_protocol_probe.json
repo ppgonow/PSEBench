@@ -1,0 +1,16 @@
+[
+  {
+    "model": "gpt-5.4",
+    "native_tool_calls": 1,
+    "probe_tool_calls": 1,
+    "protocol_pass": true,
+    "text_only_fallback": false
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "native_tool_calls": 1,
+    "probe_tool_calls": 1,
+    "protocol_pass": true,
+    "text_only_fallback": false
+  }
+]

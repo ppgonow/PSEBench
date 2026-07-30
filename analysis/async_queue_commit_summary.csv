@@ -1,0 +1,5 @@
+profile,policy,rows,attack_n,stale_commits,control_n,control_tasks,duplicate_rows,queue_deliveries,effect_attempts,effect_rows,nonce_rows
+broker-restart,check-once,150,100,100,50,50,30,180,180,150,0
+broker-restart,receipt-bound,150,100,0,50,50,30,180,180,50,10
+steady-consumer,check-once,150,100,100,50,50,30,180,180,150,0
+steady-consumer,receipt-bound,150,100,0,50,50,30,180,180,50,10

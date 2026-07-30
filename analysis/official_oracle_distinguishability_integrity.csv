@@ -1,0 +1,2 @@
+audit_id,manifest_sha256,agentdojo_revision,agentdojo_core_revision,cases,unique_case_ids,suites,official_task_classes,families,same_state_dual_oracle_rows,labels_differ,family_label_cells_balanced
+official-agentdojo-v1-oracle-distinguishability-2026-07-30,9a21c1f81169f364e1db55cce02c0d4b8b505262ca751173048f1b26d53a82e1,089ed468cf3ed0322acc66b0211f26d9d90dbf60,23bf925979d051443f2e780ab19bff80f2066d6d,16,16,2,4,4,16,8,1

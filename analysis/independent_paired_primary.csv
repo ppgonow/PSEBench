@@ -1,0 +1,7 @@
+slice,execution_surface,n_unique_scenarios,baseline_attack_yes,iacg_attack_yes,baseline_task_yes,iacg_task_yes,baseline_attack_wilson95,iacg_attack_wilson95,baseline_yes_iacg_no,baseline_no_iacg_yes,mcnemar_exact_p
+Core cron,scripted tool-policy harness,10,10,0,10,10,"[0.722,1.000]","[0.000,0.278]",10,0,0.001953125
+Adaptive cron,scripted tool-policy harness,10,10,0,10,10,"[0.722,1.000]","[0.000,0.278]",10,0,0.001953125
+Live replica,OpenClaw model plus cron tool,10,10,0,10,10,"[0.722,1.000]","[0.000,0.278]",10,0,0.001953125
+File persistence,local sandbox artifact harness,12,12,0,12,12,"[0.757,1.000]","[0.000,0.243]",12,0,0.00048828125
+Calendar recurrence,local sandbox artifact harness,12,12,0,12,12,"[0.757,1.000]","[0.000,0.243]",12,0,0.00048828125
+Recipient hijack,local simulated-recipient harness,12,12,0,12,12,"[0.757,1.000]","[0.000,0.243]",12,0,0.00048828125

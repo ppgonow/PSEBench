@@ -1,0 +1,5 @@
+operation,repeats,samples_per_repeat,median_us_across_repeats,p95_us_across_repeats
+bound-lifecycle,7,30000,17.917,19.542
+check-once,7,30000,1.125,1.25
+commit-verify,7,30000,8.541,9.333
+receipt-issue,7,30000,9.583,10.458

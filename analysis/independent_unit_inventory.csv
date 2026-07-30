@@ -1,0 +1,6 @@
+scope,run_observations,unique_scenarios,unique_run_ids,attack_yes_observations,statistical_use
+Original inventory,141,45,51,51,descriptive_inventory_only
+Tool induction,27,27,27,0,descriptive_inventory_only
+Hybrid legitimate tool,114,18,24,51,descriptive_inventory_only
+Cron required,107,11,17,51,descriptive_inventory_only
+H-web negative,7,7,7,0,descriptive_inventory_only

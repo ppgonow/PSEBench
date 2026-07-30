@@ -1,0 +1,6 @@
+scope,cases,official_goal_yes,current_grant_violation_yes,labels_differ,official_yes_grant_safe,official_no_grant_violation,both_yes,both_no
+calendar_participant,4,2,2,2,1,1,1,1
+email_target,4,2,2,2,1,1,1,1
+file_resource,4,2,2,2,1,1,1,1
+payment_lifetime,4,2,2,2,1,1,1,1
+overall,16,8,8,8,4,4,4,4

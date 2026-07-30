@@ -16,7 +16,7 @@
 - `REPRODUCIBILITY.md` — representative reproduction commands
 - `requirements.txt` — Python dependencies for sanity checks and analysis scripts
 - `scripts/sanity_check.sh` — no-credential validation entry point
-- `scripts/make_anonymous_archive.sh` — creates a git-tracked anonymous artifact zip
+- `scripts/make_anonymous_archive.sh` — creates a committed or explicit worktree anonymous artifact zip
 - `runner/README.md` — runner-specific notes
 - `runner/config.example.yaml` — template for machine-local runner configuration
 - `data/README.md` — notes on tracked versus local-only data
@@ -30,6 +30,12 @@
 - `scenarios/hybrid-calendar/` — calendar recurrence families
 - `scenarios/hybrid-msg/` — recipient broadening and hijack family
 - `scenarios/hybrid-wainject/` — mapped-transfer slice inspired by external prompt-injection styles
+- `scenarios/multitool-chain-heldout/` — frozen two-tool action-sequence composition replay
+- `scenarios/commit-race-heldout/` — frozen check-to-commit transition corpus used by replay and local HTTP/SQLite execution
+- `scenarios/native-e2e48/` — frozen 48-scenario native tool-calling matrix manifest used by the completed same-endpoint GPT/Grok run
+- `scenarios/adaptive-native-holdout/` — frozen 80-scenario cue-free adaptive native shared-proposal fork
+- `scenarios/same-tool-native-holdout/` — 48 paired clean/injected templates across four workflows and three carriers
+- `scenarios/same-tool-normalization/` — frozen canonical-equivalence and authorization-changing pairs for exact-effect adapters
 
 ## Representative public outputs
 - `analysis/main_table_by_family_plus_persistent.md`
@@ -41,6 +47,113 @@
 - `analysis/auto_oracle_agreement_summary.csv`
 - `analysis/auto_oracle_noncron_summary.csv`
 - `analysis/iacg_overhead_summary.csv`
+- `analysis/infocom_claim_audit.csv`
+- `analysis/reviewer_response_audit.csv`
+- `analysis/adaptive_native_fork_schema_neutral_final.jsonl`
+- `analysis/adaptive_native_fork_schema_neutral_summary.csv`
+- `analysis/adaptive_native_fork_schema_neutral_postrun_audit_ledger.csv`
+- `analysis/confirmation_power.csv`
+- `analysis/confirmation_precision.csv`
+- `analysis/multitool_chain_summary.csv`
+- `analysis/multitool_chain_paired.csv`
+- `analysis/http_commit_race_summary.csv`
+- `analysis/http_commit_race_paired.csv`
+- `analysis/multiprocess_commit_race_summary.csv`
+- `analysis/multiprocess_commit_race_paired.csv`
+- `analysis/commit_gateway_load_detail.csv`
+- `analysis/commit_gateway_load_summary.csv`
+- `analysis/network_schedule_detail.csv`
+- `analysis/network_schedule_summary.csv`
+- `analysis/network_schedule_inference.csv`
+- `analysis/network_schedule_by_family.csv`
+- `analysis/network_schedule_paired.csv`
+- `analysis/audit_network_schedule.py`
+- `analysis/analyze_network_schedule_results.py`
+- `analysis/async_queue_commit_detail.csv`
+- `analysis/async_queue_commit_summary.csv`
+- `analysis/async_queue_commit_integrity.csv`
+- `analysis/audit_async_queue_commit.py`
+- `runner/durable_async_queue.py`
+- `runner/run_async_queue_commit.py`
+- `analysis/docker_queue_failover_detail.csv`
+- `analysis/docker_queue_failover_summary.csv`
+- `analysis/docker_queue_failover_integrity.csv`
+- `analysis/docker_queue_failover_metadata.csv`
+- `analysis/audit_docker_queue_failover.py`
+- `analysis/make_figure1_v2.py` — deterministic generator for the paper's authorization-boundary workflow figure
+- `runner/failover_queue.py`
+- `runner/docker_failover_service.py`
+- `runner/docker_failover_worker.py`
+- `runner/run_docker_queue_failover.py`
+- `analysis/service_integrated_commit_detail.csv`
+- `analysis/service_integrated_commit_summary.csv`
+- `analysis/service_integrated_commit_integrity.csv`
+- `analysis/audit_service_integrated_commit.py`
+- `analysis/postgres_integrated_commit_detail.csv`
+- `analysis/postgres_integrated_commit_summary.csv`
+- `analysis/postgres_integrated_commit_integrity.csv`
+- `analysis/postgres_integrated_commit_metadata.csv`
+- `analysis/audit_postgres_integrated_commit.py`
+- `analysis/container_commit_race_summary.csv`
+- `analysis/container_commit_race_paired.csv`
+- `analysis/container_commit_race_topology.csv`
+- `analysis/multihost_commit_race_summary.csv`
+- `analysis/multihost_commit_race_paired.csv`
+- `analysis/multihost_commit_race_topology.csv`
+- `analysis/multihost_commit_race_audit_integrity.csv`
+- `analysis/summarize_native_e2e.py`
+- `analysis/native_e2e48_final.jsonl`
+- `analysis/native_e2e48_summary.csv`
+- `analysis/native_e2e48_paired.csv`
+- `analysis/native_e2e48_attempt_audit.csv`
+- `analysis/summarize_adaptive_native_fork.py`
+- `analysis/audit_adaptive_native_fork.py`
+- `analysis/adaptive_native_fork_holdout_final.jsonl`
+- `analysis/adaptive_native_fork_holdout_summary.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_by_boundary.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_ledger.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_paired.csv`
+- `analysis/same_tool_native_commit_summary.csv`
+- `analysis/same_tool_native_commit_paired.csv`
+- `analysis/same_tool_native_commit_exposure_paired.csv`
+- `analysis/same_tool_native_commit_cluster_paired.csv`
+- `analysis/same_tool_native_commit_cluster_bootstrap.csv`
+- `analysis/same_tool_native_commit_multiplicity.csv`
+- `analysis/same_tool_native_commit_precision.csv`
+- `analysis/same_tool_native_commit_commit_summary.csv`
+- `analysis/same_tool_native_commit_integrity.csv`
+- `runner/strict_effects_v2.py`
+- `analysis/audit_adaptive_effect_v2.py`
+- `analysis/adaptive_effect_v2_detail.csv`
+- `analysis/adaptive_effect_v2_summary.csv`
+- `analysis/adaptive_effect_v2_integrity.csv`
+- `analysis/audit_benchmark_oracle_capabilities.py`
+- `analysis/benchmark_oracle_capability_audit.csv`
+- `analysis/benchmark_oracle_capability_task_inventory.csv`
+- `analysis/benchmark_oracle_capability_integrity.csv`
+- `scenarios/oracle-distinguishability/official_agentdojo_v1.json`
+- `analysis/audit_official_oracle_distinguishability.py`
+- `analysis/official_oracle_distinguishability_detail.csv`
+- `analysis/official_oracle_distinguishability_summary.csv`
+- `analysis/official_oracle_distinguishability_integrity.csv`
+- `tests/test_official_oracle_distinguishability.py`
+- `analysis/same_tool_normalization_summary.csv`
+- `analysis/same_tool_normalization_integrity.csv`
+- `analysis/receipt_field_ablation_summary.csv`
+- `analysis/receipt_field_ablation_paired.csv`
+- `analysis/receipt_field_ablation_integrity.csv`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`
 - `results/STAGE_SUMMARY_NEW_BASELINES.md`
+- `results/STAGE_SUMMARY_2026-07-15_INFOCOM_CLAIM_AUDIT.md`
+- `results/STAGE_SUMMARY_2026-07-15_INFOCOM_MULTITOOL_CHAIN.md`
+- `results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_PLAN.md`
+- `results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_READINESS.md`
+- `results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-17_INFOCOM_ADAPTIVE_NATIVE_FORK_HOLDOUT_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-19_INFOCOM_NETWORK_SCHEDULE_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-20_INFOCOM_ASYNC_QUEUE_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-20_INFOCOM_DOCKER_QUEUE_FAILOVER_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-21_INFOCOM_RECEIPT_FIELD_ABLATION_RESULT.md`
+- `results/STAGE_SUMMARY_2026-07-21_INFOCOM_SAME_TOOL_NATIVE_COMMIT_PLAN.md`
+- `results/STAGE_SUMMARY_2026-07-21_INFOCOM_SAME_TOOL_CLUSTER_ANALYSIS_AMENDMENT.md`

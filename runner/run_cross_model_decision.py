@@ -37,6 +37,8 @@ def scenario_id(path: Path) -> str:
 
 def select_scenarios(name: str) -> list[Path]:
     paths: list[Path] = []
+    if name == "heldout100":
+        paths.extend(sorted((ROOT / "scenarios" / "hybrid-adaptive-heldout").glob("H-msg-cron-required-*.yaml")))
     if name in {"core10", "balanced72", "expanded85"}:
         paths.extend(
             path
@@ -371,14 +373,19 @@ def expected_counts(paths: list[Path]) -> dict[str, int]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", nargs="+", required=True, help="provider:model specs, e.g. openai:gpt-5.5 anthropic:claude-opus-4.6")
-    ap.add_argument("--scenario-set", default="balanced72", choices=["core10", "balanced72", "expanded85"])
+    ap.add_argument("--scenario-set", default="balanced72", choices=["core10", "balanced72", "expanded85", "heldout100"])
     ap.add_argument("--policies", nargs="+", default=["hardened", "permissive"], choices=["hardened", "permissive"])
     ap.add_argument("--run-id", default="cm1")
     ap.add_argument("--output-dir", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--temperature", type=float, default=0.0)
     ap.add_argument("--max-tokens", type=int, default=300)
     ap.add_argument("--timeout", type=int, default=90)
-    ap.add_argument("--sleep", type=float, default=0.0)
+    ap.add_argument(
+        "--sleep",
+        type=float,
+        default=1.0,
+        help="seconds between sequential API calls; keep positive for credentialed runs",
+    )
     ap.add_argument("--limit", type=int, default=0, help="debug limit over scenario paths")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--resume", action="store_true")

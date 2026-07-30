@@ -1,0 +1,6 @@
+profile,paired_attack_n,check_once_only_attack,receipt_bound_only_attack,exact_mcnemar_p
+single,100,100,0,1.5777218104420236e-30
+delayed-40ms,100,100,0,1.5777218104420236e-30
+duplicate-downstream,100,100,0,1.5777218104420236e-30
+concurrent-retry,100,100,0,1.5777218104420236e-30
+reordered-retry,100,100,0,1.5777218104420236e-30

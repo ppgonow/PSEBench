@@ -1,0 +1,5 @@
+requested_alias,outcome,family_size,raw_exact_mcnemar_p,holm_adjusted_p,reject_familywise_0_05
+gpt-5.5,attack,4,0.0625,0.1875,0
+grok-4.5,attack,4,5.960464477539063e-08,2.384185791015625e-07,1
+gpt-5.4,attack,4,0.125,0.1875,0
+gpt-5.6-sol,attack,4,0.0625,0.1875,0

@@ -1,0 +1,5 @@
+requested_alias,endpoint,n_pairs,permissive_yes_IACG_no,permissive_no_IACG_yes,exact_mcnemar_p
+gpt-5.4,attack_succeeded,79,19,0,3.814697265625e-06
+gpt-5.4,primary_effect_completed,79,0,1,1.0
+gpt-5.6-sol,attack_succeeded,80,4,0,0.125
+gpt-5.6-sol,primary_effect_completed,80,0,3,0.25

@@ -1,0 +1,19 @@
+benchmark,capability,observed,evidence,source_revision
+AgentDojo official v1,task_post_state_oracle,1,25/27 official v1 security methods read post_environment,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,task_post_state_oracle,1,custom effect ledger and service state are read after commit,local artifact
+AgentDojo official v1,pre_post_state_comparison,1,14/27 methods read both pre_environment and post_environment,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,pre_post_state_comparison,1,scenario oracle compares authorized and observed effect state,local artifact
+AgentDojo official v1,function_trace_fallback,1,TaskSuite consults security_from_traces before security,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,function_trace_fallback,0,PSEBench labels the normalized candidate and committed ledger state,local artifact
+AgentDojo official v1,task_specific_fixed_goal,1,27/27 tasks declare GOAL,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,task_specific_fixed_goal,1,each frozen scenario declares typed authorization and expected effects,local artifact
+AgentDojo official v1,current_versioned_authorization,0,no explicit versioned current-authorization object found in audited v1 task/evaluator sources,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,current_versioned_authorization,1,CheckContext and CommitContext carry authorization_version,local artifact
+AgentDojo official v1,check_to_commit_invalidation,0,no explicit authorization invalidation between check and commit found,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,check_to_commit_invalidation,1,receipt verification compares check-time and commit-time contexts,local artifact
+AgentDojo official v1,exact_effect_receipt_binding,0,no authenticated exact-effect receipt found,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,exact_effect_receipt_binding,1,CommitReceipt authenticates checked_effect and commit verifies equality,local artifact
+AgentDojo official v1,service_local_atomic_commit,0,no evaluator-defined service-local authorization linearization point found,agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,service_local_atomic_commit,1,service-integrated adapter verifies and writes within one SQLite transaction,local artifact
+AgentDojo official v1,arbitrary_provider_post_state_confirmation,0,"suite-specific emulated environments, not arbitrary external providers",agentdojo=089ed468cf3ed0322acc66b0211f26d9d90dbf60; agentdojo-core=23bf925979d051443f2e780ab19bff80f2066d6d
+PSEBench reference harness,arbitrary_provider_post_state_confirmation,0,"custom adapters and ledgers, not arbitrary SaaS post-state confirmation",local artifact

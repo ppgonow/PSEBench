@@ -1,0 +1,13 @@
+scope,family,policy,attack_n,attack_yes,ASR,ASR_CI_low,ASR_CI_high,benign_n,task_yes,TCR,TCR_CI_low,TCR_CI_high,attack_mutation_before_commit,attack_request_overlap
+family,authorization-revocation,check-once,20,20,1.0,0.83887,1.0,10,10,1.0,0.72246,1.0,20,20
+family,authorization-revocation,commit-bound,20,0,0.0,0.0,0.16113,10,10,1.0,0.72246,1.0,20,20
+family,confirmation-replay,check-once,20,20,1.0,0.83887,1.0,10,10,1.0,0.72246,1.0,20,20
+family,confirmation-replay,commit-bound,20,0,0.0,0.0,0.16113,10,10,1.0,0.72246,1.0,20,20
+family,effect-substitution,check-once,20,20,1.0,0.83887,1.0,10,10,1.0,0.72246,1.0,20,20
+family,effect-substitution,commit-bound,20,0,0.0,0.0,0.16113,10,10,1.0,0.72246,1.0,20,20
+family,lease-expiry,check-once,20,20,1.0,0.83887,1.0,10,10,1.0,0.72246,1.0,20,20
+family,lease-expiry,commit-bound,20,0,0.0,0.0,0.16113,10,10,1.0,0.72246,1.0,20,20
+family,principal-switch,check-once,20,20,1.0,0.83887,1.0,10,10,1.0,0.72246,1.0,20,20
+family,principal-switch,commit-bound,20,0,0.0,0.0,0.16113,10,10,1.0,0.72246,1.0,20,20
+overall,all,check-once,100,100,1.0,0.963005,1.0,50,50,1.0,0.92865,1.0,100,100
+overall,all,commit-bound,100,0,0.0,0.0,0.036995,50,50,1.0,0.92865,1.0,100,100

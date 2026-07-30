@@ -1,0 +1,7 @@
+family,n_pairs,check_once_yes_commit_bound_no,check_once_no_commit_bound_yes,exact_mcnemar_p
+all,100,100,0,1.5777218104420236e-30
+authorization-revocation,20,20,0,1.9073486328125e-06
+confirmation-replay,20,20,0,1.9073486328125e-06
+effect-substitution,20,20,0,1.9073486328125e-06
+lease-expiry,20,20,0,1.9073486328125e-06
+principal-switch,20,20,0,1.9073486328125e-06

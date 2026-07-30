@@ -1,0 +1,5 @@
+backend,schedule,policy,rows,attack_n,stale_commits,control_n,control_tasks,authorized_attack_commits,delivery_attempts,effect_rows,nonce_rows
+postgresql,critical-window,gateway-split,120,80,80,40,40,0,144,120,0
+postgresql,critical-window,service-atomic,120,80,0,40,40,80,144,120,30
+postgresql,pre-transaction,gateway-split,150,100,100,50,50,0,180,150,0
+postgresql,pre-transaction,service-atomic,150,100,0,50,50,0,180,50,10

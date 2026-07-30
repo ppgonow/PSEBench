@@ -1,0 +1,11 @@
+requested_alias,boundary,responses_with_metadata,response_model_alias_matches,response_model_alias_mismatches,match_rate,wilson95_low,wilson95_high
+gpt-5.5,cron,110,110,0,1.0,0.966256,1.0
+gpt-5.5,file,100,100,0,1.0,0.963007,1.0
+gpt-5.5,calendar,110,110,0,1.0,0.966256,1.0
+gpt-5.5,recipient,105,105,0,1.0,0.964706,1.0
+gpt-5.5,overall,425,425,0,1.0,0.991042,1.0
+grok-4.5,cron,120,120,0,1.0,0.968981,1.0
+grok-4.5,file,130,130,0,1.0,0.971298,1.0
+grok-4.5,calendar,120,120,0,1.0,0.968981,1.0
+grok-4.5,recipient,126,126,0,1.0,0.970414,1.0
+grok-4.5,overall,496,496,0,1.0,0.992315,1.0

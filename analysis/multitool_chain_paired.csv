@@ -1,0 +1,5 @@
+family,n_pairs,permissive_yes_iacg_no,permissive_no_iacg_yes,exact_mcnemar_p
+all,60,60,0,1.734723475976807e-18
+calendar-message-recurrence,20,20,0,1.9073486328125e-06
+file-message-recipient,20,20,0,1.9073486328125e-06
+message-file-persistence,20,20,0,1.9073486328125e-06

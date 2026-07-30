@@ -1,0 +1,17 @@
+requested_alias,policy,state,n,commits,commit_rate,CI_low,CI_high,stale_commits,median_gateway_us,p95_gateway_us
+gpt-5.4,cached-pre-action,revoked,48,48,1.0,0.925897,1.0,48,3941.958,4460.417
+gpt-5.4,cached-pre-action,stable,48,48,1.0,0.925897,1.0,0,5165.625,6298.0
+gpt-5.4,receipt-bound,revoked,48,0,0.0,0.0,0.074103,0,4043.229,4398.25
+gpt-5.4,receipt-bound,stable,48,48,1.0,0.925897,1.0,0,5196.0,5923.917
+gpt-5.5,cached-pre-action,revoked,48,48,1.0,0.925897,1.0,48,3756.812,4345.875
+gpt-5.5,cached-pre-action,stable,48,48,1.0,0.925897,1.0,0,4218.021,6065.625
+gpt-5.5,receipt-bound,revoked,48,0,0.0,0.0,0.074103,0,3891.208,4544.292
+gpt-5.5,receipt-bound,stable,48,48,1.0,0.925897,1.0,0,4431.105,6268.042
+gpt-5.6-sol,cached-pre-action,revoked,48,48,1.0,0.925897,1.0,48,3974.812,4757.916
+gpt-5.6-sol,cached-pre-action,stable,48,48,1.0,0.925897,1.0,0,5085.834,5961.709
+gpt-5.6-sol,receipt-bound,revoked,48,0,0.0,0.0,0.074103,0,3947.271,4564.625
+gpt-5.6-sol,receipt-bound,stable,48,48,1.0,0.925897,1.0,0,5131.25,6537.625
+grok-4.5,cached-pre-action,revoked,48,48,1.0,0.925897,1.0,48,3932.146,4469.417
+grok-4.5,cached-pre-action,stable,48,48,1.0,0.925897,1.0,0,5092.167,5890.167
+grok-4.5,receipt-bound,revoked,48,0,0.0,0.0,0.074103,0,3895.646,4424.833
+grok-4.5,receipt-bound,stable,48,48,1.0,0.925897,1.0,0,5053.479,6175.125

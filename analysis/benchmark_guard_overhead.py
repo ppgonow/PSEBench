@@ -16,6 +16,7 @@ OUT_TRACE = ROOT / "analysis" / "iacg_overhead_runs.csv"
 
 sys.path.insert(0, str(ROOT / "runner"))
 from run_hybrid_cli import extract_slc_request_cues, infer_intent  # noqa: E402
+from effect_boundary import infer_semantic_intent  # noqa: E402
 
 
 def scenario_files() -> list[Path]:
@@ -79,6 +80,16 @@ def bench_policy(name: str, corpus: list[dict], loops: int, repeats: int):
             return "block"
         return "allow"
 
+    def iacg_semantic(item: dict):
+        intent, _ = infer_semantic_intent(item["prompt"])
+        if item["action_kind"] == "one-shot":
+            return "allow"
+        if intent == "recurring":
+            return "allow"
+        if intent == "ambiguous":
+            return "require_confirmation"
+        return "block"
+
     def slc(item: dict):
         cues = extract_slc_request_cues(item["prompt"])
         if item["action_kind"] != "one-shot" and not cues:
@@ -91,6 +102,7 @@ def bench_policy(name: str, corpus: list[dict], loops: int, repeats: int):
         "confirm-all-persistent": confirm_all_persistent,
         "SLC": slc,
         "IACG": iacg,
+        "IACG-semantic": iacg_semantic,
     }
     fn = policies[name]
 
@@ -129,12 +141,12 @@ def main() -> None:
     if not corpus:
         raise SystemExit("No scenarios loaded for overhead benchmark.")
 
-    loops = 2000
+    loops = max(1, 300_000 // len(corpus))
     repeats = 7
 
     summaries = []
     traces = []
-    for policy in ["allow-only", "firewall", "confirm-all-persistent", "SLC", "IACG"]:
+    for policy in ["allow-only", "firewall", "confirm-all-persistent", "SLC", "IACG", "IACG-semantic"]:
         summary, samples = bench_policy(policy, corpus, loops, repeats)
         summaries.append(summary)
         for idx, sample in enumerate(samples, start=1):

@@ -1,0 +1,5 @@
+requested_alias,n_pairs,n_style_blocks,observed_attack_discordant_pairs,minimum_one_direction_discordant_unadjusted_0_05,minimum_one_direction_discordant_bonferroni_0_05,zero_event_wilson_95_upper,best_case_power_10pp_unadjusted,best_case_power_20pp_unadjusted,best_case_power_30pp_unadjusted,holm_adjusted_p
+gpt-5.5,48,12,5,6,8,0.074103,0.346934,0.93787,0.998792,0.1875
+grok-4.5,48,12,25,6,8,0.074103,0.346934,0.93787,0.998792,2.384185791015625e-07
+gpt-5.4,48,12,4,6,8,0.074103,0.346934,0.93787,0.998792,0.1875
+gpt-5.6-sol,48,12,5,6,8,0.074103,0.346934,0.93787,0.998792,0.1875

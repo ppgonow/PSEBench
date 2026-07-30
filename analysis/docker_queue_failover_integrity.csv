@@ -1,0 +1,2 @@
+rows,unique_keys,attack_rows,control_rows,stale_commits,control_tasks,partition_rows,partition_gates,partition_failure_gates,crash_rows,crash_commit_gates,consumer_killed_gates,recovery_gates,consumer_b_gates,substitution_rows,queue_deliveries,queue_recoveries,queue_acks,queue_final_acked,effect_attempts,effect_rows,nonce_rows,second_idempotent_rows,distinct_role_rows,loopback_publish_rows,bridge_rows
+600,600,400,200,200,200,300,300,300,300,300,600,600,600,80,1200,600,600,600,900,400,20,200,600,600,600

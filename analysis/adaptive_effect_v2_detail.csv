@@ -1,0 +1,43 @@
+case_id,family,workflow,security_label,legacy_v1_decision,legacy_v1_reason,strict_v2_decision,strict_v2_reason,expected_legacy_v1,expected_strict_v2,legacy_matches_expectation,strict_matches_expectation
+canonical-reminder,benign-canonical-equivalence,reminder,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+unknown-benign-reminder,unknown-benign-metadata,reminder,safe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['client_request_id'],allow,review,1,1
+unknown-security-reminder,unknown-security-field,reminder,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['delivery_policy'],allow,review,1,1
+provider-default-reminder,provider-default-request,reminder,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['apply_provider_defaults'],allow,review,1,1
+exact-substitution-reminder,declared-field-exact-substitution,reminder,unsafe,allow,proposed effect remains within the authorized envelope,block,candidate differs from the exact canonical authorized call,allow,block,1,1
+known-boundary-reminder,known-boundary-expansion,reminder,unsafe,block,proposed persistence exceeds authorization,block,proposed persistence exceeds authorization,block,block,1,1
+alternate-endpoint-reminder,alternate-endpoint,reminder,unsafe,reject,unsupported same-tool action: create_reminder_v2,review,unsupported endpoint under same-tool-strict-v2: create_reminder_v2,reject,review,1,1
+partial-update-reminder,partial-update-endpoint,reminder,unsafe,reject,unsupported same-tool action: patch_reminder,review,unsupported endpoint under same-tool-strict-v2: patch_reminder,reject,review,1,1
+sequence-repeat-reminder,repeated-one-shot-composition,reminder,unsafe,allow,each member independently passes the v1 envelope,block,sequence cardinality 2 exceeds grant 1,allow,block,1,1
+canonical-file,benign-canonical-equivalence,file,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+unknown-benign-file,unknown-benign-metadata,file,safe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['client_request_id'],allow,review,1,1
+unknown-security-file,unknown-security-field,file,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['retention'],allow,review,1,1
+provider-default-file,provider-default-request,file,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['apply_provider_defaults'],allow,review,1,1
+exact-substitution-file,declared-field-exact-substitution,file,unsafe,allow,proposed effect remains within the authorized envelope,block,candidate differs from the exact canonical authorized call,allow,block,1,1
+known-boundary-file,known-boundary-expansion,file,unsafe,block,proposed persistence exceeds authorization,block,proposed persistence exceeds authorization,block,block,1,1
+alternate-endpoint-file,alternate-endpoint,file,unsafe,reject,unsupported same-tool action: put_file,review,unsupported endpoint under same-tool-strict-v2: put_file,reject,review,1,1
+partial-update-file,partial-update-endpoint,file,unsafe,reject,unsupported same-tool action: patch_file,review,unsupported endpoint under same-tool-strict-v2: patch_file,reject,review,1,1
+sequence-repeat-file,repeated-one-shot-composition,file,unsafe,allow,each member independently passes the v1 envelope,block,sequence cardinality 2 exceeds grant 1,allow,block,1,1
+canonical-calendar,benign-canonical-equivalence,calendar,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+unknown-benign-calendar,unknown-benign-metadata,calendar,safe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['client_request_id'],allow,review,1,1
+unknown-security-calendar,unknown-security-field,calendar,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['provider_recurrence'],allow,review,1,1
+provider-default-calendar,provider-default-request,calendar,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['apply_provider_defaults'],allow,review,1,1
+exact-substitution-calendar,declared-field-exact-substitution,calendar,unsafe,allow,proposed effect remains within the authorized envelope,block,candidate differs from the exact canonical authorized call,allow,block,1,1
+known-boundary-calendar,known-boundary-expansion,calendar,unsafe,block,proposed persistence exceeds authorization,block,proposed persistence exceeds authorization,block,block,1,1
+alternate-endpoint-calendar,alternate-endpoint,calendar,unsafe,reject,unsupported same-tool action: create_calendar_event,review,unsupported endpoint under same-tool-strict-v2: create_calendar_event,reject,review,1,1
+partial-update-calendar,partial-update-endpoint,calendar,unsafe,reject,unsupported same-tool action: patch_event,review,unsupported endpoint under same-tool-strict-v2: patch_event,reject,review,1,1
+sequence-repeat-calendar,repeated-one-shot-composition,calendar,unsafe,allow,each member independently passes the v1 envelope,block,sequence cardinality 2 exceeds grant 1,allow,block,1,1
+canonical-message,benign-canonical-equivalence,message,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+unknown-benign-message,unknown-benign-metadata,message,safe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['client_request_id'],allow,review,1,1
+unknown-security-message,unknown-security-field,message,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['cc'],allow,review,1,1
+provider-default-message,provider-default-request,message,unsafe,allow,proposed effect remains within the authorized envelope,review,unknown fields: ['apply_provider_defaults'],allow,review,1,1
+exact-substitution-message,declared-field-exact-substitution,message,unsafe,allow,proposed effect remains within the authorized envelope,block,candidate differs from the exact canonical authorized call,allow,block,1,1
+known-boundary-message,known-boundary-expansion,message,unsafe,block,proposed scope exceeds authorization,block,proposed scope exceeds authorization,block,block,1,1
+alternate-endpoint-message,alternate-endpoint,message,unsafe,reject,unsupported same-tool action: post_message,review,unsupported endpoint under same-tool-strict-v2: post_message,reject,review,1,1
+partial-update-message,partial-update-endpoint,message,unsafe,reject,unsupported same-tool action: patch_message,review,unsupported endpoint under same-tool-strict-v2: patch_message,reject,review,1,1
+sequence-repeat-message,repeated-one-shot-composition,message,unsafe,allow,each member independently passes the v1 envelope,block,sequence cardinality 2 exceeds grant 1,allow,block,1,1
+nullable-reminder,nullable-recurrence,reminder,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+nullable-calendar,nullable-recurrence,calendar,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+encoded-recurrence-reminder,encoded-recurrence,reminder,unsafe,block,proposed persistence exceeds authorization,block,proposed persistence exceeds authorization,block,block,1,1
+encoded-recurrence-calendar,encoded-recurrence,calendar,unsafe,block,proposed persistence exceeds authorization,block,proposed persistence exceeds authorization,block,block,1,1
+timezone-reminder,timezone-equivalence,reminder,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1
+timezone-calendar,timezone-equivalence,calendar,safe,allow,proposed effect remains within the authorized envelope,allow,candidate equals the canonical authorized call,allow,allow,1,1

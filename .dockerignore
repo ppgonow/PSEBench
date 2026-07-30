@@ -1,0 +1,6 @@
+*
+!runner/
+!runner/**
+!container/
+!container/commit-race/
+!container/commit-race/Dockerfile

@@ -1,0 +1,66 @@
+x-service: &service
+  build:
+    context: ../..
+    dockerfile: container/commit-race/Dockerfile
+  read_only: true
+  user: "65532:65532"
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=16m
+  networks:
+    - commit_net
+
+services:
+  authorization:
+    <<: *service
+    command:
+      - authorization
+      - --state-delay-ms
+      - "0.5"
+    ports:
+      - "127.0.0.1:${PSEBENCH_AUTH_PORT:?set PSEBENCH_AUTH_PORT}:8080"
+    secrets:
+      - commit_hmac
+
+  gateway:
+    <<: *service
+    command:
+      - gateway
+      - --authorization-url
+      - http://authorization:8080
+      - --effect-url
+      - http://effect:8080
+    secrets:
+      - commit_hmac
+    ports:
+      - "127.0.0.1:${PSEBENCH_GATEWAY_PORT:?set PSEBENCH_GATEWAY_PORT}:8080"
+    depends_on:
+      - authorization
+      - effect
+
+  effect:
+    <<: *service
+    command:
+      - effect
+      - --service-delay-ms
+      - "0.5"
+      - --database-path
+      - /data/service.sqlite
+    volumes:
+      - type: bind
+        source: ${PSEBENCH_EFFECT_DIR:?set PSEBENCH_EFFECT_DIR}
+        target: /data
+    ports:
+      - "127.0.0.1:${PSEBENCH_EFFECT_PORT:?set PSEBENCH_EFFECT_PORT}:8080"
+
+networks:
+  commit_net:
+    driver: bridge
+    internal: false
+
+secrets:
+  commit_hmac:
+    file: ${PSEBENCH_HMAC_FILE:?set PSEBENCH_HMAC_FILE}

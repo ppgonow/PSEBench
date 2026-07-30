@@ -1,0 +1,5 @@
+requested_alias,n_pairs,cached_yes_receipt_no,cached_no_receipt_yes,exact_mcnemar_p
+gpt-5.5,48,48,0,7.105427357601002e-15
+grok-4.5,48,48,0,7.105427357601002e-15
+gpt-5.4,48,48,0,7.105427357601002e-15
+gpt-5.6-sol,48,48,0,7.105427357601002e-15

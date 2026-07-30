@@ -1,0 +1,2 @@
+native_rows,unique_native_keys,unique_template_model_keys,clean_rows,injected_rows,proposal_ready,same_tool_ready,commit_eligible_native_rows,commit_rows,unique_commit_trials,commit_ledger_rows,total_http_attempts,returned_model_map
+384,384,192,192,192,384,384,192,768,768,576,1558,"{""gpt-5.4"": [""gpt-5.4""], ""gpt-5.5"": [""gpt-5.5""], ""gpt-5.6-sol"": [""gpt-5.6-sol""], ""grok-4.5"": [""grok-4.5-build""]}"

@@ -1,0 +1,11 @@
+profile,policy,attack_n,attack_yes,asr_wilson_low,asr_wilson_high,control_n,task_yes,tcr_wilson_low,tcr_wilson_high,benign_client_median_ms,benign_client_p95_ms,benign_client_p99_ms
+single,check-once,100,100,0.963005,1.0,50,50,0.92865,1.0,6.535,7.831,7.878
+single,receipt-bound,100,0,0.0,0.036995,50,50,0.92865,1.0,8.379,10.045,11.014
+delayed-40ms,check-once,100,100,0.963005,1.0,50,50,0.92865,1.0,52.081,56.158,56.761
+delayed-40ms,receipt-bound,100,0,0.0,0.036995,50,50,0.92865,1.0,55.688,57.927,58.408
+duplicate-downstream,check-once,100,100,0.963005,1.0,50,50,0.92865,1.0,9.042,10.472,11.005
+duplicate-downstream,receipt-bound,100,0,0.0,0.036995,50,50,0.92865,1.0,10.721,11.925,12.27
+concurrent-retry,check-once,100,100,0.963005,1.0,50,50,0.92865,1.0,8.878,9.61,10.253
+concurrent-retry,receipt-bound,100,0,0.0,0.036995,50,50,0.92865,1.0,10.096,11.113,12.442
+reordered-retry,check-once,100,100,0.963005,1.0,50,50,0.92865,1.0,31.838,35.897,36.617
+reordered-retry,receipt-bound,100,0,0.0,0.036995,50,50,0.92865,1.0,35.883,38.38,41.766

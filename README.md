@@ -45,6 +45,9 @@ For double-blind review, use an anonymized mirror/archive rather than a URL that
 
 ## Representative outputs
 - `analysis/main_table_by_family_plus_persistent.md`
+- `analysis/independent_unit_inventory.csv`
+- `analysis/independent_paired_outcomes.csv`
+- `analysis/independent_paired_primary.csv`
 - `analysis/new_baseline_comparison_table.csv`
 - `analysis/prompt_only_baseline_summary.csv`
 - `analysis/oracle_coverage_summary.csv`
@@ -53,6 +56,115 @@ For double-blind review, use an anonymized mirror/archive rather than a URL that
 - `analysis/cross_model_combined_balanced72_overall.csv`
 - `analysis/label_audit_agreement_summary.csv`
 - `analysis/iacg_overhead_summary.csv`
+- `analysis/http_commit_race_summary.csv`
+- `analysis/http_commit_race_paired.csv`
+- `analysis/multiprocess_commit_race_summary.csv`
+- `analysis/multiprocess_commit_race_paired.csv`
+- `analysis/commit_gateway_load_detail.csv`
+- `analysis/commit_gateway_load_summary.csv`
+- `analysis/audit_commit_gateway_load.py`
+- `analysis/network_schedule_detail.csv`
+- `analysis/network_schedule_summary.csv`
+- `analysis/network_schedule_inference.csv`
+- `analysis/network_schedule_by_family.csv`
+- `analysis/network_schedule_paired.csv`
+- `analysis/audit_network_schedule.py`
+- `analysis/analyze_network_schedule_results.py`
+- `analysis/async_queue_commit_detail.csv`
+- `analysis/async_queue_commit_summary.csv`
+- `analysis/async_queue_commit_integrity.csv`
+- `analysis/audit_async_queue_commit.py`
+- `analysis/docker_queue_failover_detail.csv`
+- `analysis/docker_queue_failover_summary.csv`
+- `analysis/docker_queue_failover_integrity.csv`
+- `analysis/docker_queue_failover_metadata.csv`
+- `analysis/audit_docker_queue_failover.py`
+- `analysis/make_figure1_v2.py`
+- `analysis/service_integrated_commit_detail.csv`
+- `analysis/service_integrated_commit_summary.csv`
+- `analysis/service_integrated_commit_integrity.csv`
+- `analysis/audit_service_integrated_commit.py`
+- `analysis/postgres_integrated_commit_detail.csv`
+- `analysis/postgres_integrated_commit_summary.csv`
+- `analysis/postgres_integrated_commit_integrity.csv`
+- `analysis/postgres_integrated_commit_metadata.csv`
+- `analysis/audit_postgres_integrated_commit.py`
+- `analysis/container_commit_race_summary.csv`
+- `analysis/container_commit_race_paired.csv`
+- `analysis/container_commit_race_topology.csv`
+- `analysis/multihost_commit_race_summary.csv`
+- `analysis/multihost_commit_race_paired.csv`
+- `analysis/multihost_commit_race_topology.csv`
+- `analysis/multihost_commit_race_audit_integrity.csv`
+- `scenarios/native-e2e48/MANIFEST.csv`
+- `runner/run_native_e2e.py`
+- `analysis/summarize_native_e2e.py`
+- `analysis/native_e2e48_final.jsonl`
+- `analysis/native_e2e48_summary.csv`
+- `analysis/native_e2e48_paired.csv`
+- `analysis/native_e2e48_attempt_audit.csv`
+- `scenarios/adaptive-native-holdout/MANIFEST.csv`
+- `runner/run_adaptive_native_fork.py`
+- `analysis/summarize_adaptive_native_fork.py`
+- `analysis/audit_adaptive_native_fork.py`
+- `analysis/adaptive_native_fork_holdout_final.jsonl`
+- `analysis/adaptive_native_fork_holdout_summary.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_by_boundary.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_ledger.csv`
+- `analysis/adaptive_native_fork_holdout_postrun_audit_paired.csv`
+- `analysis/adaptive_native_fork_schema_neutral_final.jsonl`
+- `analysis/adaptive_native_fork_schema_neutral_summary.csv`
+- `analysis/adaptive_native_fork_schema_neutral_paired.csv`
+- `analysis/adaptive_native_fork_schema_neutral_postrun_audit_by_boundary.csv`
+- `analysis/adaptive_native_fork_schema_neutral_postrun_audit_ledger.csv`
+- `analysis/adaptive_native_fork_schema_neutral_postrun_audit_paired.csv`
+- `analysis/analyze_adaptive_native_templates.py`
+- `analysis/adaptive_native_templates_detail.csv`
+- `analysis/adaptive_native_templates_summary.csv`
+- `scenarios/same-tool-native-holdout/MANIFEST.csv`
+- `scenarios/same-tool-normalization/conformance.json`
+- `runner/run_same_tool_native_commit.py`
+- `analysis/summarize_same_tool_native_commit.py`
+- `analysis/same_tool_native_commit_summary.csv`
+- `analysis/same_tool_native_commit_paired.csv`
+- `analysis/same_tool_native_commit_exposure_paired.csv`
+- `analysis/same_tool_native_commit_cluster_paired.csv`
+- `analysis/same_tool_native_commit_cluster_bootstrap.csv`
+- `analysis/same_tool_native_commit_multiplicity.csv`
+- `analysis/same_tool_native_commit_precision.csv`
+- `analysis/same_tool_native_commit_commit_summary.csv`
+- `analysis/same_tool_native_commit_integrity.csv`
+- `runner/strict_effects_v2.py`
+- `analysis/audit_adaptive_effect_v2.py`
+- `analysis/adaptive_effect_v2_detail.csv`
+- `analysis/adaptive_effect_v2_summary.csv`
+- `analysis/adaptive_effect_v2_integrity.csv`
+- `analysis/audit_benchmark_oracle_capabilities.py`
+- `analysis/benchmark_oracle_capability_audit.csv`
+- `analysis/benchmark_oracle_capability_task_inventory.csv`
+- `analysis/benchmark_oracle_capability_integrity.csv`
+- `scenarios/oracle-distinguishability/official_agentdojo_v1.json`
+- `analysis/audit_official_oracle_distinguishability.py`
+- `analysis/official_oracle_distinguishability_detail.csv`
+- `analysis/official_oracle_distinguishability_summary.csv`
+- `analysis/official_oracle_distinguishability_integrity.csv`
+- `runner/run_native_service_commit_bridge.py`
+- `analysis/audit_native_service_commit_bridge.py`
+- `results/native_service_commit_bridge/native_service_commit_bridge.jsonl`
+- `analysis/native_service_commit_bridge_detail.csv`
+- `analysis/native_service_commit_bridge_summary.csv`
+- `analysis/native_service_commit_bridge_paired.csv`
+- `analysis/native_service_commit_bridge_integrity.csv`
+- `analysis/native_service_commit_bridge_topology.csv`
+- `analysis/native_service_commit_bridge_audit.csv`
+- `analysis/audit_same_tool_normalization.py`
+- `analysis/same_tool_normalization_summary.csv`
+- `analysis/same_tool_normalization_integrity.csv`
+- `runner/run_receipt_field_ablation.py`
+- `analysis/audit_receipt_field_ablation.py`
+- `analysis/receipt_field_ablation_summary.csv`
+- `analysis/receipt_field_ablation_paired.csv`
+- `analysis/receipt_field_ablation_integrity.csv`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`
 - `results/STAGE_SUMMARY_NEW_BASELINES.md`
@@ -76,7 +188,13 @@ pip install -r requirements.txt
 scripts/sanity_check.sh
 ```
 
-These checks validate the scenario schema, unit tests, and key analysis/runner imports without requiring live service credentials.
+These checks validate the scenario schema, unit tests, headline-claim data consistency, and analysis/runner syntax without requiring live service credentials.
+They also regenerate the strict-v2 adaptive audit and cluster-aware same-tool
+statistics. Source-backed AgentDojo inventory and 16-case same-state oracle
+checks run when the official local checkouts and Pydantic 2 are available.
+The released manifest and outputs remain inspectable without those checkouts.
+Loopback integration tests require a host that permits binding
+`127.0.0.1`; restricted sandboxes may block those tests before assertions run.
 
 ## Reproducibility
 See:

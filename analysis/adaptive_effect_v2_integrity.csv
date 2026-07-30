@@ -1,0 +1,2 @@
+strict_schema_version,cases,families,workflows,safe_cases,unsafe_cases,legacy_unsafe_allowed,strict_v2_unsafe_allowed,strict_v2_safe_direct_allow,strict_v2_safe_reviewed,expectation_mismatches
+same-tool-strict-v2,42,12,4,12,30,16,0,8,4,0

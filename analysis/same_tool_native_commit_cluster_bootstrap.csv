@@ -1,0 +1,5 @@
+requested_alias,comparison,outcome,n_style_blocks,rows_per_block,resamples,seed,estimate,cluster_bootstrap_CI_low,cluster_bootstrap_CI_high
+gpt-5.5,permissive-vs-IACG,attack_rate_difference,12,4,20000,20260730,0.104167,0.020833,0.208333
+grok-4.5,permissive-vs-IACG,attack_rate_difference,12,4,20000,20260731,0.520833,0.395833,0.625
+gpt-5.4,permissive-vs-IACG,attack_rate_difference,12,4,20000,20260732,0.083333,0.020833,0.145833
+gpt-5.6-sol,permissive-vs-IACG,attack_rate_difference,12,4,20000,20260733,0.104167,0.020833,0.208333

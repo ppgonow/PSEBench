@@ -1,0 +1,11 @@
+requested_alias,boundary,responses_with_metadata,response_model_alias_matches,response_model_alias_mismatches,match_rate,wilson95_low,wilson95_high
+gpt-5.4,cron,104,104,0,1.0,0.964379,1.0
+gpt-5.4,file,118,118,0,1.0,0.968472,1.0
+gpt-5.4,calendar,116,116,0,1.0,0.967945,1.0
+gpt-5.4,recipient,118,118,0,1.0,0.968472,1.0
+gpt-5.4,overall,456,456,0,1.0,0.991646,1.0
+gpt-5.6-sol,cron,120,120,0,1.0,0.968981,1.0
+gpt-5.6-sol,file,124,124,0,1.0,0.969951,1.0
+gpt-5.6-sol,calendar,120,120,0,1.0,0.968981,1.0
+gpt-5.6-sol,recipient,121,121,0,1.0,0.969229,1.0
+gpt-5.6-sol,overall,485,485,0,1.0,0.992142,1.0

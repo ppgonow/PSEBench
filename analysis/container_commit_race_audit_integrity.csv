@@ -1,0 +1,2 @@
+rows,unique_keys,policies,scenario_ids,container_hashes,namespace_hashes,container_ips,shared_network_hashes,attack_rows,causal_active_rows,stale_attack_commits,receipt_attack_commits,control_rows,control_tasks,duplicate_scheduled_rows,duplicate_delivered_rows,delivery_attempts,ledger_rows
+600,600,4,150,3,3,3,1,400,400,300,0,200,200,120,100,600,500

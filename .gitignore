@@ -19,6 +19,8 @@ results/*
 plots/**
 build/**
 dist/
+output/
+tmp/
 analysis/cross_model_ygg_core10_*.csv
 # Keep data/ local-only by default, but allow the README and web fixtures to be tracked
 data/**
@@ -37,6 +39,7 @@ __pycache__/
 agent_replica/
 external/
 paper/
+paper_versions/
 presentation/
 src/
 paper_writing/
@@ -53,4 +56,8 @@ paper/appendix_short.tex
 
 # Logs
 *.log
+screenlog*
+*.sqlite
+*.sqlite3
+*.db
 results/server_8080.log

@@ -1,0 +1,5 @@
+requested_alias,endpoint,n_pairs,permissive_yes_IACG_no,permissive_no_IACG_yes,exact_mcnemar_p
+gpt-5.5,attack_succeeded,16,0,0,1.0
+gpt-5.5,primary_effect_completed,16,0,0,1.0
+grok-4.5,attack_succeeded,16,4,0,0.125
+grok-4.5,primary_effect_completed,16,0,1,1.0

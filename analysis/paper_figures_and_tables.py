@@ -8,7 +8,8 @@ from typing import Dict, List, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.patches import FancyBboxPatch
+from matplotlib.colors import ListedColormap
+from matplotlib.patches import FancyBboxPatch, Patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -375,20 +376,87 @@ def draw_heatmap(ax, data: pd.DataFrame, labels: pd.DataFrame, cmap_name: str, t
 
 
 def make_authorization_boundary_matrix() -> None:
-    asr, tcr, labels = build_matrix_data()
-    fig, axes = plt.subplots(1, 2, figsize=(14.2, 5.2), gridspec_kw={"wspace": 0.26})
-    im1 = draw_heatmap(axes[0], asr, labels, "Reds", "ASR\n(cell text: ASR / TCR)")
-    im2 = draw_heatmap(axes[1], tcr, labels, "Greens", "TCR\n(cell text: ASR / TCR)")
-    axes[1].set_yticklabels([])
-    axes[1].tick_params(axis="y", length=0)
-    cbar1 = fig.colorbar(im1, ax=axes[0], fraction=0.035, pad=0.025, orientation="vertical")
-    cbar1.ax.set_title("ASR", fontsize=9, pad=5)
-    cbar1.ax.tick_params(labelsize=8)
-    cbar2 = fig.colorbar(im2, ax=axes[1], fraction=0.035, pad=0.025, orientation="vertical")
-    cbar2.ax.set_title("TCR", fontsize=9, pad=5)
-    cbar2.ax.tick_params(labelsize=8)
-    fig.subplots_adjust(wspace=0.26, top=0.88, bottom=0.21, left=0.10, right=0.98)
-    fig.savefig(FIGURES / "authorization_boundary_matrix.png", dpi=300)
+    asr, tcr, _ = build_matrix_data()
+    categories = np.zeros(asr.shape, dtype=int)
+    for row in range(asr.shape[0]):
+        for column in range(asr.shape[1]):
+            attack = asr.iloc[row, column]
+            task = tcr.iloc[row, column]
+            if pd.isna(attack) or pd.isna(task):
+                categories[row, column] = 0
+            elif attack <= 0.05 and task >= 0.95:
+                categories[row, column] = 1
+            elif attack > 0.05:
+                categories[row, column] = 2
+            else:
+                categories[row, column] = 3
+
+    # Blue/coral/amber remains distinguishable under common red-green CVD;
+    # explicit ASR/TCR labels preserve meaning in grayscale reproduction.
+    colors = ["#D9DEE3", "#B8DDF0", "#F2B6A0", "#F2D27C"]
+    fig, ax = plt.subplots(figsize=(12.8, 3.75))
+    ax.imshow(
+        categories,
+        cmap=ListedColormap(colors),
+        vmin=0,
+        vmax=len(colors) - 1,
+        aspect="auto",
+    )
+    ax.set_xticks(np.arange(asr.shape[1]))
+    ax.set_yticks(np.arange(asr.shape[0]))
+    ax.set_xticklabels(["Permissive", "Firewall", "Confirm-all", "SLC", "IACG"])
+    ax.set_yticklabels(asr.index)
+    ax.xaxis.tick_top()
+    ax.tick_params(axis="x", length=0, pad=8, labelsize=11)
+    ax.tick_params(axis="y", length=0, pad=8, labelsize=10.5)
+
+    for row in range(asr.shape[0]):
+        for column in range(asr.shape[1]):
+            attack = asr.iloc[row, column]
+            task = tcr.iloc[row, column]
+            if pd.isna(attack) or pd.isna(task):
+                label = "not evaluated"
+                color = "#5B6166"
+                weight = "normal"
+            else:
+                label = f"ASR {attack:.2f}\nTCR {task:.2f}"
+                color = TEXT
+                weight = "bold" if categories[row, column] in {1, 2, 3} else "normal"
+            ax.text(
+                column,
+                row,
+                label,
+                ha="center",
+                va="center",
+                fontsize=9.3,
+                color=color,
+                fontweight=weight,
+            )
+
+    ax.set_xticks(np.arange(-0.5, asr.shape[1], 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, asr.shape[0], 1), minor=True)
+    ax.grid(which="minor", color="white", linestyle="-", linewidth=2.0)
+    ax.tick_params(which="minor", bottom=False, left=False)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+
+    legend = [
+        Patch(facecolor=colors[1], edgecolor="none", label="secure + complete"),
+        Patch(facecolor=colors[2], edgecolor="none", label="unsafe"),
+        Patch(facecolor=colors[3], edgecolor="none", label="utility loss"),
+        Patch(facecolor=colors[0], edgecolor="none", label="not evaluated"),
+    ]
+    ax.legend(
+        handles=legend,
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.10),
+        ncol=4,
+        frameon=False,
+        fontsize=9.5,
+        columnspacing=1.8,
+    )
+    fig.subplots_adjust(top=0.82, bottom=0.21, left=0.16, right=0.995)
+    fig.savefig(FIGURES / "authorization_boundary_matrix_v2.png", dpi=300)
     plt.close(fig)
 
 

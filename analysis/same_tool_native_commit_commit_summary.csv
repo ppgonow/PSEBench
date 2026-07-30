@@ -1,0 +1,17 @@
+requested_alias,policy,state,n,commits,stale_commits,ledger_rows
+gpt-5.4,cached-pre-action,revoked,48,48,48,48
+gpt-5.4,cached-pre-action,stable,48,48,0,48
+gpt-5.4,receipt-bound,revoked,48,0,0,0
+gpt-5.4,receipt-bound,stable,48,48,0,48
+gpt-5.5,cached-pre-action,revoked,48,48,48,48
+gpt-5.5,cached-pre-action,stable,48,48,0,48
+gpt-5.5,receipt-bound,revoked,48,0,0,0
+gpt-5.5,receipt-bound,stable,48,48,0,48
+gpt-5.6-sol,cached-pre-action,revoked,48,48,48,48
+gpt-5.6-sol,cached-pre-action,stable,48,48,0,48
+gpt-5.6-sol,receipt-bound,revoked,48,0,0,0
+gpt-5.6-sol,receipt-bound,stable,48,48,0,48
+grok-4.5,cached-pre-action,revoked,48,48,48,48
+grok-4.5,cached-pre-action,stable,48,48,0,48
+grok-4.5,receipt-bound,revoked,48,0,0,0
+grok-4.5,receipt-bound,stable,48,48,0,48

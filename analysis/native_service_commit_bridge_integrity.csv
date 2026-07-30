@@ -1,0 +1,2 @@
+rows,unique_keys,aliases,unique_native_proposals,stable_rows,revoked_rows,revoked_mutation_observed_active,revoked_mutation_active_precommit,revoked_commit_after_observation,transport_hash_matches,ledger_hash_matches,role_chain_verified,stable_cached_commits,stable_receipt_commits,revoked_cached_stale_commits,revoked_receipt_stale_commits,effect_rows,delivery_attempts,ephemeral_cleanup_verified
+768,768,4,192,384,384,384,384,384,768,768,768,192,192,192,0,576,768,1

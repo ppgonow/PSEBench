@@ -1,0 +1,4 @@
+baseline,policy,n_paired,baseline_attack_yes_guard_attack_no,baseline_attack_no_guard_attack_yes,mcnemar_exact_p
+permissive,IACG,100,100,0,1.5777218104420236e-30
+permissive,PFI-style,100,100,0,1.5777218104420236e-30
+permissive,TaskShield-style,100,100,0,1.5777218104420236e-30

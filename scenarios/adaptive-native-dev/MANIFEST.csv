@@ -1,0 +1,17 @@
+scenario_id,split,boundary,template_index,source_path,sha256,guard_cue_hits
+ANF-dev-cron-001,dev,cron,0,scenarios/adaptive-native-dev/ANF-dev-cron-001.yaml,6e97c52d06b01b983779cc7d3b527e2c6a063b802e2d5948ada2d1d354e2844f,0
+ANF-dev-cron-002,dev,cron,1,scenarios/adaptive-native-dev/ANF-dev-cron-002.yaml,c32b37b28dfc8bc3b94b38e2975b54fdf9cb58486fe73820b1e23ce2b9c7b096,0
+ANF-dev-cron-003,dev,cron,2,scenarios/adaptive-native-dev/ANF-dev-cron-003.yaml,7eebc64a6708b348fa49b5cb99bb0c45c7be47db125a6786001c91952b6478e2,0
+ANF-dev-cron-004,dev,cron,3,scenarios/adaptive-native-dev/ANF-dev-cron-004.yaml,f46ef06115723461d5fbb201251142f8434d839e43d0c6e80b035520896801e3,0
+ANF-dev-file-001,dev,file,0,scenarios/adaptive-native-dev/ANF-dev-file-001.yaml,5c1f2fafe7acea979dcfc80c79eee68782b294f55566c56ca3cc62de16b7c9a2,0
+ANF-dev-file-002,dev,file,1,scenarios/adaptive-native-dev/ANF-dev-file-002.yaml,93e7dfcaee48d3dafdac265018cb3b22750a266d06951a5c81ce4452b965e35f,0
+ANF-dev-file-003,dev,file,2,scenarios/adaptive-native-dev/ANF-dev-file-003.yaml,63ca6647ba1bcf66af0b5f8343ff6f5dc00f55799f66610da72c3b8db08ce76d,0
+ANF-dev-file-004,dev,file,3,scenarios/adaptive-native-dev/ANF-dev-file-004.yaml,ba43c52cea711cbbfcb91ec33a90039e253660d4f7ab57f2ebbe32fe598c5026,0
+ANF-dev-calendar-001,dev,calendar,0,scenarios/adaptive-native-dev/ANF-dev-calendar-001.yaml,fffa449e3329691dfe12909ae7ccd37f09d8a6e3453873b863b655084825fbe6,0
+ANF-dev-calendar-002,dev,calendar,1,scenarios/adaptive-native-dev/ANF-dev-calendar-002.yaml,3804a8602e35c559d7483db7c1dc65435e5b397661c904fc4ac5ec1cf308ff30,0
+ANF-dev-calendar-003,dev,calendar,2,scenarios/adaptive-native-dev/ANF-dev-calendar-003.yaml,ed4c008aafd3b64661e4f1daa99a25847b3de2ff32957b09c8551ceae8bfe301,0
+ANF-dev-calendar-004,dev,calendar,3,scenarios/adaptive-native-dev/ANF-dev-calendar-004.yaml,8c4ea9ea9baf8de0af003b51c14528e86e026dca459be64a491afe8fe6109728,0
+ANF-dev-recipient-001,dev,recipient,0,scenarios/adaptive-native-dev/ANF-dev-recipient-001.yaml,11ecf16e6b8feddb9f6b90012cf322e162fdd5d22cddc478bcdba94950b652ef,0
+ANF-dev-recipient-002,dev,recipient,1,scenarios/adaptive-native-dev/ANF-dev-recipient-002.yaml,069d42d588ae8af5caf1643bde11c7b761c84f82fa4e283c082e72949ff7a753,0
+ANF-dev-recipient-003,dev,recipient,2,scenarios/adaptive-native-dev/ANF-dev-recipient-003.yaml,727cfc4f344a08cbf1f80d2c92871d72d1ac3c37cd5e719114ad7e45f732ee20,0
+ANF-dev-recipient-004,dev,recipient,3,scenarios/adaptive-native-dev/ANF-dev-recipient-004.yaml,feefb71416463ce01059b1f9ed36ddb54c92481d3a2777858e2329a2ddb32b46,0

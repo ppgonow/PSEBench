@@ -1,0 +1,5 @@
+profile,policy,rows,attack_n,stale_commits,control_n,control_tasks,queue_deliveries,effect_attempts,effect_rows
+crash-after-commit,check-once,150,100,100,50,50,300,300,150
+crash-after-commit,receipt-bound,150,100,0,50,50,300,300,50
+partition-before-commit,check-once,150,100,100,50,50,300,150,150
+partition-before-commit,receipt-bound,150,100,0,50,50,300,150,50

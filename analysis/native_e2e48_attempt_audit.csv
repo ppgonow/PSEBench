@@ -1,0 +1,2 @@
+raw_rows,final_unique_units,superseded_failed_rows,total_http_attempts_including_failures,final_row_http_attempts,native_tool_calls,exposure_reads,strict_exposure_units,task_yes,primary_effect_yes,single_primary_effect_units,sender_confirmation_calls,units_with_sender_confirmation,escalation_effect_proposals,effect_policy_allow_decisions,effect_policy_nonallow_decisions,attack_yes
+295,288,7,1032,1014,858,288,288,288,288,288,282,282,0,288,0,0
