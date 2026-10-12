@@ -1,0 +1,97 @@
+{
+  "protocol_id": "psebench-external-attack-registry-v1",
+  "freeze_status": "offline_registry_only",
+  "created": "2026-10-09",
+  "purpose": "Track public sources and attack families before converting them into grant-relative, committed-effect scenarios.",
+  "source_policy": {
+    "no_raw_harmful_prompt_vendoring": true,
+    "license_must_be_verified_before_download": false,
+    "license_is_not_an_execution_gate": true,
+    "source_hash_required": true,
+    "external_data_never_defines_authorization_oracle": true,
+    "live_api_calls_permitted": false
+  },
+  "sources": [
+    {
+      "source_id": "advbench",
+      "paper_use": ["JailbreakScope", "JBShield"],
+      "public_role": "harmful_instruction seed set",
+      "planned_split": "calibration_or_development",
+      "psebench_role": "map harmful intent into a bounded tool task; never headline holdout",
+      "license_status": "not_required_by_current_protocol",
+      "raw_content_status": "not_vendored",
+      "citation_required": true
+    },
+    {
+      "source_id": "hex-phi",
+      "paper_use": ["JBShield"],
+      "public_role": "harmful instruction diversity",
+      "planned_split": "development",
+      "psebench_role": "cross-domain harmful-intent development source",
+      "license_status": "not_required_by_current_protocol",
+      "raw_content_status": "not_vendored",
+      "citation_required": true
+    },
+    {
+      "source_id": "alpaca",
+      "paper_use": ["JBShield"],
+      "public_role": "benign instruction controls",
+      "planned_split": "calibration_or_development",
+      "psebench_role": "benign task language source; must be paired with explicit grant metadata",
+      "license_status": "not_required_by_current_protocol",
+      "raw_content_status": "not_vendored",
+      "citation_required": true
+    },
+    {
+      "source_id": "shen-in-the-wild-jailbreaks",
+      "paper_use": ["JBShield"],
+      "public_role": "in-the-wild jailbreak holdout source",
+      "planned_split": "external_holdout",
+      "psebench_role": "held-out contamination/framing source; no calibration reuse",
+      "license_status": "not_required_by_current_protocol",
+      "raw_content_status": "not_vendored",
+      "citation_required": true
+    },
+    {
+      "source_id": "jailbreakzoo",
+      "paper_use": ["JailbreakScope"],
+      "public_role": "attack-family taxonomy and examples",
+      "planned_split": "taxonomy_only",
+      "psebench_role": "coverage registry; examples require independent license and hash records",
+      "license_status": "not_required_by_current_protocol",
+      "raw_content_status": "not_vendored",
+      "citation_required": true
+    },
+    {
+      "source_id": "agentdojo",
+      "paper_use": ["PSEBench existing audit"],
+      "public_role": "agent/tool task benchmark",
+      "planned_split": "oracle_external_comparison",
+      "psebench_role": "same-state oracle comparison, not direct grant prevalence",
+      "license_status": "existing_revision_recorded_elsewhere",
+      "raw_content_status": "existing_audit_only",
+      "citation_required": true
+    }
+  ],
+  "attack_families": [
+    {"family_id": "in-the-wild", "methods": ["IJP"], "source_ids": ["shen-in-the-wild-jailbreaks"]},
+    {"family_id": "gradient_or_optimization", "methods": ["GCG", "SAA"], "source_ids": ["advbench"]},
+    {"family_id": "llm_adaptive", "methods": ["AutoDAN", "PAIR", "TAP", "LLM-Fuzzer", "MasterKey"], "source_ids": ["jailbreakzoo", "advbench"]},
+    {"family_id": "linguistic_reconstruction", "methods": ["DrAttack", "Puzzler", "DeepInception", "ReNellm"], "source_ids": ["jailbreakzoo", "hex-phi"]},
+    {"family_id": "encoding_or_cross_lingual", "methods": ["Zulu", "Base64"], "source_ids": ["jailbreakzoo", "hex-phi"]},
+    {"family_id": "fuzzing_or_code_transformation", "methods": ["GPTFuzz", "CodeChameleon"], "source_ids": ["jailbreakzoo", "advbench"]}
+  ],
+  "conversion_contract": {
+    "required_fields": [
+      "scenario_id", "source_id", "source_item_hash", "attack_family", "attack_method",
+      "split", "workflow", "carrier", "trusted_request", "authorized_arguments",
+      "clean_counterpart_id", "transformation_rationale", "expected_escalation",
+      "license_record", "oracle_owner"
+    ],
+    "allowed_splits": ["calibration", "development", "external_holdout", "adaptive_holdout", "taxonomy_only"],
+    "allowed_carriers": ["message", "retrieved-document", "tool-output"],
+    "allowed_escalations": ["persistence", "scope", "target", "sequence", "mixed"],
+    "oracle_owner": "PSEBench_grant_relative_scenario_metadata",
+    "independent_observer_required_for_headline": true
+  }
+}

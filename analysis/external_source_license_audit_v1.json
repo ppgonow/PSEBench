@@ -1,0 +1,51 @@
+{
+  "audit_id": "psebench-external-source-license-audit-v1",
+  "date": "2026-10-09",
+  "method": "read_only_metadata_queries",
+  "raw_prompt_downloaded": false,
+  "records": [
+    {
+      "source_id": "jailbreakscope-artifact",
+      "role": "paper implementation/artifact, not automatically dataset permission",
+      "url": "https://zenodo.org/records/17971644",
+      "metadata_observed": {"doi": "10.5281/zenodo.17971644", "license": "cc-by-4.0"},
+      "status": "artifact_license_verified_dataset_rights_unresolved"
+    },
+    {
+      "source_id": "alpaca-code-repository",
+      "role": "code/repository entry cited by JBShield",
+      "url": "https://api.github.com/repos/tatsu-lab/stanford_alpaca",
+      "metadata_observed": {"license": "Apache-2.0", "default_branch": "main", "archived": false},
+      "status": "repository_license_verified_dataset_rights_unresolved"
+    },
+    {
+      "source_id": "advbench-code-repository-candidate",
+      "role": "candidate code repository related to AdvBench/GCG",
+      "url": "https://api.github.com/repos/llm-attacks/llm-attacks",
+      "metadata_observed": {"license": "MIT", "default_branch": "main", "archived": false},
+      "status": "repository_license_verified_advbench_content_rights_unresolved"
+    },
+    {
+      "source_id": "jailbreakzoo",
+      "role": "taxonomy source cited by JailbreakScope",
+      "url": "https://github.com/haibo-jin/JailbreakZoo",
+      "metadata_observed": {"http_status": 404},
+      "status": "source_entry_unresolved_do_not_fetch_or_use"
+    },
+    {
+      "source_id": "hex-phi",
+      "role": "harmful prompt source cited by JBShield",
+      "url": null,
+      "metadata_observed": {},
+      "status": "dataset_license_unresolved_do_not_fetch_or_use"
+    },
+    {
+      "source_id": "shen-in-the-wild-jailbreaks",
+      "role": "in-the-wild prompt source cited by JBShield",
+      "url": null,
+      "metadata_observed": {},
+      "status": "dataset_license_unresolved_do_not_fetch_or_use"
+    }
+  ],
+  "decision": "No source is eligible for external_holdout ingestion until content rights, exact version, and source hash are separately recorded. Verified repository/artifact licenses are not sufficient."
+}

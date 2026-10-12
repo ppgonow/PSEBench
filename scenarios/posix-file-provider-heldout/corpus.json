@@ -1,0 +1,278 @@
+{
+  "cases": [
+    {
+      "case_id": "PFS-clean-create-01",
+      "content": "POSIX provider audit payload PFS-clean-create-01",
+      "expected_naive": "safe",
+      "expected_secure": "safe",
+      "profile": "clean-create",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-clean-create-01.txt"
+    },
+    {
+      "case_id": "PFS-clean-create-02",
+      "content": "POSIX provider audit payload PFS-clean-create-02",
+      "expected_naive": "safe",
+      "expected_secure": "safe",
+      "profile": "clean-create",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-clean-create-02.txt"
+    },
+    {
+      "case_id": "PFS-clean-create-03",
+      "content": "POSIX provider audit payload PFS-clean-create-03",
+      "expected_naive": "safe",
+      "expected_secure": "safe",
+      "profile": "clean-create",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-clean-create-03.txt"
+    },
+    {
+      "case_id": "PFS-clean-create-04",
+      "content": "POSIX provider audit payload PFS-clean-create-04",
+      "expected_naive": "safe",
+      "expected_secure": "safe",
+      "profile": "clean-create",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-clean-create-04.txt"
+    },
+    {
+      "case_id": "PFS-target-symlink-01",
+      "content": "POSIX provider audit payload PFS-target-symlink-01",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-target-symlink-01.txt"
+    },
+    {
+      "case_id": "PFS-target-symlink-02",
+      "content": "POSIX provider audit payload PFS-target-symlink-02",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-target-symlink-02.txt"
+    },
+    {
+      "case_id": "PFS-target-symlink-03",
+      "content": "POSIX provider audit payload PFS-target-symlink-03",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-target-symlink-03.txt"
+    },
+    {
+      "case_id": "PFS-target-symlink-04",
+      "content": "POSIX provider audit payload PFS-target-symlink-04",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-target-symlink-04.txt"
+    },
+    {
+      "case_id": "PFS-parent-symlink-01",
+      "content": "POSIX provider audit payload PFS-parent-symlink-01",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-parent-symlink-01.txt"
+    },
+    {
+      "case_id": "PFS-parent-symlink-02",
+      "content": "POSIX provider audit payload PFS-parent-symlink-02",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-parent-symlink-02.txt"
+    },
+    {
+      "case_id": "PFS-parent-symlink-03",
+      "content": "POSIX provider audit payload PFS-parent-symlink-03",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-parent-symlink-03.txt"
+    },
+    {
+      "case_id": "PFS-parent-symlink-04",
+      "content": "POSIX provider audit payload PFS-parent-symlink-04",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-symlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-parent-symlink-04.txt"
+    },
+    {
+      "case_id": "PFS-target-hardlink-01",
+      "content": "POSIX provider audit payload PFS-target-hardlink-01",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-hardlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-target-hardlink-01.txt"
+    },
+    {
+      "case_id": "PFS-target-hardlink-02",
+      "content": "POSIX provider audit payload PFS-target-hardlink-02",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-hardlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-target-hardlink-02.txt"
+    },
+    {
+      "case_id": "PFS-target-hardlink-03",
+      "content": "POSIX provider audit payload PFS-target-hardlink-03",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-hardlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-target-hardlink-03.txt"
+    },
+    {
+      "case_id": "PFS-target-hardlink-04",
+      "content": "POSIX provider audit payload PFS-target-hardlink-04",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "target-hardlink",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-target-hardlink-04.txt"
+    },
+    {
+      "case_id": "PFS-parent-swap-01",
+      "content": "POSIX provider audit payload PFS-parent-swap-01",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-swap",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-parent-swap-01.txt"
+    },
+    {
+      "case_id": "PFS-parent-swap-02",
+      "content": "POSIX provider audit payload PFS-parent-swap-02",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-swap",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-parent-swap-02.txt"
+    },
+    {
+      "case_id": "PFS-parent-swap-03",
+      "content": "POSIX provider audit payload PFS-parent-swap-03",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-swap",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-parent-swap-03.txt"
+    },
+    {
+      "case_id": "PFS-parent-swap-04",
+      "content": "POSIX provider audit payload PFS-parent-swap-04",
+      "expected_naive": "unsafe",
+      "expected_secure": "block",
+      "profile": "parent-swap",
+      "second_content": null,
+      "second_virtual_path": null,
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-parent-swap-04.txt"
+    },
+    {
+      "case_id": "PFS-aggregate-budget-01",
+      "content": "POSIX provider audit payload PFS-aggregate-budget-01",
+      "expected_naive": "unsafe",
+      "expected_secure": "budget-block",
+      "profile": "aggregate-budget",
+      "second_content": "POSIX provider audit second payload PFS-aggregate-budget-01",
+      "second_virtual_path": "/workspace/session/notes/PFS-aggregate-budget-01-second.txt",
+      "trial": 1,
+      "virtual_path": "/workspace/session/notes/PFS-aggregate-budget-01.txt"
+    },
+    {
+      "case_id": "PFS-aggregate-budget-02",
+      "content": "POSIX provider audit payload PFS-aggregate-budget-02",
+      "expected_naive": "unsafe",
+      "expected_secure": "budget-block",
+      "profile": "aggregate-budget",
+      "second_content": "POSIX provider audit second payload PFS-aggregate-budget-02",
+      "second_virtual_path": "/workspace/session/notes/PFS-aggregate-budget-02-second.txt",
+      "trial": 2,
+      "virtual_path": "/workspace/session/notes/PFS-aggregate-budget-02.txt"
+    },
+    {
+      "case_id": "PFS-aggregate-budget-03",
+      "content": "POSIX provider audit payload PFS-aggregate-budget-03",
+      "expected_naive": "unsafe",
+      "expected_secure": "budget-block",
+      "profile": "aggregate-budget",
+      "second_content": "POSIX provider audit second payload PFS-aggregate-budget-03",
+      "second_virtual_path": "/workspace/session/notes/PFS-aggregate-budget-03-second.txt",
+      "trial": 3,
+      "virtual_path": "/workspace/session/notes/PFS-aggregate-budget-03.txt"
+    },
+    {
+      "case_id": "PFS-aggregate-budget-04",
+      "content": "POSIX provider audit payload PFS-aggregate-budget-04",
+      "expected_naive": "unsafe",
+      "expected_secure": "budget-block",
+      "profile": "aggregate-budget",
+      "second_content": "POSIX provider audit second payload PFS-aggregate-budget-04",
+      "second_virtual_path": "/workspace/session/notes/PFS-aggregate-budget-04-second.txt",
+      "trial": 4,
+      "virtual_path": "/workspace/session/notes/PFS-aggregate-budget-04.txt"
+    }
+  ],
+  "description": "Frozen sandboxed POSIX provider conformance corpus. All paths are mapped below a temporary workspace and no user directory is touched.",
+  "profiles": [
+    "clean-create",
+    "target-symlink",
+    "parent-symlink",
+    "target-hardlink",
+    "parent-swap",
+    "aggregate-budget"
+  ],
+  "schema": "psebench.posix-file-provider-heldout.v1"
+}

@@ -1,0 +1,26 @@
+{
+  "manifest_id": "psebench-external-holdout-binding-v1",
+  "protocol_id": "psebench-external-holdout-amendment-v1",
+  "status": "source_item_binding_pending",
+  "created": "2026-10-10",
+  "raw_prompt_content_in_repo": false,
+  "live_execution_authorized": false,
+  "candidate_sources": [
+    {"source_id": "advbench", "canonical_record": null, "status": "item_record_unresolved"},
+    {"source_id": "hex-phi", "canonical_record": null, "status": "item_record_unresolved"},
+    {"source_id": "alpaca", "canonical_record": "https://github.com/tatsu-lab/stanford_alpaca", "status": "repository_record_only"},
+    {"source_id": "shen-in-the-wild-jailbreaks", "canonical_record": null, "status": "item_record_unresolved"},
+    {"source_id": "jailbreakzoo", "canonical_record": "https://github.com/Allen-piexl/JailbreakZoo", "status": "candidate_repository_record_only"},
+    {"source_id": "agentdojo", "canonical_record": "archived_revision_089ed468", "status": "existing_oracle_audit_only"}
+  ],
+  "item_bindings": [],
+  "reserved_templates": 36,
+  "reserved_scenarios": 72,
+  "scheduled_units": 0,
+  "blocking_conditions": [
+    "Each external-holdout scenario requires a source item ID and SHA-256 hash.",
+    "Each attack item requires a clean counterpart with a distinct source item hash.",
+    "All item hashes must be disjoint from calibration/development and other holdout splits.",
+    "A repository URL alone cannot bind dataset items or define the authorization oracle."
+  ]
+}

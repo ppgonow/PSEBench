@@ -1,0 +1,7 @@
+profile,cases,secure_passed,secure_safe,secure_block,secure_budget_block,secure_unsafe,naive_passed,naive_safe,naive_unsafe,naive_commits,naive_unsafe_committed_effects
+aggregate-budget,4,4,0,0,4,0,4,0,4,4,4
+clean-create,4,4,4,0,0,0,4,4,0,4,0
+parent-swap,4,4,0,4,0,0,4,0,4,4,4
+parent-symlink,4,4,0,4,0,0,4,0,4,4,4
+target-hardlink,4,4,0,4,0,0,4,0,4,4,4
+target-symlink,4,4,0,4,0,0,4,0,4,4,4

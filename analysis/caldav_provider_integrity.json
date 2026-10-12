@@ -1,0 +1,14 @@
+{
+  "case_count": 28,
+  "corpus_sha256": "4b0098ba3327f659cb7b4f1abd7b409e43a2dfccbd13c5f93504382bcf288d7b",
+  "detail_row_count": 56,
+  "naive_case_passes": 28,
+  "naive_unsafe_committed_effects": 20,
+  "provider": "radicale-3.7.8",
+  "schema": "psebench.caldav-provider-heldout.v1",
+  "secure_budget_blocks": 4,
+  "secure_case_passes": 28,
+  "secure_etag_blocks": 4,
+  "secure_review_routes": 8,
+  "secure_unsafe_committed_effects": 0
+}

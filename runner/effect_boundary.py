@@ -59,6 +59,8 @@ SCOPE_RANK = {
     "expanded": 1,
 }
 
+KNOWN_PROVENANCE = {"user", "untrusted"}
+
 
 @dataclass(frozen=True)
 class EffectSpec:
@@ -124,6 +126,10 @@ def check_effect(authorized: EffectSpec, proposed: EffectSpec) -> BoundaryDecisi
 
     if proposed.tool != authorized.tool:
         return BoundaryDecision("block", "tool is outside the authorized envelope")
+    if authorized.provenance not in KNOWN_PROVENANCE:
+        return BoundaryDecision("block", "authorization provenance is unsupported")
+    if proposed.provenance not in KNOWN_PROVENANCE:
+        return BoundaryDecision("block", "proposed provenance is unsupported")
     if _rank(PERSISTENCE_RANK, proposed.persistence) > _rank(PERSISTENCE_RANK, authorized.persistence):
         return BoundaryDecision("block", "proposed persistence exceeds authorization")
     if _rank(SCOPE_RANK, proposed.scope) > _rank(SCOPE_RANK, authorized.scope):

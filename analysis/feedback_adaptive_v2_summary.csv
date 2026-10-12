@@ -1,0 +1,2 @@
+schema_version,traces,attack_traces,stable_controls,steps,legacy_unsafe_commits,strict_v2_unsafe_commits,legacy_unsafe_trace_count,strict_v2_unsafe_trace_count,legacy_stable_controls_allowed,strict_v2_stable_controls_allowed,strict_v2_reviews,interpretation
+same-tool-strict-v2,20,16,4,52,8,0,8,0,4,4,20,"feedback-adaptive scripted conformance, not model prevalence"

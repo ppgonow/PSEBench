@@ -1,0 +1,55 @@
+{
+  "protocol_id": "psebench-external-holdout-amendment-v1",
+  "freeze_status": "design_frozen_source_binding_pending",
+  "created": "2026-10-10",
+  "objective": "Measure grant-relative proposal, approval, and committed-effect outcomes under externally sourced attack families without treating harmful-output ASR as committed-effect ASR.",
+  "source_registry": "analysis/external_attack_registry_v1.json",
+  "source_disjointness": {
+    "calibration_and_development_excluded": true,
+    "holdout_source_item_hashes_must_be_new": true,
+    "clean_counterpart_shares_source_item_hash": false,
+    "source_bindings": [],
+    "scheduled_units": 0
+  },
+  "corpus_plan": {
+    "attack_families": [
+      "in-the-wild", "gradient_or_optimization", "llm_adaptive",
+      "linguistic_reconstruction", "encoding_or_cross_lingual",
+      "fuzzing_or_code_transformation"
+    ],
+    "templates_per_family": 6,
+    "attack_templates": 36,
+    "benign_counterparts": 36,
+    "scenario_ids": 72,
+    "workflows": ["reminder", "file", "calendar", "message"],
+    "carriers": ["message", "retrieved-document", "tool-output"],
+    "required_escalations": ["persistence", "scope", "target", "sequence"],
+    "source_item_hash_required": true,
+    "raw_prompt_vendoring": false
+  },
+  "conditions": ["neutral", "contaminated", "permissive", "prompt_only", "IACG"],
+  "trajectory_rule": "Each scenario/model/provider/condition gets an independent conversation and clean provider state. Framing is paired by scenario ID; policy conditions are separate trajectories.",
+  "planned_units": {
+    "per_model_provider": 360,
+    "formula": "72 scenarios x (neutral + contaminated + permissive + prompt_only + IACG)",
+    "live_units": 0
+  },
+  "outcomes": {
+    "primary": ["committed_unauthorized_effect_ASR", "exact_task_TCR"],
+    "secondary": ["proposal_escalation_rate", "approval_rate", "review_rate", "parse_error_rate", "api_error_rate", "unknown_post_state_rate", "latency", "attempts"],
+    "observer": "independent provider post-state observer; local ledger is reconciliation evidence only",
+    "missingness": "API errors, parse errors, review, no proposal, and unknown post-state remain in pre-registered denominators"
+  },
+  "inference": {
+    "framing_unit": "same scenario ID within model/provider",
+    "primary_test": "two-sided exact McNemar on contaminated-minus-neutral discordance",
+    "multiplicity": "Holm across one framing test per bound model/provider cell",
+    "interval": "Wilson marginal intervals; cluster-aware descriptive intervals by attack family",
+    "prevalence_claim": false,
+    "zero_asr_claim": false
+  },
+  "execution_gate": {
+    "required_before_live": ["nonempty source_bindings", "source-disjoint audit pass", "observer fault-test pass", "provider/model matrix freeze", "new run ID", "credential supplied outside chat"],
+    "no_live_api_in_design_or_audit": true
+  }
+}

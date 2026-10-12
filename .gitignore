@@ -54,6 +54,14 @@ OPEN_SOURCE_PREP.md
 paper/DRAFT.md
 paper/appendix_short.tex
 
+# Local manuscript planning and submission records
+CODEX_HANDOFF.md
+analysis/paper_*.md
+analysis/*submission_route*.md
+analysis/audit_csf_*.py
+analysis/csf_*_audit.json
+tests/test_audit_csf_*.py
+
 # Logs
 *.log
 screenlog*

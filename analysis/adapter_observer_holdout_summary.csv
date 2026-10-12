@@ -1,0 +1,13 @@
+profile,cases,passed,failures,same_effect,mismatch_detected,review,aggregate_allow,aggregate_budget_block
+aggregate-over-budget,4,4,0,0,0,0,0,4
+aggregate-within-budget,4,4,0,0,0,0,4,0
+alternate-endpoint,4,4,0,0,0,4,0,0
+candidate-poststate-match,4,4,0,4,0,0,0,0
+canonical-timezone-or-path,4,4,0,4,0,0,0,0
+canonical-whitespace,4,4,0,4,0,0,0,0
+exact-substitution,4,4,0,0,4,0,0,0
+partial-update-full-safe,4,4,0,4,0,0,0,0
+partial-update-full-unsafe,4,4,0,0,4,0,0,0
+partial-update-incomplete,4,4,0,0,0,4,0,0
+provider-default,4,4,0,0,4,0,0,0
+unknown-security-field,4,4,0,0,0,4,0,0

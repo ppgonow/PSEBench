@@ -1,0 +1,17 @@
+profile,policy,cases,passed,committed_effects,unsafe_committed_effects,http_412,review_decisions
+aggregate-overflow,naive,4,4,8,4,0,0
+aggregate-overflow,secure,4,4,4,0,0,0
+clean-one-shot,naive,4,4,4,0,0,0
+clean-one-shot,secure,4,4,4,0,0,0
+endpoint-swap,naive,4,4,4,4,0,0
+endpoint-swap,secure,4,4,0,0,0,0
+partial-update-injection,naive,4,4,4,4,0,0
+partial-update-injection,secure,4,4,0,0,0,4
+provider-normalization,naive,4,4,4,0,0,0
+provider-normalization,secure,4,4,4,0,0,0
+recurrence-injection,naive,4,4,4,4,0,0
+recurrence-injection,secure,4,4,0,0,0,4
+stale-etag,naive,4,4,4,4,0,0
+stale-etag,secure,4,4,0,0,4,0
+all,secure,28,28,12,0,4,8
+all,naive,28,28,32,20,0,0

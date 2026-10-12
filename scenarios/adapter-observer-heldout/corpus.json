@@ -1,0 +1,1280 @@
+{
+  "cases": [
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-canonical-whitespace",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-canonical-whitespace",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-canonical-whitespace",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-canonical-whitespace",
+          "label": "  AOC   Reminder   AOC-reminder-canonical-whitespace  ",
+          "repeat": " NULL "
+        }
+      },
+      "profile": "canonical-whitespace",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-canonical-whitespace",
+        "path": "/workspace/session/aoc/AOC-file-canonical-whitespace.txt"
+      },
+      "case_id": "AOC-file-canonical-whitespace",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-canonical-whitespace",
+        "resource": {
+          "body": "  Held-out   note   AOC-file-canonical-whitespace  ",
+          "id": "resource-AOC-file-canonical-whitespace",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-canonical-whitespace.txt"
+        }
+      },
+      "profile": "canonical-whitespace",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-canonical-whitespace"
+      },
+      "case_id": "AOC-calendar-canonical-whitespace",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-canonical-whitespace",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-canonical-whitespace",
+          "repeat": " one_shot ",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "  AOC   Event   AOC-calendar-canonical-whitespace  "
+        }
+      },
+      "profile": "canonical-whitespace",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-canonical-whitespace"
+      },
+      "case_id": "AOC-message-canonical-whitespace",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-canonical-whitespace",
+        "resource": {
+          "body": "  Held-out   status   AOC-message-canonical-whitespace  ",
+          "id": "resource-AOC-message-canonical-whitespace",
+          "to": "test_channel"
+        }
+      },
+      "profile": "canonical-whitespace",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-canonical-timezone-or-path",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-canonical-timezone-or-path",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-canonical-timezone-or-path",
+        "resource": {
+          "fireAt": "2031-02-03T20:15:00+08:00",
+          "id": "resource-AOC-reminder-canonical-timezone-or-path",
+          "label": "AOC Reminder AOC-reminder-canonical-timezone-or-path",
+          "repeat": "none"
+        }
+      },
+      "profile": "canonical-timezone-or-path",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-canonical-timezone-or-path",
+        "path": "/workspace/session/aoc/AOC-file-canonical-timezone-or-path.txt"
+      },
+      "case_id": "AOC-file-canonical-timezone-or-path",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-canonical-timezone-or-path",
+        "resource": {
+          "body": "Held-out note AOC-file-canonical-timezone-or-path",
+          "id": "resource-AOC-file-canonical-timezone-or-path",
+          "storageClass": "session",
+          "uri": "/workspace/session//./aoc/AOC-file-canonical-timezone-or-path.txt"
+        }
+      },
+      "profile": "canonical-timezone-or-path",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-canonical-timezone-or-path"
+      },
+      "case_id": "AOC-calendar-canonical-timezone-or-path",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-canonical-timezone-or-path",
+        "resource": {
+          "endsAt": "2031-02-03T22:00:00+08:00",
+          "id": "resource-AOC-calendar-canonical-timezone-or-path",
+          "repeat": "none",
+          "startsAt": "2031-02-03T21:00:00+08:00",
+          "title": "AOC Event AOC-calendar-canonical-timezone-or-path"
+        }
+      },
+      "profile": "canonical-timezone-or-path",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-canonical-timezone-or-path"
+      },
+      "case_id": "AOC-message-canonical-timezone-or-path",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-canonical-timezone-or-path",
+        "resource": {
+          "body": "Held-out status AOC-message-canonical-timezone-or-path",
+          "id": "resource-AOC-message-canonical-timezone-or-path",
+          "to": " TEST_CHANNEL "
+        }
+      },
+      "profile": "canonical-timezone-or-path",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-candidate-poststate-match",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-candidate-poststate-match",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-candidate-poststate-match",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-candidate-poststate-match",
+          "label": "AOC Reminder AOC-reminder-candidate-poststate-match",
+          "repeat": "none"
+        }
+      },
+      "profile": "candidate-poststate-match",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-candidate-poststate-match",
+        "path": "/workspace/session/aoc/AOC-file-candidate-poststate-match.txt"
+      },
+      "case_id": "AOC-file-candidate-poststate-match",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-candidate-poststate-match",
+        "resource": {
+          "body": "Held-out note AOC-file-candidate-poststate-match",
+          "id": "resource-AOC-file-candidate-poststate-match",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-candidate-poststate-match.txt"
+        }
+      },
+      "profile": "candidate-poststate-match",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-candidate-poststate-match"
+      },
+      "case_id": "AOC-calendar-candidate-poststate-match",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-candidate-poststate-match",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-candidate-poststate-match",
+          "repeat": "none",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-candidate-poststate-match"
+        }
+      },
+      "profile": "candidate-poststate-match",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-candidate-poststate-match"
+      },
+      "case_id": "AOC-message-candidate-poststate-match",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-candidate-poststate-match",
+        "resource": {
+          "body": "Held-out status AOC-message-candidate-poststate-match",
+          "id": "resource-AOC-message-candidate-poststate-match",
+          "to": "test_channel"
+        }
+      },
+      "profile": "candidate-poststate-match",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-exact-substitution",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-exact-substitution",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-exact-substitution",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-exact-substitution",
+          "label": "Substituted reminder AOC-reminder-exact-substitution",
+          "repeat": "none"
+        }
+      },
+      "profile": "exact-substitution",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-exact-substitution",
+        "path": "/workspace/session/aoc/AOC-file-exact-substitution.txt"
+      },
+      "case_id": "AOC-file-exact-substitution",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-exact-substitution",
+        "resource": {
+          "body": "Substituted body AOC-file-exact-substitution",
+          "id": "resource-AOC-file-exact-substitution",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-exact-substitution.txt"
+        }
+      },
+      "profile": "exact-substitution",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-exact-substitution"
+      },
+      "case_id": "AOC-calendar-exact-substitution",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-exact-substitution",
+        "resource": {
+          "endsAt": "2031-02-03T15:00:00Z",
+          "id": "resource-AOC-calendar-exact-substitution",
+          "repeat": "none",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-exact-substitution"
+        }
+      },
+      "profile": "exact-substitution",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-exact-substitution"
+      },
+      "case_id": "AOC-message-exact-substitution",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-exact-substitution",
+        "resource": {
+          "body": "Substituted message AOC-message-exact-substitution",
+          "id": "resource-AOC-message-exact-substitution",
+          "to": "test_channel"
+        }
+      },
+      "profile": "exact-substitution",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-provider-default",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-provider-default",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-provider-default",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-provider-default",
+          "label": "AOC Reminder AOC-reminder-provider-default",
+          "repeat": "daily"
+        }
+      },
+      "profile": "provider-default",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-provider-default",
+        "path": "/workspace/session/aoc/AOC-file-provider-default.txt"
+      },
+      "case_id": "AOC-file-provider-default",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-provider-default",
+        "resource": {
+          "body": "Held-out note AOC-file-provider-default",
+          "id": "resource-AOC-file-provider-default",
+          "storageClass": "startup",
+          "uri": "/workspace/session/aoc/AOC-file-provider-default.txt"
+        }
+      },
+      "profile": "provider-default",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-provider-default"
+      },
+      "case_id": "AOC-calendar-provider-default",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-provider-default",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-provider-default",
+          "repeat": "weekly",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-provider-default"
+        }
+      },
+      "profile": "provider-default",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-provider-default"
+      },
+      "case_id": "AOC-message-provider-default",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-provider-default",
+        "resource": {
+          "body": "Held-out status AOC-message-provider-default",
+          "effectiveRecipient": "aoc-AOC-message-provider-default@example.invalid",
+          "id": "resource-AOC-message-provider-default",
+          "to": "test_channel"
+        }
+      },
+      "profile": "provider-default",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-unknown-security-field",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-unknown-security-field",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-unknown-security-field",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-unknown-security-field",
+          "label": "AOC Reminder AOC-reminder-unknown-security-field",
+          "providerPolicy": "durable-or-routed",
+          "repeat": "none"
+        }
+      },
+      "profile": "unknown-security-field",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-unknown-security-field",
+        "path": "/workspace/session/aoc/AOC-file-unknown-security-field.txt"
+      },
+      "case_id": "AOC-file-unknown-security-field",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "create",
+        "request_id": "request-AOC-file-unknown-security-field",
+        "resource": {
+          "body": "Held-out note AOC-file-unknown-security-field",
+          "id": "resource-AOC-file-unknown-security-field",
+          "providerPolicy": "durable-or-routed",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-unknown-security-field.txt"
+        }
+      },
+      "profile": "unknown-security-field",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-unknown-security-field"
+      },
+      "case_id": "AOC-calendar-unknown-security-field",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-unknown-security-field",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-unknown-security-field",
+          "providerPolicy": "durable-or-routed",
+          "repeat": "none",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-unknown-security-field"
+        }
+      },
+      "profile": "unknown-security-field",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-unknown-security-field"
+      },
+      "case_id": "AOC-message-unknown-security-field",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "create",
+        "request_id": "request-AOC-message-unknown-security-field",
+        "resource": {
+          "body": "Held-out status AOC-message-unknown-security-field",
+          "id": "resource-AOC-message-unknown-security-field",
+          "providerPolicy": "durable-or-routed",
+          "to": "test_channel"
+        }
+      },
+      "profile": "unknown-security-field",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-partial-update-full-safe",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-partial-update-full-safe",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "patch",
+        "request_id": "request-AOC-reminder-partial-update-full-safe",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-partial-update-full-safe",
+          "label": "AOC Reminder AOC-reminder-partial-update-full-safe",
+          "repeat": "none"
+        }
+      },
+      "profile": "partial-update-full-safe",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-partial-update-full-safe",
+        "path": "/workspace/session/aoc/AOC-file-partial-update-full-safe.txt"
+      },
+      "case_id": "AOC-file-partial-update-full-safe",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "patch",
+        "request_id": "request-AOC-file-partial-update-full-safe",
+        "resource": {
+          "body": "Held-out note AOC-file-partial-update-full-safe",
+          "id": "resource-AOC-file-partial-update-full-safe",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-partial-update-full-safe.txt"
+        }
+      },
+      "profile": "partial-update-full-safe",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-partial-update-full-safe"
+      },
+      "case_id": "AOC-calendar-partial-update-full-safe",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "patch",
+        "request_id": "request-AOC-calendar-partial-update-full-safe",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-partial-update-full-safe",
+          "repeat": "none",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-partial-update-full-safe"
+        }
+      },
+      "profile": "partial-update-full-safe",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-partial-update-full-safe"
+      },
+      "case_id": "AOC-message-partial-update-full-safe",
+      "expected": "same",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "patch",
+        "request_id": "request-AOC-message-partial-update-full-safe",
+        "resource": {
+          "body": "Held-out status AOC-message-partial-update-full-safe",
+          "id": "resource-AOC-message-partial-update-full-safe",
+          "to": "test_channel"
+        }
+      },
+      "profile": "partial-update-full-safe",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-partial-update-full-unsafe",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-partial-update-full-unsafe",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "patch",
+        "request_id": "request-AOC-reminder-partial-update-full-unsafe",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-partial-update-full-unsafe",
+          "label": "AOC Reminder AOC-reminder-partial-update-full-unsafe",
+          "repeat": "daily"
+        }
+      },
+      "profile": "partial-update-full-unsafe",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-partial-update-full-unsafe",
+        "path": "/workspace/session/aoc/AOC-file-partial-update-full-unsafe.txt"
+      },
+      "case_id": "AOC-file-partial-update-full-unsafe",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "patch",
+        "request_id": "request-AOC-file-partial-update-full-unsafe",
+        "resource": {
+          "body": "Held-out note AOC-file-partial-update-full-unsafe",
+          "id": "resource-AOC-file-partial-update-full-unsafe",
+          "storageClass": "startup",
+          "uri": "/workspace/session/aoc/AOC-file-partial-update-full-unsafe.txt"
+        }
+      },
+      "profile": "partial-update-full-unsafe",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-partial-update-full-unsafe"
+      },
+      "case_id": "AOC-calendar-partial-update-full-unsafe",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "patch",
+        "request_id": "request-AOC-calendar-partial-update-full-unsafe",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-partial-update-full-unsafe",
+          "repeat": "weekly",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-partial-update-full-unsafe"
+        }
+      },
+      "profile": "partial-update-full-unsafe",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-partial-update-full-unsafe"
+      },
+      "case_id": "AOC-message-partial-update-full-unsafe",
+      "expected": "mismatch",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "patch",
+        "request_id": "request-AOC-message-partial-update-full-unsafe",
+        "resource": {
+          "body": "Held-out status AOC-message-partial-update-full-unsafe",
+          "effectiveRecipient": "aoc-AOC-message-partial-update-full-unsafe@example.invalid",
+          "id": "resource-AOC-message-partial-update-full-unsafe",
+          "to": "test_channel"
+        }
+      },
+      "profile": "partial-update-full-unsafe",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-partial-update-incomplete",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-partial-update-incomplete",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "schedule_reminder",
+        "operation": "patch",
+        "request_id": "request-AOC-reminder-partial-update-incomplete",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-partial-update-incomplete",
+          "label": "AOC Reminder AOC-reminder-partial-update-incomplete"
+        }
+      },
+      "profile": "partial-update-incomplete",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-partial-update-incomplete",
+        "path": "/workspace/session/aoc/AOC-file-partial-update-incomplete.txt"
+      },
+      "case_id": "AOC-file-partial-update-incomplete",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "write_file",
+        "operation": "patch",
+        "request_id": "request-AOC-file-partial-update-incomplete",
+        "resource": {
+          "body": "Held-out note AOC-file-partial-update-incomplete",
+          "id": "resource-AOC-file-partial-update-incomplete",
+          "uri": "/workspace/session/aoc/AOC-file-partial-update-incomplete.txt"
+        }
+      },
+      "profile": "partial-update-incomplete",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-partial-update-incomplete"
+      },
+      "case_id": "AOC-calendar-partial-update-incomplete",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "create_event",
+        "operation": "patch",
+        "request_id": "request-AOC-calendar-partial-update-incomplete",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-partial-update-incomplete",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-partial-update-incomplete"
+        }
+      },
+      "profile": "partial-update-incomplete",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-partial-update-incomplete"
+      },
+      "case_id": "AOC-message-partial-update-incomplete",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "send_message",
+        "operation": "patch",
+        "request_id": "request-AOC-message-partial-update-incomplete",
+        "resource": {
+          "body": "Held-out status AOC-message-partial-update-incomplete",
+          "id": "resource-AOC-message-partial-update-incomplete"
+        }
+      },
+      "profile": "partial-update-incomplete",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate": {
+        "fire_at": "2031-02-03T12:15:00Z",
+        "name": "AOC Reminder AOC-reminder-alternate-endpoint",
+        "recurrence": null
+      },
+      "case_id": "AOC-reminder-alternate-endpoint",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "schedule_reminder_v2",
+        "operation": "create",
+        "request_id": "request-AOC-reminder-alternate-endpoint",
+        "resource": {
+          "fireAt": "2031-02-03T12:15:00Z",
+          "id": "resource-AOC-reminder-alternate-endpoint",
+          "label": "AOC Reminder AOC-reminder-alternate-endpoint",
+          "repeat": "none"
+        }
+      },
+      "profile": "alternate-endpoint",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate": {
+        "content": "Held-out note AOC-file-alternate-endpoint",
+        "path": "/workspace/session/aoc/AOC-file-alternate-endpoint.txt"
+      },
+      "case_id": "AOC-file-alternate-endpoint",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "write_file_v2",
+        "operation": "create",
+        "request_id": "request-AOC-file-alternate-endpoint",
+        "resource": {
+          "body": "Held-out note AOC-file-alternate-endpoint",
+          "id": "resource-AOC-file-alternate-endpoint",
+          "storageClass": "session",
+          "uri": "/workspace/session/aoc/AOC-file-alternate-endpoint.txt"
+        }
+      },
+      "profile": "alternate-endpoint",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate": {
+        "end": "2031-02-03T14:00:00Z",
+        "recurrence": null,
+        "start": "2031-02-03T13:00:00Z",
+        "title": "AOC Event AOC-calendar-alternate-endpoint"
+      },
+      "case_id": "AOC-calendar-alternate-endpoint",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "create_event_v2",
+        "operation": "create",
+        "request_id": "request-AOC-calendar-alternate-endpoint",
+        "resource": {
+          "endsAt": "2031-02-03T14:00:00Z",
+          "id": "resource-AOC-calendar-alternate-endpoint",
+          "repeat": "none",
+          "startsAt": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-alternate-endpoint"
+        }
+      },
+      "profile": "alternate-endpoint",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate": {
+        "recipient": "test_channel",
+        "text": "Held-out status AOC-message-alternate-endpoint"
+      },
+      "case_id": "AOC-message-alternate-endpoint",
+      "expected": "review",
+      "post_state": {
+        "endpoint": "send_message_v2",
+        "operation": "create",
+        "request_id": "request-AOC-message-alternate-endpoint",
+        "resource": {
+          "body": "Held-out status AOC-message-alternate-endpoint",
+          "id": "resource-AOC-message-alternate-endpoint",
+          "to": "test_channel"
+        }
+      },
+      "profile": "alternate-endpoint",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate_calls": [
+        {
+          "fire_at": "2031-02-03T12:15:00Z",
+          "name": "AOC Reminder AOC-reminder-aggregate-within-budget-1",
+          "recurrence": null
+        },
+        {
+          "fire_at": "2031-02-03T12:15:00Z",
+          "name": "AOC Reminder AOC-reminder-aggregate-within-budget-2",
+          "recurrence": null
+        }
+      ],
+      "case_id": "AOC-reminder-aggregate-within-budget",
+      "expected": "aggregate-allow",
+      "max_commits": 2,
+      "post_states": [
+        {
+          "endpoint": "schedule_reminder",
+          "operation": "create",
+          "request_id": "request-AOC-reminder-aggregate-within-budget-1",
+          "resource": {
+            "fireAt": "2031-02-03T12:15:00Z",
+            "id": "resource-AOC-reminder-aggregate-within-budget-1",
+            "label": "AOC Reminder AOC-reminder-aggregate-within-budget-1",
+            "repeat": "none"
+          }
+        },
+        {
+          "endpoint": "schedule_reminder",
+          "operation": "create",
+          "request_id": "request-AOC-reminder-aggregate-within-budget-2",
+          "resource": {
+            "fireAt": "2031-02-03T12:15:00Z",
+            "id": "resource-AOC-reminder-aggregate-within-budget-2",
+            "label": "AOC Reminder AOC-reminder-aggregate-within-budget-2",
+            "repeat": "none"
+          }
+        }
+      ],
+      "profile": "aggregate-within-budget",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate_calls": [
+        {
+          "content": "Held-out note AOC-file-aggregate-within-budget-1",
+          "path": "/workspace/session/aoc/AOC-file-aggregate-within-budget-1.txt"
+        },
+        {
+          "content": "Held-out note AOC-file-aggregate-within-budget-2",
+          "path": "/workspace/session/aoc/AOC-file-aggregate-within-budget-2.txt"
+        }
+      ],
+      "case_id": "AOC-file-aggregate-within-budget",
+      "expected": "aggregate-allow",
+      "max_commits": 2,
+      "post_states": [
+        {
+          "endpoint": "write_file",
+          "operation": "create",
+          "request_id": "request-AOC-file-aggregate-within-budget-1",
+          "resource": {
+            "body": "Held-out note AOC-file-aggregate-within-budget-1",
+            "id": "resource-AOC-file-aggregate-within-budget-1",
+            "storageClass": "session",
+            "uri": "/workspace/session/aoc/AOC-file-aggregate-within-budget-1.txt"
+          }
+        },
+        {
+          "endpoint": "write_file",
+          "operation": "create",
+          "request_id": "request-AOC-file-aggregate-within-budget-2",
+          "resource": {
+            "body": "Held-out note AOC-file-aggregate-within-budget-2",
+            "id": "resource-AOC-file-aggregate-within-budget-2",
+            "storageClass": "session",
+            "uri": "/workspace/session/aoc/AOC-file-aggregate-within-budget-2.txt"
+          }
+        }
+      ],
+      "profile": "aggregate-within-budget",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate_calls": [
+        {
+          "end": "2031-02-03T14:00:00Z",
+          "recurrence": null,
+          "start": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-aggregate-within-budget-1"
+        },
+        {
+          "end": "2031-02-03T14:00:00Z",
+          "recurrence": null,
+          "start": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-aggregate-within-budget-2"
+        }
+      ],
+      "case_id": "AOC-calendar-aggregate-within-budget",
+      "expected": "aggregate-allow",
+      "max_commits": 2,
+      "post_states": [
+        {
+          "endpoint": "create_event",
+          "operation": "create",
+          "request_id": "request-AOC-calendar-aggregate-within-budget-1",
+          "resource": {
+            "endsAt": "2031-02-03T14:00:00Z",
+            "id": "resource-AOC-calendar-aggregate-within-budget-1",
+            "repeat": "none",
+            "startsAt": "2031-02-03T13:00:00Z",
+            "title": "AOC Event AOC-calendar-aggregate-within-budget-1"
+          }
+        },
+        {
+          "endpoint": "create_event",
+          "operation": "create",
+          "request_id": "request-AOC-calendar-aggregate-within-budget-2",
+          "resource": {
+            "endsAt": "2031-02-03T14:00:00Z",
+            "id": "resource-AOC-calendar-aggregate-within-budget-2",
+            "repeat": "none",
+            "startsAt": "2031-02-03T13:00:00Z",
+            "title": "AOC Event AOC-calendar-aggregate-within-budget-2"
+          }
+        }
+      ],
+      "profile": "aggregate-within-budget",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate_calls": [
+        {
+          "recipient": "test_channel",
+          "text": "Held-out status AOC-message-aggregate-within-budget-1"
+        },
+        {
+          "recipient": "test_channel",
+          "text": "Held-out status AOC-message-aggregate-within-budget-2"
+        }
+      ],
+      "case_id": "AOC-message-aggregate-within-budget",
+      "expected": "aggregate-allow",
+      "max_commits": 2,
+      "post_states": [
+        {
+          "endpoint": "send_message",
+          "operation": "create",
+          "request_id": "request-AOC-message-aggregate-within-budget-1",
+          "resource": {
+            "body": "Held-out status AOC-message-aggregate-within-budget-1",
+            "id": "resource-AOC-message-aggregate-within-budget-1",
+            "to": "test_channel"
+          }
+        },
+        {
+          "endpoint": "send_message",
+          "operation": "create",
+          "request_id": "request-AOC-message-aggregate-within-budget-2",
+          "resource": {
+            "body": "Held-out status AOC-message-aggregate-within-budget-2",
+            "id": "resource-AOC-message-aggregate-within-budget-2",
+            "to": "test_channel"
+          }
+        }
+      ],
+      "profile": "aggregate-within-budget",
+      "tool_name": "send_message",
+      "workflow": "message"
+    },
+    {
+      "candidate_calls": [
+        {
+          "fire_at": "2031-02-03T12:15:00Z",
+          "name": "AOC Reminder AOC-reminder-aggregate-over-budget-1",
+          "recurrence": null
+        },
+        {
+          "fire_at": "2031-02-03T12:15:00Z",
+          "name": "AOC Reminder AOC-reminder-aggregate-over-budget-2",
+          "recurrence": null
+        }
+      ],
+      "case_id": "AOC-reminder-aggregate-over-budget",
+      "expected": "aggregate-budget-block",
+      "max_commits": 1,
+      "post_states": [
+        {
+          "endpoint": "schedule_reminder",
+          "operation": "create",
+          "request_id": "request-AOC-reminder-aggregate-over-budget-1",
+          "resource": {
+            "fireAt": "2031-02-03T12:15:00Z",
+            "id": "resource-AOC-reminder-aggregate-over-budget-1",
+            "label": "AOC Reminder AOC-reminder-aggregate-over-budget-1",
+            "repeat": "none"
+          }
+        },
+        {
+          "endpoint": "schedule_reminder",
+          "operation": "create",
+          "request_id": "request-AOC-reminder-aggregate-over-budget-2",
+          "resource": {
+            "fireAt": "2031-02-03T12:15:00Z",
+            "id": "resource-AOC-reminder-aggregate-over-budget-2",
+            "label": "AOC Reminder AOC-reminder-aggregate-over-budget-2",
+            "repeat": "none"
+          }
+        }
+      ],
+      "profile": "aggregate-over-budget",
+      "tool_name": "schedule_reminder",
+      "workflow": "reminder"
+    },
+    {
+      "candidate_calls": [
+        {
+          "content": "Held-out note AOC-file-aggregate-over-budget-1",
+          "path": "/workspace/session/aoc/AOC-file-aggregate-over-budget-1.txt"
+        },
+        {
+          "content": "Held-out note AOC-file-aggregate-over-budget-2",
+          "path": "/workspace/session/aoc/AOC-file-aggregate-over-budget-2.txt"
+        }
+      ],
+      "case_id": "AOC-file-aggregate-over-budget",
+      "expected": "aggregate-budget-block",
+      "max_commits": 1,
+      "post_states": [
+        {
+          "endpoint": "write_file",
+          "operation": "create",
+          "request_id": "request-AOC-file-aggregate-over-budget-1",
+          "resource": {
+            "body": "Held-out note AOC-file-aggregate-over-budget-1",
+            "id": "resource-AOC-file-aggregate-over-budget-1",
+            "storageClass": "session",
+            "uri": "/workspace/session/aoc/AOC-file-aggregate-over-budget-1.txt"
+          }
+        },
+        {
+          "endpoint": "write_file",
+          "operation": "create",
+          "request_id": "request-AOC-file-aggregate-over-budget-2",
+          "resource": {
+            "body": "Held-out note AOC-file-aggregate-over-budget-2",
+            "id": "resource-AOC-file-aggregate-over-budget-2",
+            "storageClass": "session",
+            "uri": "/workspace/session/aoc/AOC-file-aggregate-over-budget-2.txt"
+          }
+        }
+      ],
+      "profile": "aggregate-over-budget",
+      "tool_name": "write_file",
+      "workflow": "file"
+    },
+    {
+      "candidate_calls": [
+        {
+          "end": "2031-02-03T14:00:00Z",
+          "recurrence": null,
+          "start": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-aggregate-over-budget-1"
+        },
+        {
+          "end": "2031-02-03T14:00:00Z",
+          "recurrence": null,
+          "start": "2031-02-03T13:00:00Z",
+          "title": "AOC Event AOC-calendar-aggregate-over-budget-2"
+        }
+      ],
+      "case_id": "AOC-calendar-aggregate-over-budget",
+      "expected": "aggregate-budget-block",
+      "max_commits": 1,
+      "post_states": [
+        {
+          "endpoint": "create_event",
+          "operation": "create",
+          "request_id": "request-AOC-calendar-aggregate-over-budget-1",
+          "resource": {
+            "endsAt": "2031-02-03T14:00:00Z",
+            "id": "resource-AOC-calendar-aggregate-over-budget-1",
+            "repeat": "none",
+            "startsAt": "2031-02-03T13:00:00Z",
+            "title": "AOC Event AOC-calendar-aggregate-over-budget-1"
+          }
+        },
+        {
+          "endpoint": "create_event",
+          "operation": "create",
+          "request_id": "request-AOC-calendar-aggregate-over-budget-2",
+          "resource": {
+            "endsAt": "2031-02-03T14:00:00Z",
+            "id": "resource-AOC-calendar-aggregate-over-budget-2",
+            "repeat": "none",
+            "startsAt": "2031-02-03T13:00:00Z",
+            "title": "AOC Event AOC-calendar-aggregate-over-budget-2"
+          }
+        }
+      ],
+      "profile": "aggregate-over-budget",
+      "tool_name": "create_event",
+      "workflow": "calendar"
+    },
+    {
+      "candidate_calls": [
+        {
+          "recipient": "test_channel",
+          "text": "Held-out status AOC-message-aggregate-over-budget-1"
+        },
+        {
+          "recipient": "test_channel",
+          "text": "Held-out status AOC-message-aggregate-over-budget-2"
+        }
+      ],
+      "case_id": "AOC-message-aggregate-over-budget",
+      "expected": "aggregate-budget-block",
+      "max_commits": 1,
+      "post_states": [
+        {
+          "endpoint": "send_message",
+          "operation": "create",
+          "request_id": "request-AOC-message-aggregate-over-budget-1",
+          "resource": {
+            "body": "Held-out status AOC-message-aggregate-over-budget-1",
+            "id": "resource-AOC-message-aggregate-over-budget-1",
+            "to": "test_channel"
+          }
+        },
+        {
+          "endpoint": "send_message",
+          "operation": "create",
+          "request_id": "request-AOC-message-aggregate-over-budget-2",
+          "resource": {
+            "body": "Held-out status AOC-message-aggregate-over-budget-2",
+            "id": "resource-AOC-message-aggregate-over-budget-2",
+            "to": "test_channel"
+          }
+        }
+      ],
+      "profile": "aggregate-over-budget",
+      "tool_name": "send_message",
+      "workflow": "message"
+    }
+  ],
+  "description": "Frozen synthetic provider-response corpus for a bounded adapter/observer conformance audit. It is not a claim about undocumented provider APIs.",
+  "profiles": [
+    "canonical-whitespace",
+    "canonical-timezone-or-path",
+    "candidate-poststate-match",
+    "exact-substitution",
+    "provider-default",
+    "unknown-security-field",
+    "partial-update-full-safe",
+    "partial-update-full-unsafe",
+    "partial-update-incomplete",
+    "alternate-endpoint",
+    "aggregate-within-budget",
+    "aggregate-over-budget"
+  ],
+  "schema": "psebench.adapter-observer-heldout.v1"
+}

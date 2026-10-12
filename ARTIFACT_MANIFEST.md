@@ -20,7 +20,14 @@ name identifies the authors.
 | `scenarios/` | included | Benchmark scenario YAMLs grouped by family and evaluation slice. | Static corpus; validated by `python3 analysis/schema_check.py`. |
 | `data/web/` | included | Local benign, attack, and hybrid web fixtures referenced by web scenarios. | Static fixtures. |
 | `runner/` | included | CLI, decision, proxy, policy, and local replication runners. | Main local no-notify entry point: `python3 runner/run_noncron_replication.py`. |
-| `analysis/` | included | Aggregation, oracle, confidence-interval, and evidence-gap scripts plus exported summary tables. | Recompute derived summaries with the commands in `REPRODUCIBILITY.md`. |
+| `analysis/` | included | Aggregation, oracle, confidence-interval, evidence-gap scripts plus exported summary tables. | Recompute derived summaries with the commands in `REPRODUCIBILITY.md`. |
+| `analysis/audit_feedback_adaptive_v2.py` and `analysis/feedback_adaptive_v2_*.csv` | included | Feedback-adaptive scripted traces that retry alternate endpoints, unknown fields, sequence overflow, and unauthenticated confirmation after observing a decision. | Run `python3 analysis/audit_feedback_adaptive_v2.py`; this is adapter conformance evidence, not model prevalence. |
+| `runner/run_receipt_mask_ablation.py` and `analysis/audit_receipt_mask_ablation.py` | included | Complete 32-profile receipt-field composition audit over the frozen 150-case check-to-commit corpus (4,800 profile/scenario rows). | Run the commands in `REPRODUCIBILITY.md`; this is bounded conformance evidence, not a prevalence estimate. |
+| `formal/` | included | Dependency-free bounded security, oracle-lattice, and multi-principal authority checkers. | Run `python3 formal/bounded_security_model.py`, `python3 formal/bounded_oracle_lattice.py`, and `python3 formal/bounded_multi_principal_authority.py`. |
+| `scenarios/adapter-observer-heldout/` | included | Frozen 48-case adapter/observer conformance corpus: 12 profiles across four workflows. | Audit with `python3 analysis/audit_adapter_observer_holdout.py --overwrite`. |
+| `scenarios/posix-file-provider-heldout/` | included | Frozen 24-case POSIX provider corpus in one temporary namespace. | Audit with `python3 analysis/audit_posix_file_provider.py --overwrite`. |
+| `scenarios/caldav-provider-heldout/` | included | Frozen 28-case loopback CalDAV corpus for Radicale 3.7.8. | Install `requirements-provider.txt`, then run `python3 analysis/audit_caldav_provider.py --overwrite`. |
+| `analysis/native_extension_protocol_v1.md` and `analysis/native_extension_grok_4_6_integrity.json` | included | Pre-registered extension protocol and structural audit for a requested relay alias. | The recorded `grok-4.6` run has 86/96 proposal-ready rows and is explicitly invalid for ASR/TCR estimation. |
 | `oracles/` | included | Labeling/oracle conventions, blinded audit protocol, and helper materials. | Static documentation and helpers. |
 | `tests/` | included | Unit checks for IACG intent/action-boundary, authorization utility, multi-tool composition, commit binding, network schedules, durable/failover queues, baselines, and confirmation behavior. | Run with `python3 -m unittest discover -s tests -p 'test_*.py'`. |
 | `results/STAGE_SUMMARY*.md` | included | Human-readable summaries of major experimental stages. | Static summaries of completed stages. |
@@ -40,12 +47,13 @@ scripts/sanity_check.sh
 
 The sanity entry point runs the complete unit suite, validates every scenario,
 regenerates the independent-unit inventory and same-ID paired policy results,
-reconstructs the INFOCOM headline claims from released data, and compiles all
+reconstructs the released headline claims from released data, and compiles all
 runner and analysis modules. The original 141 run records are explicitly
 reported as 45 distinct scenarios and are not assigned a pooled binomial
 interval. Paper-source placement checks are additionally enabled when the local
 ignored `src/` tree is present.
-It also regenerates the strict-v2 adaptive adapter audit and the same-tool
+It also regenerates the strict-v2 adaptive adapter audit, the adapter/observer
+holdout, the POSIX provider holdout, the optional Radicale CalDAV holdout, the bounded security model, and the same-tool
 Holm, whole-block, bootstrap, and design-sensitivity outputs. Source-dependent
 AgentDojo inventory and same-state distinguishability checks run only when the
 official upstream checkouts and Pydantic 2 are available; the checkouts are not
@@ -60,13 +68,6 @@ can contain machine-specific metadata, the anonymous artifact instead includes
 this minimal table of scenario IDs, conditions, and manual outcome labels. A
 clean extraction recomputes the paired statistics from that table; a partial
 raw-run inventory is rejected rather than mixed with frozen outcomes.
-
-When the local review PDF is present, the same entry point runs
-`analysis/infocom_submission_audit.py`. The submission audit checks the
-official INFOCOM 2027 page and formatting limits, text searchability, embedded
-fonts, anonymous PDF metadata/title block, the required AI disclosure, and the
-local IEEEtran source settings. Pass `--artifact` separately after creating the
-anonymous ZIP to add archive-path and sensitive-data checks.
 
 It also checks the nine-item ACSAC review-response evidence map. Partial items
 remain explicitly partial; the check verifies evidence and manuscript boundary
@@ -156,21 +157,20 @@ python3 analysis/summarize_heldout_replay.py \
 
 The resulting scenario corpus, derived CSVs, and stage interpretation are
 recorded under `scenarios/authorization-utility-heldout/`,
-`analysis/authorization_utility_*.csv`, and
-`results/STAGE_SUMMARY_2026-07-15_INFOCOM_AUTH_UTILITY.md`.
+`analysis/authorization_utility_*.csv`; the corresponding local stage report is
+omitted from the anonymous archive.
 
 Fresh-rule generalization and non-cron utility extensions are stored under
 `scenarios/fresh-authorization-heldout/` and
 `scenarios/fresh-noncron-authorization-heldout/`. Each corpus includes a
-manifest plus the frozen runtime-rule SHA-256. Their local action-layer results
-are reported in `results/STAGE_SUMMARY_2026-07-15_INFOCOM_FRESH_AUTH_HOLDOUT.md`
-and `results/STAGE_SUMMARY_2026-07-15_INFOCOM_NONCRON_UTILITY.md`.
+manifest plus the frozen runtime-rule SHA-256. Their local action-layer stage
+reports are omitted from the anonymous archive.
 
 The frozen multi-tool composition extension is stored under
 `scenarios/multitool-chain-heldout/`. It locally specifies required and attack
 effects for file-to-message, calendar-to-message, and message-to-file chains,
-then reports per-effect enforcement separately from model proposal behavior in
-`results/STAGE_SUMMARY_2026-07-15_INFOCOM_MULTITOOL_CHAIN.md`.
+then reports per-effect enforcement separately from model proposal behavior; its
+local stage report is omitted from the anonymous archive.
 
 The frozen check-to-commit extension is stored under
 `scenarios/commit-race-heldout/`. It locally specifies 100 invalid commit states
@@ -256,8 +256,8 @@ post-verifier critical window. `analysis/audit_service_integrated_commit.py`
 reconstructs the 180/0 split/atomic stale commits, 80 serialized critical
 windows, duplicate delivery, nonce, and ledger totals without a service or
 database. The plan, failed first invocation, condition-isolation amendment, and
-sole reportable result are retained under
-`results/STAGE_SUMMARY_2026-07-20_INFOCOM_SERVICE_INTEGRATED_COMMIT_*`.
+sole reportable result are retained in the released service-integrated summary
+tables; local stage reports are omitted from the anonymous archive.
 This is service-local SQLite atomicity, not a cross-database distributed
 transaction or production-capacity claim.
 
@@ -304,15 +304,14 @@ bounded retry, HTTPS, output-collision protection, cumulative resume accounting,
 resumable successful rows, and credential redaction by default. The summarizer
 requires the expected models and validates all six model/framing cells and zero
 unresolved errors before producing a report.
-The no-network safety audit is recorded in
-`results/STAGE_SUMMARY_2026-07-15_INFOCOM_CONFIRMATION_API_SAFETY.md`.
-The pre-request paired analysis and exact-power plan is recorded in
-`results/STAGE_SUMMARY_2026-07-15_INFOCOM_CONFIRMATION_ANALYSIS_PLAN.md`;
-it explicitly limits the 120-call design to descriptive supporting evidence.
+The no-network safety audit and its pre-request paired analysis are recorded in
+the released CSV summaries; local stage reports are omitted from the anonymous
+archive. The design explicitly limits the 120-call condition to descriptive
+supporting evidence.
 
 The native model-driven slice is frozen in
-`scenarios/native-e2e48/MANIFEST.csv` and
-`results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_PLAN.md`. The
+`scenarios/native-e2e48/MANIFEST.csv`; its local planning report is omitted
+from the anonymous archive. The
 `runner/run_native_e2e.py` dry run validates 48 unique scenarios across four
 boundaries, two fixed model families, and three executable policies (288
 units) before reading credentials. Its live path requires an environment
@@ -320,14 +319,13 @@ credential and an HTTPS endpoint, executes only native provider
 tool-call objects, mediates typed effects, and derives outcomes from a SQLite
 sandbox ledger. `analysis/summarize_native_e2e.py` refuses partial or
 prompted-tool rows before producing summary and paired tables. The
-credential-free adapter and state verification is recorded in
-`results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_READINESS.md`.
+credential-free adapter and state verification are recorded in the released
+request-audit tables.
 
 Before benchmark execution, a synthetic protocol probe confirmed native
 `tool_calls` for requests to GPT-5.5 and Grok-4.5 aliases on the available
-compatible endpoint; it did not authenticate backend identities.
-`results/STAGE_SUMMARY_2026-07-16_INFOCOM_NATIVE_E2E48_AMENDMENT.md` freezes the
-model substitution before any benchmark outcome and limits the resulting claim
+compatible endpoint; it did not authenticate backend identities. The amendment
+freezes the model substitution before any benchmark outcome and limits the resulting claim
 to two requested-alias conditions through one shared provider interface.
 
 The completed amended-v2 matrix releases 288 sanitized final traces plus
@@ -447,6 +445,75 @@ schemas to review. It also routes 4/12 safe controls with unknown benign
 metadata to review. Strict v2 is a post-hoc versioned adapter and was not used
 to relabel or replace any frozen native run.
 
+The independent adapter/observer holdout is frozen under
+`scenarios/adapter-observer-heldout/`. It contains 48 cases balanced over 12
+profiles and four workflows. The independent observer and candidate normalizer
+produce 16 same-effect outcomes, 12 mismatches, 12 review outcomes, and eight
+aggregate outcomes (four within-budget allows and four budget blocks). The
+corpus, detail, coverage, and integrity files are regenerated without network
+access:
+
+```bash
+python3 analysis/audit_adapter_observer_holdout.py \
+  --output-prefix tmp/adapter_observer_holdout --overwrite
+cmp analysis/adapter_observer_holdout_detail.csv \
+  tmp/adapter_observer_holdout_detail.csv
+cmp analysis/adapter_observer_holdout_summary.csv \
+  tmp/adapter_observer_holdout_summary.csv
+cmp analysis/adapter_observer_holdout_coverage.csv \
+  tmp/adapter_observer_holdout_coverage.csv
+cmp analysis/adapter_observer_holdout_integrity.csv \
+  tmp/adapter_observer_holdout_integrity.csv
+```
+
+The provider-specific POSIX holdout is frozen under
+`scenarios/posix-file-provider-heldout/`. It contains 24 cases and 28 candidate
+effects, with eight authorized and 20 unsafe effects. On both macOS and Linux,
+the secure path commits 8/8 authorized effects and blocks 20/20 unsafe effects,
+whereas the naive absolute-path baseline commits all 20 unsafe effects. The
+corpus hash and platform-specific integrity records are released in
+`analysis/posix_file_provider_{,linux_}integrity.csv`. This is a conformance
+test for one temporary POSIX namespace, not a provider-wide prevalence claim.
+Regenerate on either platform with:
+
+```bash
+python3 analysis/audit_posix_file_provider.py \
+  --output-prefix tmp/posix_file_provider --overwrite
+```
+
+The protocol-level CalDAV holdout is frozen under
+`scenarios/caldav-provider-heldout/`. It contains 28 cases across seven
+profiles and runs a fresh Radicale 3.7.8 process for each policy/case pair.
+The adapter covers one-shot creation, provider normalization, recurrence and
+partial-update injection, endpoint substitution, stale ETag replacement, and
+aggregate overflow. An independent HTTP observer uses GET and calendar-query
+REPORT, including recurrence expansion. The secure path passes 28/28 cases and
+commits no unsafe effects; the naive path commits 20 unsafe effects. This is
+version-specific loopback conformance evidence, not evidence about Google,
+Microsoft, or deployed CalDAV prevalence. Regenerate it with:
+
+```bash
+python3 -m pip install -r requirements-provider.txt \
+  --target tmp/radicale_runtime
+python3 analysis/audit_caldav_provider.py \
+  --output-prefix tmp/caldav_provider --overwrite
+```
+
+Compare the generated detail, summary, and integrity outputs with
+`analysis/caldav_provider_*`.
+
+The dependency-free bounded security checker is also part of the artifact:
+
+```bash
+python3 formal/bounded_security_model.py
+python3 formal/bounded_oracle_lattice.py
+python3 formal/bounded_multi_principal_authority.py
+```
+
+These checks enumerate receipt-field omissions, post-check mutations, replay,
+short sequences, and oracle lattice cells. They model only the service-local
+assumptions stated in the paper and are not provider or network experiments.
+
 The AgentDojo comparison is backed by source audits of
 `ethz-spylab/agentdojo` at revision
 `089ed468cf3ed0322acc66b0211f26d9d90dbf60` and
@@ -492,11 +559,6 @@ AgentDojo is tool-call-only or unable to express a custom predicate. A dated
 serialization amendment sorts only participant/recipient fields with set
 semantics before hashing; it leaves ordered histories, states, predicates, and
 labels unchanged and makes clean-process detail CSVs byte-identical.
-
-The manuscript-specific 24-check claim audit remains local to the review
-source. It is not required in the anonymous data artifact because the paper
-source is excluded. The frozen data-only INFOCOM claim audit remains the public
-reconstruction path.
 
 The public artifact also contains the candidate-action method comparison used
 in the main paper. Run:

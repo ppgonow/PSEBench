@@ -23,6 +23,12 @@ from run_confirmation_decision import (
     request_with_retries,
     select_scenarios,
 )
+from confirmation_protocol import (
+    build_paired_schedule,
+    load_scenario_manifest,
+    schedule_sha256,
+    sha256_file,
+)
 from summarize_confirmation_decision import (
     exact_mcnemar,
     holm_adjust,
@@ -39,6 +45,187 @@ class ConfirmationDecisionTests(unittest.TestCase):
         self.assertEqual(len(scenarios), 20)
         self.assertEqual(sum(sc.get("type") == "benign" for sc in scenarios), 10)
         self.assertEqual(sum(sc.get("type") == "attack" for sc in scenarios), 10)
+
+    def test_amendment_manifest_and_schedule_are_frozen(self):
+        protocol_path = ROOT / "analysis" / "confirmation_amendment_v1.json"
+        protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+        design = protocol["design"]
+        manifest_path = ROOT / design["scenario_manifest"]
+        self.assertEqual(sha256_file(manifest_path), design["scenario_manifest_sha256"])
+        scenarios = load_scenario_manifest(manifest_path)
+        self.assertEqual(len(scenarios), 60)
+        self.assertEqual(sum(row.scenario_type == "attack" for row in scenarios), 30)
+        self.assertEqual(sum(row.scenario_type == "benign" for row in scenarios), 30)
+        jobs = build_paired_schedule(
+            design["models"], design["framings"], scenarios, design["schedule_seed"]
+        )
+        self.assertEqual(len(jobs), 360)
+        self.assertEqual(schedule_sha256(jobs), design["schedule_sha256"])
+
+    def test_amendment_dry_run_needs_no_credential(self):
+        environment = os.environ.copy()
+        environment.pop("OPENAI_API_KEY", None)
+        environment.pop("OPENAI_BASE_URL", None)
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "runner" / "run_confirmation_decision.py"),
+                "--models",
+                "gpt-5.4",
+                "gpt-5.5",
+                "gpt-5.6-sol",
+                "--protocol",
+                str(ROOT / "analysis" / "confirmation_amendment_v1.json"),
+                "--dry-run",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+            env=environment,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertIn("scenarios=60", completed.stdout)
+        self.assertIn("total_calls=360", completed.stdout)
+        self.assertIn("max_http_requests=450", completed.stdout)
+
+    def test_amendment_protocol_rejects_model_substitution(self):
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "runner" / "run_confirmation_decision.py"),
+                "--models",
+                "gpt-5.4",
+                "gpt-5.5",
+                "replacement-model",
+                "--protocol",
+                str(ROOT / "analysis" / "confirmation_amendment_v1.json"),
+                "--dry-run",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("must exactly match the frozen protocol", completed.stderr)
+
+    def test_amendment_independent_design_audit(self):
+        completed = subprocess.run(
+            [sys.executable, str(ROOT / "analysis" / "audit_confirmation_amendment.py")],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        summary = json.loads(completed.stdout)
+        self.assertEqual(summary["scenarios"], 60)
+        self.assertEqual(summary["logical_calls"], 360)
+
+    def test_amendment_raw_audit_retains_failed_resume_row(self):
+        protocol_path = ROOT / "analysis" / "confirmation_amendment_v1.json"
+        protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+        design = protocol["design"]
+        execution = protocol["execution"]
+        scenarios = load_scenario_manifest(ROOT / design["scenario_manifest"])
+        jobs = build_paired_schedule(
+            design["models"], design["framings"], scenarios, design["schedule_seed"]
+        )
+        protocol_hash = sha256_file(protocol_path)
+        rows = []
+        request_budget_used = 0
+
+        def base_row(index, job):
+            return {
+                "run_id": execution["run_id"],
+                "protocol_id": protocol["protocol_id"],
+                "protocol_sha256": protocol_hash,
+                "provider_id": execution["provider_id"],
+                "provider_base_url": execution["base_url"],
+                "scenario_manifest_sha256": design["scenario_manifest_sha256"],
+                "schedule_sha256": design["schedule_sha256"],
+                "prompt_matrix_sha256": design["prompt_matrix_sha256"],
+                "schedule_index": index,
+                "model": job.model,
+                "framing": job.framing,
+                "scenario_id": job.scenario.scenario_id,
+                "scenario_path": str(job.scenario.scenario_path.relative_to(ROOT)),
+                "scenario_sha256": job.scenario.scenario_sha256,
+                "family": job.scenario.family,
+                "scenario_type": job.scenario.scenario_type,
+                "expected_approve": job.scenario.scenario_type == "benign",
+                "response_metadata": {},
+                "latency_s": 0.0,
+            }
+
+        first = jobs[0]
+        request_budget_used += 1
+        failed = base_row(1, first)
+        failed.update(
+            {
+                "approve": False,
+                "safe_fallback": False,
+                "reason": "parse_failed",
+                "evidence": "",
+                "raw_response": "",
+                "api_error": "timeout",
+                "parse_error": "parse_failed",
+                "attempt_errors": [
+                    {"attempt": 1, "retryable": True, "error": "timeout"}
+                ],
+                "http_attempts": 1,
+                "request_budget_used": request_budget_used,
+            }
+        )
+        rows.append(failed)
+
+        for index, job in enumerate(jobs, start=1):
+            request_budget_used += 1
+            approve = job.scenario.scenario_type == "benign"
+            raw_response = json.dumps(
+                {
+                    "approve": approve,
+                    "safe_fallback": not approve,
+                    "reason": "synthetic audit fixture",
+                    "evidence": "",
+                }
+            )
+            row = base_row(index, job)
+            row.update(
+                {
+                    "approve": approve,
+                    "safe_fallback": not approve,
+                    "reason": "synthetic audit fixture",
+                    "evidence": "",
+                    "raw_response": raw_response,
+                    "api_error": "",
+                    "parse_error": "",
+                    "attempt_errors": [],
+                    "http_attempts": 1,
+                    "request_budget_used": request_budget_used,
+                }
+            )
+            rows.append(row)
+
+        with tempfile.TemporaryDirectory() as directory:
+            raw_path = pathlib.Path(directory) / "synthetic.jsonl"
+            raw_path.write_text(
+                "\n".join(json.dumps(row) for row in rows) + "\n", encoding="utf-8"
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "analysis" / "audit_confirmation_amendment.py"),
+                    "--raw",
+                    str(raw_path),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        summary = json.loads(completed.stdout)
+        self.assertEqual(summary["raw_rows"], 361)
+        self.assertEqual(summary["logical_keys"], 360)
+        self.assertEqual(summary["api_error_rows_retained"], 1)
 
     def test_parses_confirmation_json(self):
         decision, error = parse_decision(

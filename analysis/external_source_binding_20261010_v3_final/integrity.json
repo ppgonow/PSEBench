@@ -1,0 +1,23 @@
+{
+  "input_sha256": {
+    "analysis/external_attack_registry_v1.json": "7329a16fb41a42d56855e1f214d5d6bde795d8e9dcfa4b643330830d6d466f5f",
+    "analysis/external_holdout_binding_manifest_v2.json": "ddb262e6d72ab198ee1ac5dd384f944e29822982bd6ccfe4414f502ffaa78b96",
+    "analysis/prepare_external_source_binding_v3.py": "8ebd94e0324fccd0c31b42568dac29ae25ac8c5e907e5d787a414c2863d7691b",
+    "runner/external_source_provenance.py": "83ac10d6b48f342590e50220da65e3290bd684545a5deb06bd6639f76466714e"
+  },
+  "output_sha256": {
+    "REPORT.md": "33f126db45eaeacb2f0b6236d5ac659e58bbbbd0a184bd12cac3930da587b293",
+    "manifest.json": "f3edc7d3daec97e59b661882293127ce92e5a90e161ef03f3bafecefd246e845"
+  },
+  "verification": {
+    "development_records": 72,
+    "external_holdout_scenarios": 0,
+    "implemented_attack_methods": 0,
+    "real_in_the_wild_source_candidates": 36,
+    "record_hashes_verified": 108,
+    "scheduled_units": 0,
+    "source_files_verified": 3,
+    "split_disjointness_established": false
+  },
+  "verified_at_utc": "2026-10-10T09:38:55.104705+00:00"
+}

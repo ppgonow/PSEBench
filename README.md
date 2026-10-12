@@ -1,6 +1,6 @@
 # PSEBench
 
-PSEBench is a benchmark and measurement pipeline for studying security failures in tool-using agent frameworks, with a current emphasis on persistence escalation and authorization-aware action-boundary mediation.
+PSEBench is a benchmark and measurement pipeline for studying security failures in tool-using agent frameworks, with a current emphasis on persistence escalation and authorization-aware action-boundary mediation. Manuscript sources and venue-specific submission metadata are kept outside this artifact.
 
 It is designed to answer questions like:
 - When can untrusted text induce higher-scope tool actions?
@@ -121,6 +121,32 @@ For double-blind review, use an anonymized mirror/archive rather than a URL that
 - `analysis/analyze_adaptive_native_templates.py`
 - `analysis/adaptive_native_templates_detail.csv`
 - `analysis/adaptive_native_templates_summary.csv`
+- `scenarios/adapter-observer-heldout/corpus.json`
+- `runner/same_tool_observer.py`
+- `analysis/audit_adapter_observer_holdout.py`
+- `analysis/adapter_observer_holdout_detail.csv`
+- `analysis/adapter_observer_holdout_summary.csv`
+- `analysis/adapter_observer_holdout_coverage.csv`
+- `analysis/adapter_observer_holdout_integrity.csv`
+- `scenarios/posix-file-provider-heldout/corpus.json`
+- `runner/posix_file_service.py`
+- `runner/generate_posix_file_provider_holdout.py`
+- `analysis/audit_posix_file_provider.py`
+- `analysis/posix_file_provider_summary.csv`
+- `analysis/posix_file_provider_integrity.csv`
+- `scenarios/caldav-provider-heldout/corpus.json`
+- `runner/radicale_caldav_service.py`
+- `runner/generate_caldav_provider_holdout.py`
+- `analysis/audit_caldav_provider.py`
+- `analysis/caldav_provider_summary.csv`
+- `analysis/caldav_provider_integrity.json`
+- `analysis/native_extension_protocol_v1.md`
+- `analysis/audit_native_extension.py`
+- `analysis/native_extension_grok_4_6_integrity.json`
+- `formal/bounded_security_model.py`
+- `formal/bounded_oracle_lattice.py`
+- `formal/bounded_multi_principal_authority.py`
+- `analysis/audit_feedback_adaptive_v2.py`
 - `scenarios/same-tool-native-holdout/MANIFEST.csv`
 - `scenarios/same-tool-normalization/conformance.json`
 - `runner/run_same_tool_native_commit.py`
@@ -165,6 +191,11 @@ For double-blind review, use an anonymized mirror/archive rather than a URL that
 - `analysis/receipt_field_ablation_summary.csv`
 - `analysis/receipt_field_ablation_paired.csv`
 - `analysis/receipt_field_ablation_integrity.csv`
+- `runner/run_receipt_mask_ablation.py`
+- `analysis/audit_receipt_mask_ablation.py`
+- `analysis/receipt_mask_ablation_summary.csv`
+- `analysis/receipt_mask_ablation_family.csv`
+- `analysis/receipt_mask_ablation_integrity.json`
 - `results/STAGE_SUMMARY_CONFIRM_ALL_PERSISTENT.md`
 - `results/STAGE_SUMMARY_SLC.md`
 - `results/STAGE_SUMMARY_NEW_BASELINES.md`
@@ -188,14 +219,6 @@ pip install -r requirements.txt
 scripts/sanity_check.sh
 ```
 
-These checks validate the scenario schema, unit tests, headline-claim data consistency, and analysis/runner syntax without requiring live service credentials.
-They also regenerate the strict-v2 adaptive audit and cluster-aware same-tool
-statistics. Source-backed AgentDojo inventory and 16-case same-state oracle
-checks run when the official local checkouts and Pydantic 2 are available.
-The released manifest and outputs remain inspectable without those checkouts.
-Loopback integration tests require a host that permits binding
-`127.0.0.1`; restricted sandboxes may block those tests before assertions run.
-
 ## Reproducibility
 See:
 - `ARTIFACT_MANIFEST.md`
@@ -203,3 +226,24 @@ See:
 - `REPRODUCIBILITY.md`
 - `runner/README.md`
 - `REPO_MAP.md`
+
+## Recent experimental artifacts
+
+- Local structured-authorization protocols and reconstruction inputs:
+  [frozen source protocols](scenarios/local-persistence-protocols/README.md).
+- Four-checkpoint local outcome summaries:
+  [unified experiment report](analysis/local_persistence_unified_20261011_v3.md)
+  and [all assigned outcomes](analysis/local_persistence_unified_20261011_v3_summary.csv).
+- [Native task-completion oracle](analysis/native_task_oracle_v1.md) and
+  [model-extension protocol](analysis/native_extension_protocol_v1.md).
+- [Confirmation amendment](analysis/confirmation_amendment_v1.md) and
+  [external holdout amendment](analysis/external_holdout_amendment_v1.md).
+
+Model observations, local proposal forks, and deterministic provider or
+receipt conformance remain separate evidence units. Archived native task
+presence and local exact-date full-task completion use different endpoints.
+Frozen protocol inputs can be prepared without a model or API credential:
+
+```bash
+python3 analysis/prepare_local_persistence_protocols.py
+```

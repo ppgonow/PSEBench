@@ -28,6 +28,20 @@ class EffectBoundaryTests(unittest.TestCase):
         decision = check_effect(authorized, proposed)
         self.assertEqual(decision.decision, "allow")
 
+    def test_blocks_unknown_provenance(self):
+        authorized = EffectSpec("cron", "one-shot")
+        proposed = EffectSpec("cron", "one-shot", provenance="attacker")
+        decision = check_effect(authorized, proposed)
+        self.assertEqual(decision.decision, "block")
+        self.assertIn("unsupported", decision.reason)
+
+    def test_blocks_unknown_authorization_provenance(self):
+        authorized = EffectSpec("cron", "one-shot", provenance="delegated")
+        proposed = EffectSpec("cron", "one-shot", provenance="user")
+        decision = check_effect(authorized, proposed)
+        self.assertEqual(decision.decision, "block")
+        self.assertIn("authorization provenance", decision.reason)
+
 
 if __name__ == "__main__":
     unittest.main()

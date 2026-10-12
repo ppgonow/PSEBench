@@ -9,6 +9,19 @@ python3 analysis/audit_receipt_field_ablation.py \
 cmp analysis/receipt_field_ablation_summary.csv tmp/sanity_receipt_field_ablation_summary.csv
 cmp analysis/receipt_field_ablation_paired.csv tmp/sanity_receipt_field_ablation_paired.csv
 cmp analysis/receipt_field_ablation_integrity.csv tmp/sanity_receipt_field_ablation_integrity.csv
+python3 runner/run_receipt_mask_ablation.py \
+  --detail tmp/sanity_receipt_mask_ablation_detail.csv \
+  --integrity tmp/sanity_receipt_mask_ablation_integrity.json \
+  --overwrite
+python3 analysis/audit_receipt_mask_ablation.py \
+  --detail tmp/sanity_receipt_mask_ablation_detail.csv \
+  --output-prefix tmp/sanity_receipt_mask_ablation
+cmp analysis/receipt_mask_ablation_summary.csv \
+  tmp/sanity_receipt_mask_ablation_summary.csv
+cmp analysis/receipt_mask_ablation_family.csv \
+  tmp/sanity_receipt_mask_ablation_family.csv
+cmp analysis/receipt_mask_ablation_integrity.json \
+  tmp/sanity_receipt_mask_ablation_integrity.json
 python3 analysis/audit_same_tool_normalization.py \
   --output-prefix tmp/sanity_same_tool_normalization \
   --overwrite
@@ -33,14 +46,75 @@ cmp analysis/same_tool_native_commit_precision.csv tmp/sanity_same_tool_native_c
 cmp analysis/same_tool_native_commit_commit_detail.csv tmp/sanity_same_tool_native_commit_commit_detail.csv
 cmp analysis/same_tool_native_commit_commit_summary.csv tmp/sanity_same_tool_native_commit_commit_summary.csv
 cmp analysis/same_tool_native_commit_integrity.csv tmp/sanity_same_tool_native_commit_integrity.csv
-python3 analysis/audit_native_service_commit_bridge.py \
-  --output tmp/sanity_native_service_commit_bridge_audit.csv
-cmp analysis/native_service_commit_bridge_audit.csv tmp/sanity_native_service_commit_bridge_audit.csv
+if [[ -f results/native_service_commit_bridge/native_service_commit_bridge.jsonl \
+   && -f results/native_service_commit_bridge/native_service_commit_bridge_attempts.jsonl ]]; then
+  python3 analysis/audit_native_service_commit_bridge.py \
+    --output tmp/sanity_native_service_commit_bridge_audit.csv
+  cmp analysis/native_service_commit_bridge_audit.csv tmp/sanity_native_service_commit_bridge_audit.csv
+else
+  echo "Skipping native service bridge raw-run audit: raw JSONL is local-only." >&2
+fi
 python3 analysis/audit_adaptive_effect_v2.py \
   --output-prefix tmp/sanity_adaptive_effect_v2
 cmp analysis/adaptive_effect_v2_detail.csv tmp/sanity_adaptive_effect_v2_detail.csv
 cmp analysis/adaptive_effect_v2_summary.csv tmp/sanity_adaptive_effect_v2_summary.csv
 cmp analysis/adaptive_effect_v2_integrity.csv tmp/sanity_adaptive_effect_v2_integrity.csv
+python3 analysis/audit_adapter_observer_holdout.py \
+  --output-prefix tmp/sanity_adapter_observer_holdout \
+  --overwrite
+cmp analysis/adapter_observer_holdout_detail.csv \
+  tmp/sanity_adapter_observer_holdout_detail.csv
+cmp analysis/adapter_observer_holdout_summary.csv \
+  tmp/sanity_adapter_observer_holdout_summary.csv
+cmp analysis/adapter_observer_holdout_coverage.csv \
+  tmp/sanity_adapter_observer_holdout_coverage.csv
+cmp analysis/adapter_observer_holdout_integrity.csv \
+  tmp/sanity_adapter_observer_holdout_integrity.csv
+posix_expected_prefix="analysis/posix_file_provider"
+if [[ "$(uname -s)" == "Linux" ]]; then
+  posix_expected_prefix="analysis/posix_file_provider_linux"
+fi
+python3 analysis/audit_posix_file_provider.py \
+  --output-prefix tmp/sanity_posix_file_provider \
+  --overwrite
+cmp "${posix_expected_prefix}_detail.csv" \
+  tmp/sanity_posix_file_provider_detail.csv
+cmp "${posix_expected_prefix}_summary.csv" \
+  tmp/sanity_posix_file_provider_summary.csv
+cmp "${posix_expected_prefix}_effect_detail.csv" \
+  tmp/sanity_posix_file_provider_effect_detail.csv
+cmp "${posix_expected_prefix}_integrity.csv" \
+  tmp/sanity_posix_file_provider_integrity.csv
+if [[ -d tmp/radicale_runtime ]]; then
+  python3 analysis/audit_caldav_provider.py \
+    --output-prefix tmp/sanity_caldav_provider \
+    --overwrite
+  cmp analysis/caldav_provider_detail.csv tmp/sanity_caldav_provider_detail.csv
+  cmp analysis/caldav_provider_summary.csv tmp/sanity_caldav_provider_summary.csv
+  cmp analysis/caldav_provider_integrity.json tmp/sanity_caldav_provider_integrity.json
+else
+  echo "Skipping optional CalDAV provider audit: install requirements-provider.txt to enable it." >&2
+fi
+if [[ -f analysis/same_tool_native_commit_grok_4_6_final.jsonl ]]; then
+  python3 analysis/audit_native_extension.py \
+    analysis/same_tool_native_commit_grok_4_6_final.jsonl \
+    --alias grok-4.6 \
+    --output tmp/sanity_native_extension_grok_4_6_integrity.json
+  cmp analysis/native_extension_grok_4_6_integrity.json \
+    tmp/sanity_native_extension_grok_4_6_integrity.json
+fi
+python3 formal/bounded_security_model.py >/dev/null
+python3 formal/bounded_oracle_lattice.py >/dev/null
+python3 formal/bounded_multi_principal_authority.py \
+  --output tmp/sanity_multi_principal_authority.json >/dev/null
+cmp analysis/multi_principal_authority_summary.json \
+  tmp/sanity_multi_principal_authority.json
+python3 analysis/audit_feedback_adaptive_v2.py \
+  --output-prefix tmp/sanity_feedback_adaptive_v2
+cmp analysis/feedback_adaptive_v2_detail.csv \
+  tmp/sanity_feedback_adaptive_v2_detail.csv
+cmp analysis/feedback_adaptive_v2_summary.csv \
+  tmp/sanity_feedback_adaptive_v2_summary.csv
 if [[ -d external/official_reproduction/agentdojo \
    && -d external/official_reproduction/agentdojo-core ]]; then
   python3 analysis/audit_benchmark_oracle_capabilities.py \
@@ -197,14 +271,4 @@ python3 analysis/audit_multihost_commit_race.py \
 cmp analysis/multihost_commit_race_summary.csv tmp/sanity_multihost_commit_race_summary.csv
 cmp analysis/multihost_commit_race_paired.csv tmp/sanity_multihost_commit_race_paired.csv
 cmp analysis/multihost_commit_race_audit_integrity.csv tmp/sanity_multihost_commit_race_integrity.csv
-python3 analysis/infocom_claim_audit.py
-python3 analysis/reviewer_response_audit.py
-if [[ -d paper_versions/infocom_nature_polished_2026-07-22/src ]]; then
-  python3 analysis/audit_revised_manuscript_claims.py \
-    --source paper_versions/infocom_nature_polished_2026-07-22/src \
-    --output tmp/sanity_revised_manuscript_claim_audit.csv
-fi
-if [[ -f output/pdf/PSEBench_INFOCOM2027_submission_draft.pdf ]]; then
-  python3 analysis/infocom_submission_audit.py
-fi
 env PYTHONPYCACHEPREFIX=tmp/pycache python3 -m compileall -q runner analysis

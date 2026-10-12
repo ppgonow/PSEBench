@@ -1,0 +1,6 @@
+{
+  "analysis/live_caldav_protocol_v1.json": "29fb89f6a107910bf3f8934744cd8a93dcf2a3c4de91aa112e107e5ca2bc1968",
+  "runner/prepare_live_caldav_holdout.py": "d629fd605ebbcc30bf19caec5a856eef4401e87e3cb0c5b9f63f30efce223ebe",
+  "analysis/audit_live_caldav_design.py": "589db778921619476859ad2c4ad66378b9df61d4e3bc6c02ea280d8a2b5f6ec1",
+  "scenarios/live-caldav-heldout-20261009-v1/corpus.json": "e59935a0095ce33d6cda738dc5782bc2512fa8a59008297955bb959a4d292d8e"
+}

@@ -1,0 +1,5 @@
+assigned,attempted,interface,model,valid
+384,384,4,gemma:7b-instruct-q4_K_M,380
+384,384,89,llama3.1:8b-instruct-q4_K_M,295
+384,384,87,mistral:7b-instruct-v0.3-q4_K_M,297
+384,384,100,qwen2.5:7b-instruct,284

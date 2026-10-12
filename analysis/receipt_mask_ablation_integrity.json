@@ -1,0 +1,17 @@
+{
+  "all_composition_checks": true,
+  "attack_rows": 3200,
+  "commits": 3200,
+  "control_rows": 1600,
+  "control_tasks": 1600,
+  "families": 5,
+  "full_profile_attack_successes": 0,
+  "ledger_rows": 3200,
+  "profiles": 32,
+  "rows": 4800,
+  "stable_controls_per_profile": [
+    50
+  ],
+  "stale_commits": 1600,
+  "unique_keys": 4800
+}
