@@ -11,12 +11,10 @@
 
 ## Important files
 - `ARTIFACT_MANIFEST.md` — public artifact scope and reproduction tiers
-- `ANONYMIZATION.md` — double-blind artifact sharing checklist
 - `README.md` — project overview and public repository scope
 - `REPRODUCIBILITY.md` — representative reproduction commands
 - `requirements.txt` — Python dependencies for sanity checks and analysis scripts
 - `scripts/sanity_check.sh` — no-credential validation entry point
-- `scripts/make_anonymous_archive.sh` — creates a committed or explicit worktree anonymous artifact zip
 - `runner/README.md` — runner-specific notes
 - `runner/config.example.yaml` — template for machine-local runner configuration
 - `data/README.md` — notes on tracked versus local-only data
@@ -47,7 +45,6 @@
 - `analysis/auto_oracle_agreement_summary.csv`
 - `analysis/auto_oracle_noncron_summary.csv`
 - `analysis/iacg_overhead_summary.csv`
-- `analysis/reviewer_response_audit.csv`
 - `analysis/adaptive_native_fork_schema_neutral_final.jsonl`
 - `analysis/adaptive_native_fork_schema_neutral_summary.csv`
 - `analysis/adaptive_native_fork_schema_neutral_postrun_audit_ledger.csv`
@@ -79,7 +76,6 @@
 - `analysis/docker_queue_failover_integrity.csv`
 - `analysis/docker_queue_failover_metadata.csv`
 - `analysis/audit_docker_queue_failover.py`
-- `analysis/make_figure1_v2.py` — deterministic generator for the paper's authorization-boundary workflow figure
 - `runner/failover_queue.py`
 - `runner/docker_failover_service.py`
 - `runner/docker_failover_worker.py`

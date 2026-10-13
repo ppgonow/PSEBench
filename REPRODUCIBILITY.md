@@ -257,7 +257,7 @@ python3 runner/replay_action_boundary.py \
 python3 analysis/benchmark_guard_overhead.py
 ```
 
-The corresponding local stage reports are omitted from the anonymous archive.
+The corresponding local stage reports are omitted from the public snapshot.
 
 ### Frozen multi-tool chain replay
 
@@ -372,7 +372,7 @@ receipt-bound ASR 100/100 versus 0/100 and 50/50 TCR for both. The profiles are
 controlled loopback schedules, not WAN fault-prevalence measurements. The plan,
 four amendments, five implementation freezes, and sole successful result are
 retained in the released tables; local stage reports are omitted from the
-anonymous archive.
+public snapshot.
 
 The asynchronous queue follow-up separately repeats the 150 scenarios under a
 steady consumer and a broker-restart profile. A loopback-only SQLite-backed
@@ -497,7 +497,7 @@ and host-side readiness, generates a one-time password, and removes the
 container after success or failure. The first complete attempt and first retry
 were invalidated before publication; their failure/amendment records and the
 sole reportable result are retained in the released portability tables. Local
-stage reports are omitted from the anonymous archive.
+stage reports are omitted from the public snapshot.
 The portability result establishes the same service-local invariant under a
 row-lock implementation, not cross-database commit or production throughput.
 
@@ -571,7 +571,7 @@ action-layer execution, this establishes compatible native-call and
 SQLite-backed primary-effect execution, not policy efficacy or cross-provider
 robustness. The original design, amendments, excluded exposure pilot, retry
 record, and result are retained in the released request-audit tables. Local
-stage reports are omitted from the anonymous archive.
+stage reports are omitted from the public snapshot.
 
 ### Frozen adaptive native shared-proposal fork
 
@@ -702,7 +702,7 @@ returned-alias metadata records. The extension is reported as model coverage.
 
 ### Candidate-action method comparison
 
-Recompute the same-scenario deterministic comparison used in the main paper:
+Recompute the same-scenario deterministic comparison:
 
 ```bash
 python3 analysis/run_method_comparison.py \
@@ -776,7 +776,7 @@ descriptive pilot rather than a powered no-effect study. The paired output uses
 same-scenario exact McNemar tests and Holm correction across the three models
 and two endpoints. The interpretation and expansion boundary are frozen in the
 released power-analysis outputs; local stage reports are omitted from the
-anonymous archive.
+public snapshot.
 
 ### Frozen receipt-field ablation and same-tool native-to-commit matrix
 
@@ -994,7 +994,7 @@ The released AgentDojo inventory was generated from
 `089ed468cf3ed0322acc66b0211f26d9d90dbf60` and
 `https://github.com/ethz-spylab/agentdojo-core.git` at revision
 `23bf925979d051443f2e780ab19bff80f2066d6d`. Upstream source trees are not
-copied into the anonymous artifact. Place the official `agentdojo` and
+copied into the public artifact. Place the official `agentdojo` and
 `agentdojo-core` checkouts under
 `external/official_reproduction/`, at the recorded revision, and run:
 
@@ -1077,7 +1077,7 @@ python3 analysis/auto_oracle_noncron.py
 python3 analysis/compute_ci_tables.py
 python3 analysis/confirm_all_persistent_report.py
 python3 analysis/slc_report.py
-python3 analysis/reviewer_gap_tables.py
+python3 analysis/baseline_coverage_tables.py
 python3 analysis/evidence_gap_tables.py
 python3 analysis/benchmark_guard_overhead.py
 python3 analysis/label_audit.py prepare --seed 20260523
@@ -1122,13 +1122,11 @@ evidence about the service implementation.
 
 When every required local raw-run root exists, the independent-unit script
 extracts the paired labels from `final.json` and refreshes
-`analysis/independent_paired_outcomes.csv`. In the anonymous archive, where raw
+`analysis/independent_paired_outcomes.csv`. In the public snapshot, where raw
 live-run directories are intentionally excluded, it recomputes the same rows
 from that minimal frozen outcome table. Partial raw inputs fail closed.
 
-The anonymous artifact does not contain the paper source or PDF, so a sanity
-run from a clean archive extraction reconstructs data-layer claims and skips
-the local-only PDF/source portion by design.
+The public sanity suite reconstructs released results without manuscript sources or PDFs.
 
 ## 8) Guard schema in `final.json`
 Representative fields:

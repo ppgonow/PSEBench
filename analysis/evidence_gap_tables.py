@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate reviewer-gap tables from existing artifacts.
+"""Generate evidence-coverage tables from existing artifacts.
 
 These tables address two evidence-quality questions without creating new run
 outcomes: whether the beyond-cron families show the same qualitative pattern,

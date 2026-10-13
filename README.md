@@ -41,8 +41,6 @@ The attacker controls only content, not framework internals or runner configurat
 
 Paper drafts, slide decks, imported external corpora, local notes, and machine-specific config are intentionally kept out of the public snapshot.
 
-For double-blind review, use an anonymized mirror/archive rather than a URL that reveals author identity through the hosting account. See `ANONYMIZATION.md`.
-
 ## Representative outputs
 - `analysis/main_table_by_family_plus_persistent.md`
 - `analysis/independent_unit_inventory.csv`
@@ -79,7 +77,6 @@ For double-blind review, use an anonymized mirror/archive rather than a URL that
 - `analysis/docker_queue_failover_integrity.csv`
 - `analysis/docker_queue_failover_metadata.csv`
 - `analysis/audit_docker_queue_failover.py`
-- `analysis/make_figure1_v2.py`
 - `analysis/service_integrated_commit_detail.csv`
 - `analysis/service_integrated_commit_summary.csv`
 - `analysis/service_integrated_commit_integrity.csv`
@@ -222,7 +219,6 @@ scripts/sanity_check.sh
 ## Reproducibility
 See:
 - `ARTIFACT_MANIFEST.md`
-- `ANONYMIZATION.md`
 - `REPRODUCIBILITY.md`
 - `runner/README.md`
 - `REPO_MAP.md`

@@ -62,6 +62,33 @@ analysis/audit_csf_*.py
 analysis/csf_*_audit.json
 tests/test_audit_csf_*.py
 
+# Local-only manuscript, submission, and review materials
+ANONYMIZATION.md
+analysis/audit_revised_manuscript_claims.py
+analysis/infocom_claim_audit.csv
+analysis/infocom_claim_audit.py
+analysis/infocom_submission_audit.json
+analysis/infocom_submission_audit.py
+analysis/make_figure1_v2.py
+analysis/paper_figures_and_tables.py
+analysis/reviewer_gap_tables.py
+analysis/reviewer_response_audit.csv
+analysis/reviewer_response_audit.py
+analysis/reviewer_gap_tables.py
+analysis/revised_manuscript_claim_audit.csv
+scripts/make_anonymous_archive.sh
+tests/test_revised_manuscript_claims.py
+analysis/native_service_commit_bridge_claim_audit.csv
+results/STAGE_SUMMARY_2026-07-15_INFOCOM_ARTIFACT_AUDIT.md
+results/STAGE_SUMMARY_2026-07-15_INFOCOM_CLAIM_AUDIT.md
+results/STAGE_SUMMARY_2026-07-15_INFOCOM_REVIEW_RESPONSE_AUDIT.md
+results/STAGE_SUMMARY_2026-07-16_INFOCOM_SUBMISSION_READINESS.md
+results/STAGE_SUMMARY_2026-07-17_INFOCOM_CITATION_AUDIT.md
+results/STAGE_SUMMARY_2026-07-17_INFOCOM_SUBMISSION_READINESS.md
+results/STAGE_SUMMARY_2026-07-19_INFOCOM_FIGURE_TABLE_AUDIT.md
+results/STAGE_SUMMARY_2026-07-19_INFOCOM_FINAL_AUDIT.md
+results/STAGE_SUMMARY_2026-07-20_INFOCOM_COHERENCE_AUDIT.md
+
 # Logs
 *.log
 screenlog*

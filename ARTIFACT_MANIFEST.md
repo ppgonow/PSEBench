@@ -9,10 +9,6 @@ Paper drafts, LaTeX sources, build outputs, local notes, machine-specific
 configuration, and raw live-run directories are intentionally excluded from the
 public snapshot.
 
-For double-blind review, share this snapshot through an anonymized archive or
-repository mirror. Do not provide a hosting URL whose account or organization
-name identifies the authors.
-
 ## Artifact Scope
 
 | Path | Public status | Purpose | Regeneration notes |
@@ -50,8 +46,7 @@ regenerates the independent-unit inventory and same-ID paired policy results,
 reconstructs the released headline claims from released data, and compiles all
 runner and analysis modules. The original 141 run records are explicitly
 reported as 45 distinct scenarios and are not assigned a pooled binomial
-interval. Paper-source placement checks are additionally enabled when the local
-ignored `src/` tree is present.
+interval.
 It also regenerates the strict-v2 adaptive adapter audit, the adapter/observer
 holdout, the POSIX provider holdout, the optional Radicale CalDAV holdout, the bounded security model, and the same-tool
 Holm, whole-block, bootstrap, and design-sensitivity outputs. Source-dependent
@@ -64,14 +59,10 @@ require an environment that permits loopback binding.
 The same-ID analysis reads local `results/runs/*/final.json` files when all 14
 required run roots are present and refreshes
 `analysis/independent_paired_outcomes.csv`. Because raw live-run directories
-can contain machine-specific metadata, the anonymous artifact instead includes
+can contain machine-specific metadata, the public artifact instead includes
 this minimal table of scenario IDs, conditions, and manual outcome labels. A
 clean extraction recomputes the paired statistics from that table; a partial
 raw-run inventory is rejected rather than mixed with frozen outcomes.
-
-It also checks the nine-item ACSAC review-response evidence map. Partial items
-remain explicitly partial; the check verifies evidence and manuscript boundary
-language rather than converting missing live experiments into completed ones.
 
 The released no-credential native-to-commit bridge connects the 192 frozen
 authorized clean native proposals to distinct loopback authorization, gateway,
@@ -117,7 +108,7 @@ python3 analysis/auto_oracle_noncron.py
 python3 analysis/compute_ci_tables.py
 python3 analysis/confirm_all_persistent_report.py
 python3 analysis/slc_report.py
-python3 analysis/reviewer_gap_tables.py
+python3 analysis/baseline_coverage_tables.py
 python3 analysis/evidence_gap_tables.py
 python3 analysis/benchmark_guard_overhead.py
 python3 analysis/label_audit.py prepare --seed 20260523
@@ -158,19 +149,19 @@ python3 analysis/summarize_heldout_replay.py \
 The resulting scenario corpus, derived CSVs, and stage interpretation are
 recorded under `scenarios/authorization-utility-heldout/`,
 `analysis/authorization_utility_*.csv`; the corresponding local stage report is
-omitted from the anonymous archive.
+omitted from the public snapshot.
 
 Fresh-rule generalization and non-cron utility extensions are stored under
 `scenarios/fresh-authorization-heldout/` and
 `scenarios/fresh-noncron-authorization-heldout/`. Each corpus includes a
 manifest plus the frozen runtime-rule SHA-256. Their local action-layer stage
-reports are omitted from the anonymous archive.
+reports are omitted from the public snapshot.
 
 The frozen multi-tool composition extension is stored under
 `scenarios/multitool-chain-heldout/`. It locally specifies required and attack
 effects for file-to-message, calendar-to-message, and message-to-file chains,
 then reports per-effect enforcement separately from model proposal behavior; its
-local stage report is omitted from the anonymous archive.
+local stage report is omitted from the public snapshot.
 
 The frozen check-to-commit extension is stored under
 `scenarios/commit-race-heldout/`. It locally specifies 100 invalid commit states
@@ -257,7 +248,7 @@ reconstructs the 180/0 split/atomic stale commits, 80 serialized critical
 windows, duplicate delivery, nonce, and ledger totals without a service or
 database. The plan, failed first invocation, condition-isolation amendment, and
 sole reportable result are retained in the released service-integrated summary
-tables; local stage reports are omitted from the anonymous archive.
+tables; local stage reports are omitted from the public snapshot.
 This is service-local SQLite atomicity, not a cross-database distributed
 transaction or production-capacity claim.
 
@@ -311,7 +302,7 @@ supporting evidence.
 
 The native model-driven slice is frozen in
 `scenarios/native-e2e48/MANIFEST.csv`; its local planning report is omitted
-from the anonymous archive. The
+from the public snapshot. The
 `runner/run_native_e2e.py` dry run validates 48 unique scenarios across four
 boundaries, two fixed model families, and three executable policies (288
 units) before reading credentials. Its live path requires an environment
@@ -512,7 +503,7 @@ python3 formal/bounded_multi_principal_authority.py
 
 These checks enumerate receipt-field omissions, post-check mutations, replay,
 short sequences, and oracle lattice cells. They model only the service-local
-assumptions stated in the paper and are not provider or network experiments.
+assumptions encoded in the bounded models and are not provider or network experiments.
 
 The AgentDojo comparison is backed by source audits of
 `ethz-spylab/agentdojo` at revision
@@ -560,8 +551,7 @@ serialization amendment sorts only participant/recipient fields with set
 semantics before hashing; it leaves ordered histories, states, predicates, and
 labels unchanged and makes clean-process detail CSVs byte-identical.
 
-The public artifact also contains the candidate-action method comparison used
-in the main paper. Run:
+The public artifact also contains the candidate-action method comparison. Run:
 
 ```bash
 python3 analysis/run_method_comparison.py \

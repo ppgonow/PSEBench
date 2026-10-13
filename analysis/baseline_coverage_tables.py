@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate reviewer-facing summary tables for prompt-only and oracle coverage.
+"""Generate benchmark summary tables for prompt-only and oracle coverage.
 
 The tables are intentionally derived from existing finalized runs and summary
 files. They do not create new experimental outcomes.
